@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOVA Coping Skills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Fredoka:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: a presenter stage. Each act puts a live device beside the talking points;
+     Autism lives in daylight (mint paper), Behavioral Health lives at dusk (Kindred's light). */
+  --ink:#0f2421; --ink-2:#45605b; --ink-3:#7d918d;
+  --paper:#f2f6f4; --card:#ffffff; --line:#dbe5e2;
+  --teal:#0d9488; --teal-2:#14b8a6; --teal-l:#5eead4; --teal-xl:#ccfbf1;
+  --amber:#f5b524; --coral:#f97362;
+  --dusk:#0f1430; --dusk-2:#18204a; --dusk-3:#242d63; --moon:#e9ecff; --moon-2:#a9b1dc; --glow:#8be9df; --lilac:#a98bff;
+  --display:'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --kidf:'Fredoka', 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  --serif:'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --body:'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  --r:18px; --shadow:0 1px 2px rgba(15,36,33,.06), 0 8px 28px rgba(15,36,33,.08);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--paper);color:var(--ink);font:16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,a:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:10px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.ico{flex:none;display:inline-block;vertical-align:middle}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------------- top bar ---------------- */
+.bar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:20px;padding:10px 22px;background:rgba(242,246,244,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font:800 17px/1 var(--display);letter-spacing:-.01em;white-space:nowrap}
+.brand .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(150deg,#2dd4bf,#0d9488);display:grid;place-items:center;color:#fff;font-size:15px}
+.brand small{font:600 12px/1 var(--body);color:var(--ink-3);letter-spacing:.02em;margin-left:2px}
+.acts{display:flex;gap:4px;margin-left:auto;background:#e6eeeb;padding:4px;border-radius:14px}
+.acts a{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;font:600 14px/1 var(--display);color:var(--ink-2);text-decoration:none;white-space:nowrap}
+.acts a b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#cfdcd8;color:var(--ink);font:700 11px/1 var(--display)}
+.acts a[aria-current="page"]{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
+.acts a[aria-current="page"] b{background:var(--teal);color:#fff}
+.acts a.bh[aria-current="page"] b{background:var(--dusk-3)}
+.bar .tools{display:flex;gap:6px}
+.chipbtn{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:10px;font:600 13px/1 var(--body);color:var(--ink-2);background:#e6eeeb}
+.chipbtn[aria-pressed="true"]{background:var(--ink);color:#fff}
+.demo-flag{font:600 11.5px/1.3 var(--body);color:var(--ink-3);max-width:150px}
+
+/* ---------------- acts / stage ---------------- */
+.act{display:none}
+.act.on{display:block;animation:actIn .5s ease both}
+@keyframes actIn{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;max-width:1360px;margin:0 auto;padding:18px 24px 50px}
+.notes-off .stage{grid-template-columns:minmax(0,1fr)}
+.notes-off .notes{display:none}
+.stage-main{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+.stage-head{width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.eyebrow{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.stage-head h2{font:800 26px/1.1 var(--display);letter-spacing:-.02em;margin-top:5px}
+.stage-head p{color:var(--ink-2);margin-top:4px;max-width:62ch;font-size:15px}
+.toggles{display:flex;gap:8px;flex-wrap:wrap}
+.tog{display:flex;align-items:center;gap:8px;padding:8px 12px 8px 8px;border-radius:12px;background:#fff;border:1px solid var(--line);font:600 13px/1 var(--body);color:var(--ink-2)}
+.tog .sw{width:34px;height:20px;border-radius:20px;background:#cdd9d5;position:relative;transition:.25s}
+.tog .sw::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.tog[aria-pressed="true"] .sw{background:var(--teal)}
+.tog[aria-pressed="true"] .sw::after{left:16px}
+.seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:12px;padding:3px}
+.seg button{padding:8px 14px;border-radius:9px;font:600 13px/1 var(--body);color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* presenter notes */
+.notes{position:sticky;top:84px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 20px 18px;box-shadow:var(--shadow)}
+.notes h4{margin:0 0 4px;font:700 11px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.notes .n-title{font:800 19px/1.2 var(--display);letter-spacing:-.01em;margin:6px 0 10px}
+.notes ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.notes li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+.notes li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal-2);margin:7px 0 0 6px}
+.notes li b{color:var(--ink)}
+.notes .n-foot{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--ink-3)}
+.notes .n-flow{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.notes .n-flow span{font:600 11.5px/1 var(--body);padding:6px 8px;border-radius:8px;background:#eef3f1;color:var(--ink-3)}
+.notes .n-flow span.on{background:var(--teal-xl);color:#0b6b62}
+.bh-act .notes li::before{background:var(--lilac)}
+
+/* ---------------- devices ---------------- */
+.tablet{width:min(900px,100%);height:clamp(580px,calc(100vh - 210px),700px);background:#16302c;border-radius:36px;padding:16px;box-shadow:0 30px 60px -20px rgba(15,36,33,.45),inset 0 0 0 2px #24443f;position:relative}
+.tablet::before{content:"";position:absolute;top:50%;left:6px;width:5px;height:5px;border-radius:50%;background:#2f524c;transform:translateY(-50%)}
+.phone{width:390px;max-width:100%;height:clamp(680px,calc(100vh - 200px),800px);background:#05070f;border-radius:52px;padding:12px;box-shadow:0 40px 70px -24px rgba(10,14,40,.6),inset 0 0 0 2px #262c48;position:relative}
+.phone::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);width:110px;height:30px;border-radius:20px;background:#05070f;z-index:5}
+.screen{width:100%;height:100%;border-radius:24px;overflow:hidden;position:relative}
+.phone .screen{border-radius:42px}
+
+/* ================= PIP WORLD (Autism) ================= */
+.pw{background:radial-gradient(120% 80% at 10% 0%,#e3fbf4 0%,#f6fbf2 45%,#fff8ea 100%);font-family:var(--kidf);color:#13302c;height:100%;display:flex;flex-direction:column}
+.pw-top{display:flex;align-items:center;gap:10px;padding:14px 18px 6px}
+.pw-top .who{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:#2f5650}
+.pw-top .who i{width:30px;height:30px;border-radius:50%;background:#ffd9a8;display:grid;place-items:center;font-style:normal;font-weight:700;color:#8a4b0a}
+.pw-top .sp{flex:1}
+.pw-stars{display:flex;align-items:center;gap:6px;background:#fff;border-radius:20px;padding:6px 12px;font-weight:700;color:#a86c00;box-shadow:0 2px 0 #f1e2bd}
+.pw-icon{width:42px;height:42px;border-radius:14px;background:#fff;display:grid;place-items:center;color:#2f5650;box-shadow:0 2px 0 #dbe9e4}
+.pw-body{flex:1;min-height:0;overflow:auto;padding:4px 24px 20px;display:flex;flex-direction:column}
+.pw h3{font:600 30px/1.15 var(--kidf);letter-spacing:-.01em}
+.pw .sub{font:500 18px/1.35 var(--kidf);color:#4c6e68}
+.say{position:relative;background:#fff;border-radius:22px;padding:14px 18px;font:500 20px/1.3 var(--kidf);box-shadow:0 3px 0 #dbe9e4;max-width:440px}
+.say::before{content:"";position:absolute;left:-9px;top:26px;border:10px solid transparent;border-right-color:#fff;border-left:0}
+.say .rd{margin-left:8px;color:var(--teal);vertical-align:-3px}
+.pw-hello{display:flex;align-items:center;gap:18px;margin:4px 0 14px}
+
+.meter{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.mcard{background:#fff;border-radius:24px;padding:14px 10px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 4px 0 var(--mc-s);border:3px solid transparent;transition:transform .15s}
+.mcard:hover{transform:translateY(-3px)}
+.mcard[aria-pressed="true"]{border-color:var(--mc);transform:translateY(-3px)}
+.mcard b{font:600 20px/1 var(--kidf)}
+.mcard span{font:500 13px/1.2 var(--kidf);color:#6a8580}
+.mface{width:76px;height:76px}
+
+.fte{display:grid;grid-template-columns:1fr 44px 1fr;gap:10px;align-items:stretch;margin-top:6px}
+.fte .col{background:#fff;border-radius:26px;padding:12px;box-shadow:0 4px 0 #dbe9e4;display:flex;flex-direction:column;gap:10px}
+.fte .lab{font:700 14px/1 var(--kidf);letter-spacing:.14em;color:#6a8580;text-align:center}
+.fte .arrow{display:grid;place-items:center;color:#9bb8b1}
+.pcard{border-radius:20px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font:600 19px/1.15 var(--kidf);border:3px solid transparent;transition:.15s;background:var(--pc-soft)}
+.pcard .pic{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;background:#fff;color:var(--pc)}
+.pcard.sm{flex-direction:row;padding:8px 12px;font-size:16px;text-align:left}
+.pcard.sm .pic{width:46px;height:46px;border-radius:14px}
+.pcard[aria-pressed="true"]{border-color:var(--pc)}
+.then-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.then-opts button{background:#fff8ea;border-radius:16px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:4px;font:600 13px/1.1 var(--kidf);border:3px solid transparent}
+.then-opts button[aria-pressed="true"]{border-color:var(--amber);background:#fff1cc}
+.then-opts svg{width:40px;height:40px}
+.orpick{display:flex;gap:8px;margin-top:12px;align-items:center;flex-wrap:wrap;font:500 15px/1 var(--kidf);color:#6a8580}
+
+.kbtn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:22px;padding:16px 26px;font:600 21px/1 var(--kidf);background:var(--teal);color:#fff;box-shadow:0 5px 0 #0a6e66;transition:transform .1s,box-shadow .1s}
+.kbtn:active{transform:translateY(3px);box-shadow:0 2px 0 #0a6e66}
+.kbtn.ghost{background:#fff;color:#2f5650;box-shadow:0 4px 0 #dbe9e4}
+.kbtn.amber{background:var(--amber);color:#4a3000;box-shadow:0 5px 0 #c58a06}
+.krow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:auto;padding-top:14px}
+
+.cg{display:flex;gap:12px;align-items:flex-start;background:#fff4dc;border:2px dashed #f0cf86;border-radius:18px;padding:10px 14px;font:500 15px/1.35 var(--kidf);color:#6b4a06;margin-top:12px}
+.cg b{font-weight:700;display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a1720d;margin-bottom:2px}
+.cg-hide .cg{display:none}
+
+.toolbox{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.toolbox .pcard{background:#fff;box-shadow:0 4px 0 #dbe9e4}
+.toolbox .pcard .pic{background:var(--pc-soft)}
+.tb-sec{font:600 15px/1 var(--kidf);letter-spacing:.1em;text-transform:uppercase;color:#6a8580;margin:16px 0 4px}
+.pcard.mini{padding:8px 4px;font-size:13.5px;gap:6px}
+.pcard.mini .pic{width:48px;height:48px;border-radius:15px}
+.pcard.mini .pic svg{width:28px;height:28px}
+.tag-plan{font:600 11px/1 var(--kidf);background:var(--teal-xl);color:#0b6b62;padding:4px 7px;border-radius:7px}
+
+/* Pip character */
+.pip{position:relative;width:var(--s);height:var(--s);flex:none}
+.pip svg{position:relative;display:block;overflow:visible}
+.pip__glow{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,#5eead4 0%,transparent 68%);opacity:.45}
+.pip__body{transform-origin:100px 110px;animation:pipFloat 3.6s ease-in-out infinite}
+.pip--celebrate .pip__body{animation:pipBounce .7s ease-in-out infinite}
+.pip--celebrate .pip__glow{background:radial-gradient(circle,#fbbf24 0%,transparent 68%);opacity:.7}
+.pip__tip{animation:tip 2.4s ease-in-out infinite}
+.pip__eyes{animation:blink 5s infinite;transform-origin:100px 100px}
+@keyframes pipFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pipBounce{0%,100%{transform:translateY(0) rotate(0)}30%{transform:translateY(-14px) rotate(-4deg)}60%{transform:translateY(-4px) rotate(3deg)}}
+@keyframes tip{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes blink{0%,46%,50%,100%{transform:scaleY(1)}48%{transform:scaleY(.1)}}
+
+/* ================= KINDRED WORLD (Behavioral Health) ================= */
+.kw{background:radial-gradient(90% 60% at 50% 18%,#26306b 0%,#151b40 45%,#0d1130 100%);color:var(--moon);height:100%;display:flex;flex-direction:column;font-family:var(--body);position:relative}
+.kw::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 12% 20%,#fff8 50%,transparent),radial-gradient(1px 1px at 78% 12%,#fff6 50%,transparent),radial-gradient(1.4px 1.4px at 66% 36%,#fff5 50%,transparent),radial-gradient(1px 1px at 30% 44%,#fff4 50%,transparent),radial-gradient(1px 1px at 88% 58%,#fff5 50%,transparent);pointer-events:none}
+.kw-top{display:flex;align-items:center;gap:10px;padding:54px 20px 6px;position:relative;z-index:2}
+.kw-top .who{font:600 13px/1.2 var(--body);color:var(--moon-2)}
+.kw-top .who b{display:block;color:var(--moon);font-size:15px}
+.kw-top .sp{flex:1}
+.kw-help{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:20px;background:rgba(255,140,140,.14);color:#ffc2c2;font:700 12.5px/1 var(--body);border:1px solid rgba(255,160,160,.3)}
+.kw-ib{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.07);color:var(--moon-2)}
+.kw-body{flex:1;min-height:0;overflow:auto;padding:6px 22px 22px;display:flex;flex-direction:column;position:relative;z-index:1;scrollbar-width:none}
+.kw-body::-webkit-scrollbar{display:none}
+.kw-body > *, .pw-body > *{flex-shrink:0}
+.kw h3{font:400 34px/1.08 var(--serif);letter-spacing:-.005em;color:#fff}
+.kw h3 em{font-style:italic;color:var(--glow)}
+.kw .ksub{color:var(--moon-2);font-size:15px;line-height:1.45;margin-top:8px}
+.kw .kcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:20px;padding:14px 16px}
+.klabel{font:700 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--moon-2)}
+.kbtn2{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 18px;border-radius:18px;background:linear-gradient(135deg,#8be9df,#7aa8ff);color:#0d1130;font:700 16px/1 var(--body);box-shadow:0 10px 30px -10px rgba(139,233,223,.6)}
+.kbtn2.ghost{background:rgba(255,255,255,.07);color:var(--moon);box-shadow:none;border:1px solid rgba(255,255,255,.12)}
+.kbtn2.warn{background:linear-gradient(135deg,#ffb4a8,#ff8f8f);color:#3a0c0c}
+.kstack{display:flex;flex-direction:column;gap:10px;margin-top:auto;padding-top:14px}
+
+.suds{margin-top:14px}
+.suds-val{display:flex;align-items:baseline;gap:10px}
+.suds-val b{font:400 64px/1 var(--serif);color:#fff}
+.suds-val span{font:600 15px/1.2 var(--body);color:var(--moon-2)}
+.suds input{width:100%;-webkit-appearance:none;appearance:none;height:10px;border-radius:10px;background:linear-gradient(90deg,#8be9df,#7aa8ff 40%,#c49bff 70%,#ff8f8f);margin:14px 0 6px;outline-offset:6px}
+.suds input::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(255,255,255,.18),0 4px 12px rgba(0,0,0,.4);cursor:grab}
+.suds input::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:#fff;border:0;box-shadow:0 0 0 6px rgba(255,255,255,.18)}
+.suds .ends{display:flex;justify-content:space-between;font-size:12px;color:var(--moon-2)}
+.fchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.fchip{padding:9px 13px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);font:600 14px/1 var(--body);color:var(--moon)}
+.fchip[aria-pressed="true"]{background:rgba(139,233,223,.18);border-color:var(--glow);color:#fff}
+.krow2{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);text-align:left;width:100%;transition:.2s}
+.krow2:hover{background:rgba(255,255,255,.1)}
+.krow2 .kpic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;flex:none;color:#0d1130}
+.krow2 .kt{flex:1;min-width:0}
+.krow2 .kt b{display:block;font-size:15.5px;color:#fff}
+.krow2 .kt span{display:block;font-size:13px;color:var(--moon-2);line-height:1.35}
+.krow2 .km{font:600 12px/1 var(--body);color:var(--moon-2);white-space:nowrap}
+.from-plan{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--body);color:var(--glow);margin:16px 0 8px}
+.kfilters{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}
+.kfilters button{flex:none;padding:7px 11px;border-radius:12px;font:600 12.5px/1 var(--body);color:var(--moon-2);background:rgba(255,255,255,.06)}
+.kfilters button[aria-pressed="true"]{background:#fff;color:#0d1130}
+.ksearch{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border-radius:14px;padding:0 12px;color:var(--moon-2);margin:12px 0 8px}
+.ksearch input{flex:1;background:none;border:0;color:#fff;font:15px/1 var(--body);padding:12px 0;outline:none}
+.ksearch input::placeholder{color:var(--moon-2)}
+
+/* Kindred character */
+.kin{position:relative;width:var(--s);height:calc(var(--s)*1.1);flex:none;--b:1}
+.kin svg{position:relative;display:block;overflow:visible;z-index:2}
+.kin__aura{position:absolute;inset:-28%;border-radius:50%;background:radial-gradient(circle at 50% 58%,rgba(139,233,223,.42),rgba(122,168,255,.18) 42%,transparent 68%);transform:scale(var(--b));transition:transform .2s linear;z-index:1}
+.kin--spark .kin__aura{background:radial-gradient(circle at 50% 58%,rgba(169,139,255,.42),rgba(122,168,255,.2) 42%,transparent 68%)}
+.k__body{transform-origin:100px 130px;animation:kFloat 6s ease-in-out infinite}
+.kin--breathe .k__body{animation:none;transform:scale(calc(.9 + var(--b) * .1))}
+.k__core{animation:kCore 4s ease-in-out infinite}
+.kin--breathe .k__core{animation:none;opacity:calc(.35 + var(--b) * .45)}
+.kin--glad .k__core{opacity:1;animation:none}
+.kin--steady .k__body{animation-duration:9s}
+.k__eyes{animation:blink 6s infinite;transform-origin:100px 104px}
+.k__heart{transform-origin:100px 160px;animation:kHeart 4s ease-in-out infinite}
+.kin--breathe .k__heart{animation:none;transform:scale(calc(.75 + var(--b) * .45))}
+@keyframes kHeart{0%,100%{transform:scale(.9)}50%{transform:scale(1.08)}}
+.k__motes{transform-origin:100px 120px;animation:spin 22s linear infinite}
+.k__motes--slow{animation-duration:40s}
+.kin__ring{position:absolute;left:50%;top:62%;width:70%;aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(139,233,223,.5);transform:translate(-50%,-50%) scale(.6);opacity:0;z-index:1}
+.kin--listen .kin__ring{animation:ripple 2.8s ease-out infinite}
+.kin--listen .kin__ring--2{animation-delay:1.4s}
+@keyframes kFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes kCore{0%,100%{opacity:.55}50%{opacity:.85}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ripple{0%{transform:translate(-50%,-50%) scale(.6);opacity:.8}100%{transform:translate(-50%,-50%) scale(1.6);opacity:0}}
+
+/* ================= PLAYERS (shared engine, two skins) ================= */
+.player{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:safe center;gap:12px;padding:6px 0;text-align:center;position:relative;min-height:0}
+.p-title{display:flex;align-items:center;gap:10px;justify-content:center}
+.pw .p-title{font:600 24px/1.1 var(--kidf)}
+.kw .p-title{font:400 28px/1.1 var(--serif);color:#fff}
+.p-word{font:600 34px/1 var(--kidf);min-height:40px;transition:color .4s}
+.kw .p-word{font:400 34px/1 var(--serif);font-style:italic;color:#fff}
+.p-count{font:600 15px/1 var(--body);color:var(--ink-3)}
+.kw .p-count{color:var(--moon-2)}
+.p-vis{position:relative;display:grid;place-items:center}
+.p-steps{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.p-steps span{width:10px;height:10px;border-radius:50%;background:#cfe0db;transition:.3s}
+.p-steps span.on{background:var(--teal);transform:scale(1.25)}
+.p-steps span.done{background:var(--teal-l)}
+.kw .p-steps span{background:rgba(255,255,255,.18)}
+.kw .p-steps span.on{background:var(--glow)}
+.kw .p-steps span.done{background:rgba(139,233,223,.5)}
+.p-ctrl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.p-small{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:14px;font:600 14px/1 var(--body);background:#fff;color:var(--ink-2);box-shadow:0 2px 0 #dbe9e4}
+.kw .p-small{background:rgba(255,255,255,.08);color:var(--moon);box-shadow:none}
+.ring{transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-linecap:round}
+
+/* step cards */
+.scard{background:#fff;border-radius:28px;padding:20px 26px;max-width:460px;width:100%;box-shadow:0 4px 0 #dbe9e4;display:flex;align-items:center;gap:18px;text-align:left;animation:cardIn .45s cubic-bezier(.2,.8,.2,1) both}
+.scard .pic{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;flex:none}
+.scard p{font:600 23px/1.25 var(--kidf)}
+.kw .scard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);box-shadow:none;border-radius:22px;padding:18px}
+.kw .scard p{font:400 19px/1.4 var(--body);color:#fff}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+
+/* 5-4-3-2-1 */
+.g-dots{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.g-dot{width:58px;height:58px;border-radius:50%;border:3px dashed #9fcfc5;display:grid;place-items:center;color:transparent;transition:.25s}
+.g-dot.on{border:3px solid var(--teal);background:var(--teal-xl);color:var(--teal);transform:scale(1.06)}
+.kw .g-dot{border-color:rgba(169,177,220,.45)}
+.kw .g-dot.on{border-color:var(--glow);background:rgba(139,233,223,.16);color:var(--glow)}
+.g-big{width:96px;height:96px;border-radius:30px;display:grid;place-items:center;background:#fff;color:var(--teal);box-shadow:0 4px 0 #dbe9e4}
+.kw .g-big{background:rgba(255,255,255,.07);color:var(--glow);box-shadow:none}
+.g-num{font:700 64px/1 var(--kidf);color:var(--teal)}
+.kw .g-num{font:400 72px/1 var(--serif);color:var(--glow)}
+
+/* butterfly */
+.bf-wing{transition:transform .35s cubic-bezier(.3,.7,.3,1);transform-box:fill-box}
+.bf-l{transform-origin:right center}.bf-r{transform-origin:left center}
+.bf-tap-l .bf-l{transform:scaleX(.55)}.bf-tap-r .bf-r{transform:scaleX(.55)}
+.bf-side{font:700 18px/1 var(--kidf);color:#9bb8b1;transition:.2s}
+.bf-side.on{color:var(--teal);transform:scale(1.2)}
+.kw .bf-side{color:var(--moon-2)} .kw .bf-side.on{color:var(--glow)}
+
+/* worry jar */
+.jarwrap{position:relative;width:220px;height:240px}
+.paper{position:absolute;left:50%;top:-10px;transform:translateX(-50%);background:#fff8dd;color:#5a4a1a;padding:10px 14px;border-radius:6px;font:600 15px/1.2 var(--kidf);box-shadow:0 4px 10px rgba(0,0,0,.15);max-width:180px;transition:all 1.1s cubic-bezier(.5,0,.4,1);z-index:3}
+.paper.drop{top:150px;transform:translateX(-50%) scale(.35) rotate(18deg);opacity:.9}
+.jar-lid{transition:transform .6s cubic-bezier(.3,1.4,.5,1) .9s;transform:translateY(-38px) rotate(-14deg);transform-box:fill-box;transform-origin:center}
+.jar-lid.shut{transform:none}
+.winput{display:flex;gap:8px;width:100%;max-width:420px}
+.winput input{flex:1;min-width:0;padding:14px 16px;border-radius:16px;border:2px solid #cfe0db;font:500 17px var(--kidf);background:#fff;color:#13302c}
+.kw .winput input{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:#fff;font-family:var(--body)}
+.pick-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:460px}
+.pick-chips button{padding:10px 14px;border-radius:14px;background:#fff;font:600 15px/1 var(--kidf);box-shadow:0 2px 0 #dbe9e4;border:2px solid transparent}
+.pick-chips button[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-xl)}
+.kw .pick-chips button{background:rgba(255,255,255,.07);color:var(--moon);box-shadow:none;font-family:var(--body);border-color:rgba(255,255,255,.1)}
+.kw .pick-chips button[aria-pressed="true"]{border-color:var(--glow);background:rgba(139,233,223,.16);color:#fff}
+
+/* thought check */
+.tc-card{width:100%;max-width:440px;border-radius:20px;padding:14px 16px;text-align:left;position:relative}
+.tc-old{background:rgba(255,143,143,.12);border:1px solid rgba(255,143,143,.35);color:#ffd4d4}
+.tc-old.struck p{text-decoration:line-through;text-decoration-color:#ff8f8f;opacity:.6}
+.tc-new{background:rgba(139,233,223,.12);border:1px solid rgba(139,233,223,.45);color:#fff;animation:cardIn .5s both}
+.tc-card small{display:block;font:700 10.5px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.pw .tc-old{background:#ffe9e6;border-color:#ffc9c1;color:#7a2a20}
+.pw .tc-new{background:#dcf8f1;border-color:#9fe3d3;color:#0b5a52}
+.ev-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:460px;text-align:left}
+.ev-cols h5{margin:0 0 6px;font:700 11px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--moon-2)}
+.ev{display:block;width:100%;text-align:left;padding:9px 11px;margin-bottom:6px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font:14px/1.3 var(--body);color:var(--moon)}
+.ev[aria-pressed="true"]{background:rgba(139,233,223,.16);border-color:var(--glow);color:#fff}
+.pw .ev{background:#fff;color:#13302c;border-color:#dbe9e4;font-family:var(--kidf);font-size:15px}
+.pw .ev[aria-pressed="true"]{background:var(--teal-xl);border-color:var(--teal)}
+.pw .ev-cols h5{color:#6a8580}
+
+/* ladder */
+.ladder{display:flex;flex-direction:column-reverse;gap:8px;width:100%;max-width:420px}
+.rung{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:16px;background:#fff;box-shadow:0 2px 0 #dbe9e4;font:600 16px/1.2 var(--kidf);text-align:left;color:#3d5c56;transition:.3s}
+.rung i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 13px/1 var(--kidf);font-style:normal;background:#e6efec;flex:none}
+.rung.done{background:#fff4d6}
+.rung.done i{background:var(--amber);color:#fff}
+.rung.next{outline:3px solid var(--teal);outline-offset:-3px}
+.kw .rung{background:rgba(255,255,255,.06);box-shadow:none;color:var(--moon);font-family:var(--body);font-size:14.5px}
+.kw .rung.done{background:rgba(245,181,36,.14)}
+.kw .rung i{background:rgba(255,255,255,.1)}
+.kw .rung.next{outline-color:var(--glow)}
+
+/* after / celebration */
+.result{display:flex;align-items:center;gap:16px;justify-content:center}
+.result .r-box{background:#fff;border-radius:20px;padding:10px 16px;text-align:center;box-shadow:0 3px 0 #dbe9e4}
+.result .r-box small{display:block;font:600 12px/1 var(--kidf);letter-spacing:.1em;text-transform:uppercase;color:#6a8580;margin-bottom:6px}
+.kw .result .r-box{background:rgba(255,255,255,.07);box-shadow:none}
+.kw .result .r-box small{color:var(--moon-2);font-family:var(--body)}
+.kw .result .r-box b{font:400 52px/1 var(--serif);color:#fff}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:9}
+.confetti i{position:absolute;top:-12px;width:10px;height:14px;border-radius:3px;animation:fall 1.8s cubic-bezier(.3,.6,.5,1) forwards}
+@keyframes fall{to{transform:translateY(720px) rotate(560deg);opacity:.2}}
+.sent{display:inline-flex;align-items:center;gap:8px;font:600 14px/1.2 var(--body);color:#0b6b62;background:var(--teal-xl);padding:9px 14px;border-radius:12px}
+.kw .sent{color:var(--glow);background:rgba(139,233,223,.12)}
+
+/* crisis */
+.crisis{display:flex;flex-direction:column;gap:12px}
+.crisis .big988{display:flex;align-items:center;gap:14px;padding:16px;border-radius:20px;background:linear-gradient(135deg,#ffe0dc,#ffd1e6);color:#3a0c16;text-align:left}
+.crisis .big988 b{display:block;font:800 22px/1.1 var(--display)}
+.crisis .big988 span{font-size:13.5px;line-height:1.35}
+.sp-list{display:flex;flex-direction:column;gap:8px}
+.sp-item{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:14px;line-height:1.4;color:var(--moon)}
+.sp-item i{width:28px;height:28px;border-radius:9px;background:rgba(255,255,255,.08);display:grid;place-items:center;font:700 12px/1 var(--display);font-style:normal;color:var(--glow)}
+.sp-item b{color:#fff}
+
+/* ================= ACT 1 · PLATFORM ================= */
+.p1{max-width:1280px;margin:0 auto;padding:26px 24px 70px;display:flex;flex-direction:column;gap:22px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;border-radius:32px;overflow:hidden;min-height:430px;box-shadow:var(--shadow);background:#fff}
+.hero-copy{padding:44px 44px 36px;display:flex;flex-direction:column;gap:16px;justify-content:center}
+.hero h1{font:800 54px/1.0 var(--display);letter-spacing:-.035em}
+.hero h1 span{color:var(--teal)}
+.hero h1 em{font:400 italic 60px/1 var(--serif);letter-spacing:-.01em;color:var(--dusk-3)}
+.hero-copy > p{font-size:18px;line-height:1.5;color:var(--ink-2);max-width:46ch}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 18px;border-radius:14px;font:700 15px/1 var(--display);background:var(--ink);color:#fff;text-decoration:none}
+.btn.teal{background:var(--teal)}
+.btn.line{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.dusk{background:var(--dusk-3)}
+.duo{position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.duo .day{background:radial-gradient(100% 80% at 40% 30%,#dffcf3,#f6fbf2 60%,#fff6e3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.duo .night{background:radial-gradient(100% 80% at 60% 30%,#2a3577,#141a3e 60%,#0d1130);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--moon)}
+.duo .cap{font:700 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase}
+.duo .day .cap{color:#0b6b62}.duo .night .cap{color:var(--glow)}
+.duo canvas{position:absolute;left:0;right:0;bottom:46px;width:100%;height:80px;pointer-events:none}
+.duo .breathcap{position:absolute;left:0;right:0;bottom:16px;text-align:center;font:600 13px/1 var(--body);color:#fff;mix-blend-mode:difference;letter-spacing:.02em}
+
+.arch{background:#fff;border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.sec-h h2{font:800 28px/1.1 var(--display);letter-spacing:-.02em}
+.sec-h p{color:var(--ink-2);max-width:56ch;margin-top:6px}
+.tier{display:grid;gap:12px;position:relative;z-index:2}
+.tier-lab{font:700 11px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px 2px}
+.verts{grid-template-columns:repeat(3,1fr)}
+.vert{border-radius:20px;padding:16px 18px;display:flex;align-items:center;gap:14px;border:1px solid var(--line);background:#fbfdfc}
+.vert .vi{width:52px;height:52px;flex:none;display:grid;place-items:center}
+.vert b{font:800 18px/1.1 var(--display);display:block}
+.vert span{font-size:13.5px;color:var(--ink-2)}
+.pill{display:inline-block;font:700 10.5px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:7px;margin-left:6px;vertical-align:2px}
+.pill.live{background:#d5f6ea;color:#0b6b52}.pill.pilot{background:#e4e5ff;color:#3a3f9e}.pill.next{background:#eef1f0;color:#7d918d}
+.vert.bh{background:linear-gradient(135deg,#f3f3ff,#fbfbff)}
+.vert.muted{opacity:.6}
+.flowzone{position:relative;height:56px}
+.flowzone svg{position:absolute;inset:0;width:100%;height:100%}
+.flowline{stroke-dasharray:5 7;animation:flow 1.2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.apps{grid-template-columns:repeat(6,1fr)}
+.app{border-radius:18px;padding:14px 12px;border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;background:#fff;font-size:13px;color:var(--ink-2);min-height:116px}
+.app b{font:700 15px/1.15 var(--display);color:var(--ink)}
+.app .ai{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:#eef3f1;color:var(--ink-2)}
+.app.hot{border:2px solid var(--teal);background:linear-gradient(160deg,#ecfdf8,#fff);box-shadow:0 10px 30px -12px rgba(13,148,136,.45)}
+.app.hot .ai{background:var(--teal);color:#fff}
+.app .soon{margin-top:auto;font:600 11px/1 var(--body);color:var(--ink-3)}
+.app.hot .soon{color:var(--teal)}
+.core{grid-template-columns:repeat(5,1fr);background:linear-gradient(135deg,#0f2421,#163a35);border-radius:22px;padding:14px;gap:10px}
+.core-cell{border-radius:14px;padding:12px;background:rgba(255,255,255,.06);color:#d6ece7;font-size:12.5px;line-height:1.35;display:flex;flex-direction:column;gap:6px}
+.core-cell b{font:700 14px/1.15 var(--display);color:#fff;display:flex;align-items:center;gap:8px}
+.core-cell b .ico{color:var(--teal-l)}
+
+.continuum{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:28px;overflow:hidden;box-shadow:var(--shadow)}
+.cstep{padding:24px 22px 22px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;position:relative}
+.cstep:nth-child(1){background:linear-gradient(180deg,#e8fbf5,#f8fcf6)}
+.cstep:nth-child(2){background:linear-gradient(180deg,#2b2f72,#1d2357);color:var(--moon)}
+.cstep:nth-child(3){background:linear-gradient(180deg,#151b40,#0e1231);color:var(--moon)}
+.cstep h3{font:800 20px/1.1 var(--display)}
+.cstep .age{font:700 11px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.cstep p{font-size:14px;line-height:1.45;max-width:30ch;opacity:.85}
+.cstep:not(:last-child)::after{content:"";position:absolute;right:-12px;top:50%;width:24px;height:24px;transform:translateY(-50%) rotate(45deg);background:inherit;z-index:2;border-radius:4px}
+
+.lib{background:#fff;border-radius:28px;padding:28px;box-shadow:var(--shadow)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.stat{border-radius:18px;background:#f4f8f6;padding:14px 16px}
+.stat b{display:block;font:800 34px/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--ink-2)}
+.groups{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gcol{border-radius:20px;border:1px solid var(--line);padding:14px 14px 12px}
+.gcol h4{margin:0 0 2px;font:800 16px/1.2 var(--display);display:flex;align-items:center;gap:8px}
+.gcol h4 i{width:12px;height:12px;border-radius:4px;background:var(--gh)}
+.gcol > p{font-size:13px;color:var(--ink-3);margin-bottom:10px}
+.gskills{display:flex;flex-wrap:wrap;gap:6px}
+.gs{display:inline-flex;align-items:center;gap:6px;padding:6px 9px 6px 6px;border-radius:10px;background:var(--gs-soft);font:600 12.5px/1 var(--body);color:var(--ink)}
+.gs .ico{color:var(--gh)}
+.gs em{font-style:normal;font:700 10px/1 var(--display);color:var(--ink-3);letter-spacing:.04em}
+
+/* ================= ACT 4 · CLINICIAN ================= */
+.clin{max-width:1360px;margin:0 auto;padding:22px 24px 60px}
+.cl-shell{display:grid;grid-template-columns:64px minmax(0,1fr);background:#fff;border-radius:26px;box-shadow:var(--shadow);overflow:hidden;min-height:760px}
+.cl-rail{background:#0f2421;display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px 0}
+.cl-rail span{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#7fa39c}
+.cl-rail span.on{background:rgba(94,234,212,.15);color:var(--teal-l)}
+.cl-rail .m{width:36px;height:36px;border-radius:11px;background:linear-gradient(150deg,#2dd4bf,#0d9488);color:#fff;font:800 14px/1 var(--display);margin-bottom:10px}
+.cl-main{padding:22px 26px 28px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.cl-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.avatar{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font:800 20px/1 var(--display);color:#fff}
+.cl-head h2{font:800 24px/1.1 var(--display);letter-spacing:-.01em}
+.cl-head .meta{font-size:13.5px;color:var(--ink-2);margin-top:4px}
+.cl-head .sp{flex:1}
+.vchip{font:700 11px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:8px}
+.vchip.aut{background:#d5f6ea;color:#0b6b52}.vchip.bh{background:#e4e5ff;color:#3a3f9e}
+.crumbs{font-size:12.5px;color:var(--ink-3);display:flex;gap:8px;align-items:center}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi{border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.kpi small{font:600 12.5px/1.2 var(--body);color:var(--ink-2)}
+.kpi b{font:800 30px/1.05 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;color:var(--ink-3)}
+.kpi .st{display:inline-flex;align-items:center;gap:5px;font:700 12px/1 var(--body);padding:4px 7px;border-radius:7px;width:fit-content}
+.st.good{background:#dcf6e8;color:#11643e}.st.warn{background:#fff0d1;color:#8a5a00}
+.cl-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:16px}
+.panel{border:1px solid var(--line);border-radius:20px;padding:16px 18px;min-width:0;position:relative}
+.panel h3{font:800 16px/1.2 var(--display);display:flex;align-items:center;gap:8px}
+.panel .ph{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
+.panel .ph p{font-size:12.5px;color:var(--ink-3);margin-top:3px}
+.legend{display:flex;flex:none;white-space:nowrap;gap:14px;font-size:12px;color:var(--ink-2);align-items:center}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.chart text{font:12px var(--body);fill:var(--ink-2)}
+.chart .lab{fill:var(--ink);font-weight:700;font-size:12.5px}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:#fff;font:12.5px/1.35 var(--body);padding:8px 10px;border-radius:10px;white-space:nowrap;opacity:0;transform:translate(-50%,-110%);transition:opacity .12s;z-index:20}
+.tip b{font-weight:700}
+.assign{display:flex;flex-direction:column;gap:6px;max-height:300px;overflow:auto;padding-right:4px}
+.arow{display:flex;align-items:center;gap:10px;text-align:left;padding:8px 10px;border-radius:12px;border:1px solid var(--line);font-size:14px}
+.arow .ai{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex:none}
+.arow .at{flex:1;min-width:0}
+.arow .at b{display:block;font-size:14px}
+.arow .at span{font-size:12px;color:var(--ink-3)}
+.arow.on{border-color:#9fe3d3;background:#f2fdf9}
+.mini-tog{width:38px;height:22px;border-radius:22px;background:#cdd9d5;position:relative;flex:none;transition:.2s}
+.mini-tog::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
+.arow.on .mini-tog{background:var(--teal)}
+.arow.on .mini-tog::after{left:19px}
+.hive{background:linear-gradient(140deg,#0f2421,#13403a 60%,#145049);color:#d9f1ec;border:0}
+.hive h3{color:#fff}
+.hive .ph p{color:#9fc7bf}
+.hive .big{font:800 26px/1.1 var(--display);color:#fff;letter-spacing:-.02em;margin:6px 0}
+.hive .big span{color:var(--teal-l)}
+.hive p{font-size:14px;line-height:1.5}
+.hive .apply{margin-top:12px;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:var(--teal-l);color:#06302b;font:700 14px/1 var(--display)}
+.hive .apply[disabled]{background:rgba(255,255,255,.12);color:#cfe9e3;cursor:default}
+.hive .fine{font-size:11.5px;color:#8fb5ad;margin-top:10px}
+.feed{display:flex;flex-direction:column;gap:2px}
+.fitem{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:9px 4px;border-bottom:1px solid #eef3f1;font-size:13.5px}
+.fitem:last-child{border:0}
+.fitem time{display:block;font:600 11.5px/1.2 var(--body);color:var(--ink-3);margin-bottom:2px}
+.fitem .delta{font:700 13px/1 var(--display);font-variant-numeric:tabular-nums;padding:5px 8px;border-radius:8px;background:#dcf6e8;color:#11643e;white-space:nowrap}
+.fitem .delta.flat{background:#eef1f0;color:var(--ink-2)}
+.fitem.new{animation:newrow 2.4s ease both}
+@keyframes newrow{0%{background:#fff4c9}100%{background:transparent}}
+.fitem .safety{background:#ffe4e1;color:#8a1d12}
+.badge-new{font:700 10px/1 var(--display);background:var(--amber);color:#3a2600;padding:3px 6px;border-radius:6px;margin-left:6px;letter-spacing:.06em}
+
+/* footer */
+.foot{max-width:1360px;margin:0 auto;padding:0 24px 30px;font-size:12.5px;color:var(--ink-3);display:flex;gap:10px 18px;flex-wrap:wrap;justify-content:space-between}
+.foot b{color:var(--ink-2)}
+
+/* sensory-calm mode (Pip world) */
+.calm-mode .pw{filter:saturate(.72)}
+.calm-mode .pw *, .calm-mode .pw *::before{animation-duration:0s !important;animation-iteration-count:1 !important;transition-duration:.01s !important}
+.calm-mode .confetti{display:none}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+@media (max-width:1100px){
+  .stage{grid-template-columns:1fr}
+  .notes{position:static}
+  .hero{grid-template-columns:1fr}
+  .duo{min-height:300px}
+  .apps{grid-template-columns:repeat(3,1fr)}
+  .core{grid-template-columns:repeat(2,1fr)}
+  .cl-grid{grid-template-columns:1fr}
+  .acts a span{display:none}
+}
+@media (max-width:720px){
+  .bar{flex-wrap:wrap;gap:10px}
+  .acts{margin-left:0;order:3;width:100%;overflow-x:auto}
+  .demo-flag{display:none}
+  .verts,.continuum,.groups,.stats,.kpis{grid-template-columns:1fr 1fr}
+  .apps{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:40px}.hero h1 em{font-size:44px}
+  .hero-copy{padding:28px 22px}
+  .tablet{aspect-ratio:auto;height:680px;padding:10px;border-radius:26px}
+  .meter{grid-template-columns:1fr 1fr}
+  .toolbox{grid-template-columns:repeat(2,1fr)}
+  .fte{grid-template-columns:1fr}
+  .fte .arrow{transform:rotate(90deg);height:30px}
+  .cstep:not(:last-child)::after{display:none}
+  .cl-shell{grid-template-columns:1fr}
+  .cl-rail{display:none}
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand"><span class="mark">N</span>NOVA <small>Shared Apps · Coping Skills</small></div>
+  <nav class="acts" aria-label="Demo acts">
+    <a href="#platform" data-act="platform"><b>1</b><span>Platform</span></a>
+    <a href="#autism" data-act="autism"><b>2</b><span>Autism · Pip</span></a>
+    <a href="#bh" data-act="bh" class="bh"><b>3</b><span>Behavioral health · Kindred</span></a>
+    <a href="#clinician" data-act="clinician"><b>4</b><span>Clinician &amp; Hive</span></a>
+  </nav>
+  <div class="tools">
+    <button class="chipbtn" id="notesBtn" aria-pressed="true" title="Presenter notes (N)">Presenter notes</button>
+  </div>
+  <div class="demo-flag">Demo · fictional clients · illustrative data</div>
+</header>
+<main>
+  <section class="act" id="act-platform"></section>
+  <section class="act" id="act-autism"></section>
+  <section class="act bh-act" id="act-bh"></section>
+  <section class="act" id="act-clinician"></section>
+</main>
+<footer class="foot">
+  <span><b>NOVA Coping Skills</b> · investor preview, November 2026. Fictional clients and illustrative data. Not medical advice.</span>
+  <span>Library content pending clinical review (BCBA and behavioral-health clinical lead). In a crisis in the US, call or text <b>988</b>.</span>
+</footer>
+<script>
+/* =====================================================================
+   NOVA SHARED LIBRARY · Coping Skills v0.1
+   One clinician-curated library served to every NOVA vertical.
+   ages: k = 4–10 (Pip) · t = 11–17 (Kindred Spark) · a = 18+ (Kindred)
+   v:    aut = Autism vertical · bh = Behavioral Health vertical
+   Wording is NOVA's own; techniques are standard clinical practice
+   (paced breathing, PMR, grounding, CBT, DBT/ACT skills, graded exposure).
+   ===================================================================== */
+const GROUPS = [
+  { id:'breathe', name:'Breathe',                 kid:'Breathe',        hue:'#14b8a6', soft:'#ccfbf1', blurb:'Slow the body down from the inside.' },
+  { id:'move',    name:'Move & release',          kid:'Move it out',    hue:'#f97362', soft:'#ffe1dc', blurb:'Spend the big energy safely.' },
+  { id:'body',    name:'Calm my body',            kid:'Cozy body',      hue:'#8b7cf6', soft:'#e7e3ff', blurb:'Comfort and settle the nervous system.' },
+  { id:'ground',  name:'Ground & focus',          kid:'Right here',     hue:'#4d9e6b', soft:'#d9f2e1', blurb:'Come back to the present moment.' },
+  { id:'feel',    name:'Name & tame feelings',    kid:'Feelings',       hue:'#3b82f6', soft:'#dbe8ff', blurb:'Notice it, name it, shrink it.' },
+  { id:'brave',   name:'Brave, connect & create', kid:'Brave & make',   hue:'#e8a317', soft:'#fdf0cc', blurb:'Act on values, reach out, make something.' }
+];
+
+const SKILLS = [
+  /* ---------------- BREATHE ---------------- */
+  { id:'balloon', g:'breathe', icon:'balloon', name:'Belly balloon breath', kid:'Balloon breath', ages:'kta', v:['aut','bh'], min:1, player:'breath:balloon',
+    what:'Slow breathing into the belly, with a longer breath out.',
+    how:['Put one hand on your belly.','Breathe in through your nose and fill the belly like a balloon.','Let it out slowly through your mouth, longer than the breath in.','Do it five times.'],
+    kidSteps:['Hand on tummy','Breathe in, balloon gets big','Blow out slow, balloon gets small'],
+    why:'A long breath out switches on the body’s brake pedal and slows the heart.',
+    cg:'Breathe with them, face to face, at their eye level. Your slow breath is the model.', ev:'Diaphragmatic breathing' },
+  { id:'box', g:'breathe', icon:'box', name:'Box breathing', kid:'Square breathing', ages:'kta', v:['aut','bh'], min:2, player:'breath:box',
+    what:'Breathing in four even counts, like tracing the sides of a square.',
+    how:['Breathe in for 4.','Hold for 4.','Breathe out for 4.','Hold for 4. Trace the square again.'],
+    kidSteps:['Trace up: breathe in','Trace across: hold','Trace down: breathe out','Trace back: hold'],
+    why:'Even counts give a racing mind one predictable job and steady the heart rate.',
+    cg:'Draw the square on paper so they can trace it with a finger.', ev:'Paced breathing' },
+  { id:'dragon', g:'breathe', icon:'flame', name:'Dragon breath', kid:'Dragon breath', ages:'k', v:['aut','bh'], min:1, player:'breath:dragon',
+    what:'A big breath in, then one long, strong whoosh out, like a dragon.',
+    how:['Sit tall like a dragon.','Take a big breath in.','Let it all out in one long whoosh. Roar if you want.','Three dragon breaths.'],
+    kidSteps:['Sit tall','Big breath in','Long dragon whoosh out'],
+    why:'Gives angry energy a safe way out, and the long exhale calms the body.',
+    cg:'Make it playful. Roar together, then make each dragon breath a little quieter.', ev:'Extended exhalation' },
+  { id:'star', g:'breathe', icon:'hand', name:'Five-finger breathing', kid:'Star hand breathing', ages:'kta', v:['aut','bh'], min:1, player:'breath:star',
+    what:'Trace your hand with a finger. Breathe in going up, out going down.',
+    how:['Spread one hand like a star.','Trace up your thumb as you breathe in.','Trace down as you breathe out.','Go finger by finger, all five.'],
+    kidSteps:['Spread your star hand','Up the finger: breathe in','Down the finger: breathe out'],
+    why:'Touch plus sight plus breath gives the brain one calm thing to follow.',
+    cg:'Hold their hand and trace together if touch is welcome.', ev:'Paced breathing with tactile cue' },
+  { id:'fig8', g:'breathe', icon:'infinity', name:'Infinity breathing', kid:'Loop-the-loop breathing', ages:'kt', v:['aut','bh'], min:1, player:'breath:fig8',
+    what:'Follow a figure-8 loop. Breathe in on one loop, out on the other.',
+    how:['Watch the dot travel the loop.','Breathe in on the left loop.','Breathe out on the right loop.','Keep going until the dot has gone round five times.'],
+    kidSteps:['Watch the dot','Left loop: breathe in','Right loop: breathe out'],
+    why:'Smooth, continuous movement helps eyes and breath settle into rhythm together.',
+    cg:'Trace the loop in the air together with big arm movements.', ev:'Visual pacing' },
+  { id:'paced', g:'breathe', icon:'wave', name:'Long exhale (4 in, 6 out)', kid:'Slow wave breath', ages:'ta', v:['bh','aut'], min:2, player:'breath:paced',
+    what:'Breathe in for 4, out for 6, following Kindred’s light.',
+    how:['Breathe in through your nose as the light grows, for 4.','Breathe out slowly as it dims, for 6.','Let your shoulders drop on every breath out.','Two minutes is enough to feel a shift.'],
+    why:'Breathing out longer than in raises heart-rate variability and lowers arousal within minutes.',
+    ev:'Resonance / paced breathing' },
+  { id:'sigh', g:'breathe', icon:'sigh', name:'Double-inhale sigh', ages:'ta', v:['bh'], min:1, player:'breath:sigh',
+    what:'Two quick breaths in through the nose, then one long sigh out.',
+    how:['Breathe in through your nose.','Top it up with a second short sniff.','Let out a long, slow sigh through the mouth.','Repeat two or three times.'],
+    why:'The fastest known way to offload stress with breath. It works in one to three rounds.',
+    ev:'Cyclic sighing' },
+
+  /* ---------------- MOVE & RELEASE ---------------- */
+  { id:'heavy', g:'move', icon:'wall', name:'Wall push (heavy work)', kid:'Push the wall', ages:'kta', v:['aut','bh'], min:1, player:'steps',
+    what:'Push hard against a wall, then rest. Strong muscle work calms the body.',
+    how:['Put both hands flat on a wall.','Push as hard as you can for 10 seconds.','Let go and shake out your arms.','Do it three times.'],
+    kidSteps:['Hands on the wall','Push push push! Count to 10','Let go and shake'],
+    why:'Deep pressure through the joints is organizing and calming, especially for sensory-seeking bodies.',
+    cg:'Push the wall beside them and count out loud together.', ev:'Proprioceptive input (OT)' },
+  { id:'shake', g:'move', icon:'zigzag', name:'Shake it out', kid:'Wiggle and freeze', ages:'kta', v:['aut','bh'], min:1, player:'steps',
+    what:'Shake every part of the body hard, then freeze completely still.',
+    how:['Shake your hands fast.','Add your arms, shoulders and legs.','Shake everything for 15 seconds.','Freeze! Notice the buzzing calm afterwards.'],
+    kidSteps:['Shake your hands','Shake your whole body','FREEZE like a statue'],
+    why:'Discharges the adrenaline that a big feeling releases into the body.',
+    cg:'Play it as a game: you call “wiggle” and “freeze”.', ev:'Somatic discharge' },
+  { id:'squeeze', g:'move', icon:'fist', name:'Squeeze & release', kid:'Squeeze and let go', ages:'kta', v:['aut','bh'], min:3, player:'squeeze',
+    what:'Tighten one part of the body, hold, then let it go soft. Head to toe.',
+    how:['Squeeze your hands into fists. Hold for 5. Let go.','Pull your shoulders up to your ears. Hold. Drop.','Scrunch your face. Hold. Relax.','Press your feet down. Hold. Let go.','Notice how loose your body feels.'],
+    kidSteps:['Squeeze your hands','Shoulders up to your ears','Scrunch your face','Press your feet','Floppy like a noodle'],
+    why:'Feeling the difference between tight and loose teaches the body how to let tension go.',
+    cg:'Do each squeeze together. Make the letting go floppy and silly.', ev:'Progressive muscle relaxation' },
+  { id:'stretch', g:'move', icon:'stretch', name:'Slow stretch', kid:'Tall tree, small seed', ages:'kta', v:['aut','bh'], min:2, player:'steps',
+    what:'Three slow stretches, breathing out into each one.',
+    how:['Reach up tall and breathe in.','Fold down slowly as you breathe out.','Stretch side to side, slowly.','Finish standing still for three breaths.'],
+    kidSteps:['Grow tall like a tree','Curl small like a seed','Sway like a branch'],
+    why:'Slow movement paired with breath tells the body the danger has passed.',
+    cg:'Make the shapes together. Slow is the goal, not perfect.', ev:'Mindful movement' },
+  { id:'animal', g:'move', icon:'paw', name:'Animal moves', kid:'Animal moves', ages:'k', v:['aut'], min:2, player:'steps',
+    what:'Move like animals: bear walk, frog jumps, crab walk.',
+    how:['Bear walk across the room.','Five big frog jumps.','Crab walk back.','Finish as a sleepy sloth, very slow.'],
+    kidSteps:['Bear walk','Frog jumps','Crab walk','Sleepy sloth'],
+    why:'Whole-body movement burns off energy, and ending slow brings the body down.',
+    cg:'Use picture cards for each animal so the sequence is predictable.', ev:'Gross-motor regulation' },
+  { id:'brisk', g:'move', icon:'shoe', name:'Walk it off', ages:'ta', v:['bh'], min:5, player:'steps',
+    what:'A fast, focused walk, with attention on your feet and breath.',
+    how:['Head outside or down a hallway.','Walk faster than normal for five minutes.','Match your steps to your breath: in for 3 steps, out for 4.','Slow down for the last minute.'],
+    why:'Rhythmic movement uses the stress hormones a big feeling releases.',
+    ev:'Behavioral activation / exercise' },
+
+  /* ---------------- CALM MY BODY ---------------- */
+  { id:'butterfly', g:'body', icon:'butterfly', name:'Butterfly hug', kid:'Butterfly hug', ages:'kta', v:['aut','bh'], min:1, player:'butterfly',
+    what:'Cross your arms over your chest and tap your shoulders, left then right.',
+    how:['Cross your arms so your hands rest on your shoulders.','Tap gently, left, then right.','Keep a slow, steady rhythm.','Breathe slowly while you tap.'],
+    kidSteps:['Cross your arms','Hands on shoulders','Tap left, tap right'],
+    why:'Slow side-to-side tapping is self-soothing and helps a flooded brain settle.',
+    cg:'Show them first, then tap together in the same rhythm.', ev:'Bilateral stimulation' },
+  { id:'cool', g:'body', icon:'drop', name:'Cool it down', kid:'Cool water', ages:'kta', v:['aut','bh'], min:1, player:'steps',
+    what:'Use cold water or something cool to bring intensity down fast.',
+    how:['Hold something cold, or run cool water over your wrists.','For bigger feelings, splash cold water on your face.','Breathe out slowly while you feel the cold.','Notice the intensity dropping.'],
+    kidSteps:['Find something cool','Hold it and breathe','Notice: cooler and calmer'],
+    why:'Cold on the face triggers the dive reflex, which slows the heart quickly.',
+    cg:'Keep a cool pack or cold water bottle in the calm corner.', ev:'DBT TIPP · temperature' },
+  { id:'cozy', g:'body', icon:'blanket', name:'Cozy squeeze', kid:'Blanket burrito', ages:'kt', v:['aut'], min:3, player:'steps',
+    what:'Deep, even pressure from a blanket, a pillow or a firm hug.',
+    how:['Wrap up tightly in a blanket, or hug a big pillow.','Squeeze it close for a slow count of 10.','Stay wrapped for a few slow breaths.','Unwrap when your body feels ready.'],
+    kidSteps:['Wrap up tight','Squeeze for 10','Stay cozy and breathe'],
+    why:'Deep pressure is calming and organizing for many autistic bodies.',
+    cg:'Ask before hugging. Offer a firm squeeze, never a light tickle-touch.', ev:'Deep pressure input (OT)' },
+  { id:'sensory', g:'body', icon:'fidget', name:'Sensory toolkit', kid:'My calm things', ages:'kta', v:['aut','bh'], min:2, player:'steps',
+    what:'Use a fidget, putty, a soft texture, music or a calming smell.',
+    how:['Pick one tool from your kit.','Give it all your attention: how it feels, sounds or smells.','Stay with it for one minute.','Notice what your body does.'],
+    kidSteps:['Pick a calm thing','Squeeze or touch it','Notice how it feels'],
+    why:'Steady sensory input gives the nervous system something predictable to organize around.',
+    cg:'Build the kit together. Let them choose what feels good, not what looks calming.', ev:'Sensory regulation' },
+  { id:'bodyscan', g:'body', icon:'scan', name:'Body scan', kid:'Body check', ages:'kta', v:['aut','bh'], min:3, player:'steps',
+    what:'Move your attention slowly from head to toe, letting each part soften.',
+    how:['Notice your forehead and jaw. Let them soften.','Move to your shoulders, then your arms and hands.','Move to your belly, then your legs and feet.','Notice the whole body at once.'],
+    kidSteps:['Head and face: soft','Shoulders and arms: floppy','Tummy, legs, toes: heavy'],
+    why:'Noticing the body pulls attention out of worry loops and into the present.',
+    cg:'Name each body part slowly, like a gentle story.', ev:'Mindfulness' },
+  { id:'heart', g:'body', icon:'heart', name:'Hand on heart', ages:'ta', v:['bh'], min:1, player:'steps',
+    what:'Hand on your chest, slow breath, and one kind sentence to yourself.',
+    how:['Place a hand on your heart.','Feel the warmth and the rise and fall.','Say quietly: “This is hard right now, and I’m here for myself.”','Stay for three breaths.'],
+    why:'Warm touch and kind self-talk calm the threat response and reduce shame.',
+    ev:'Self-compassion (CFT/MSC)' },
+
+  /* ---------------- GROUND & FOCUS ---------------- */
+  { id:'ground54321', g:'ground', icon:'eye', name:'5-4-3-2-1 grounding', kid:'5 senses hunt', ages:'kta', v:['aut','bh'], min:3, player:'ground',
+    what:'Notice 5 things you see, 4 you can touch, 3 you hear, 2 you smell and 1 you taste.',
+    how:['5 things you can see.','4 things you can touch.','3 things you can hear.','2 things you can smell.','1 thing you can taste.'],
+    kidSteps:['5 things you see','4 things you touch','3 things you hear','2 things you smell','1 thing you taste'],
+    why:'Using each sense pulls the brain out of alarm and back into the room.',
+    cg:'Turn it into a treasure hunt and point to things together.', ev:'Sensory grounding' },
+  { id:'anchor', g:'ground', icon:'anchor', name:'One anchor', kid:'Hold on to one thing', ages:'kta', v:['aut','bh'], min:1, player:'steps',
+    what:'Pick one steady thing, like your feet on the floor, and give it all your focus.',
+    how:['Press your feet into the floor.','Feel the ground holding you up.','Every time your mind wanders, come back to your feet.','Stay for five slow breaths.'],
+    kidSteps:['Feet on the floor','Press down, feel strong','Stay like a tree'],
+    why:'One fixed point steadies a mind that is spinning.', ev:'Grounding' },
+  { id:'pause', g:'ground', icon:'pause', name:'Pause and count', kid:'Stop, count, choose', ages:'kta', v:['aut','bh'], min:1, player:'steps',
+    what:'Before you react, stop and count down from 5. Then choose.',
+    how:['Notice the urge to react.','Stop. Hands still.','Count down slowly: 5, 4, 3, 2, 1.','Then choose what to do next.'],
+    kidSteps:['Stop','Count 5-4-3-2-1','Choose'],
+    why:'The countdown gives the thinking brain time to catch up with the feeling brain.',
+    cg:'Hold up fingers and count down together.', ev:'DBT STOP skill' },
+  { id:'categories', g:'ground', icon:'grid', name:'Mind game: categories', kid:'Name-it game', ages:'kta', v:['aut','bh'], min:2, player:'steps',
+    what:'Pick a category and name as many things in it as you can.',
+    how:['Pick a category: animals, foods, cities, songs.','Name one for each letter, A, B, C…','If you get stuck, switch category.','Keep going for two minutes.'],
+    kidSteps:['Pick: animals or foods?','Name as many as you can','Count them up!'],
+    why:'Puzzle work pulls attention away from the alarm and toward the thinking brain.',
+    cg:'Use their special interest as the category. It works better.', ev:'Cognitive distraction' },
+  { id:'calmplace', g:'ground', icon:'sun', name:'Calm place', kid:'My happy place', ages:'kta', v:['aut','bh'], min:3, player:'steps',
+    what:'Picture a place where you feel safe and calm, using every sense.',
+    how:['Close your eyes, or look at one spot.','Picture your calm place. Where are you?','What do you see, hear and feel there?','Stay there for a few slow breaths.'],
+    kidSteps:['Think of your happy place','What can you see there?','Breathe it in'],
+    why:'Imagined safety activates the same calming systems as the real thing.',
+    cg:'Use a real photo of a favorite place as a visual support.', ev:'Guided imagery' },
+  { id:'leaves', g:'ground', icon:'leaf', name:'Leaves on a stream', ages:'ta', v:['bh'], min:4, player:'steps',
+    what:'Place each thought on a leaf and watch it float away.',
+    how:['Picture a gentle stream with leaves floating by.','When a thought shows up, place it on a leaf.','Watch it float downstream. Don’t push it.','If you get caught in a thought, gently start again.'],
+    why:'Watching thoughts instead of obeying them loosens their grip.', ev:'ACT defusion' },
+
+  /* ---------------- NAME & TAME FEELINGS ---------------- */
+  { id:'nameit', g:'feel', icon:'tag', name:'Name it to tame it', kid:'Name my feeling', ages:'kta', v:['aut','bh'], min:1, player:'steps',
+    what:'Say the feeling out loud, and how big it is.',
+    how:['Notice what you feel.','Give it a name: angry, worried, sad, overwhelmed.','Give it a size from 0 to 10.','Say it: “I feel ___, about a ___.”'],
+    kidSteps:['Point to my feeling','How big is it?','Say: “I feel…”'],
+    why:'Putting words to a feeling turns down the brain’s alarm center.',
+    cg:'Offer two picture choices if words are hard: “Mad or sad?”', ev:'Affect labeling' },
+  { id:'meter', g:'feel', icon:'meter', name:'Feelings meter check', kid:'My feelings meter', ages:'kta', v:['aut','bh'], min:1, player:'steps',
+    what:'Check where you are on the meter, from calm to too big.',
+    how:['Look at the meter: calm, wobbly, big, too big.','Point to where you are now.','Pick one tool that matches that level.','Check the meter again afterwards.'],
+    kidSteps:['Look at my meter','Point to my color','Pick a tool for that color'],
+    why:'Knowing your level early makes it easier to choose the right tool in time.', ev:'Interoceptive awareness' },
+  { id:'talkto', g:'feel', icon:'chat', name:'Talk to the feeling', kid:'Boss the big feeling', ages:'kt', v:['aut','bh'], min:2, player:'steps',
+    what:'Picture the feeling as a character outside you, and talk back to it.',
+    how:['Give the feeling a name and a shape.','Notice what it is telling you.','Answer it: “I hear you. I’m still in charge.”','Watch it shrink a little.'],
+    kidSteps:['Give it a silly name','Tell it: “You don’t boss me!”','Watch it shrink'],
+    why:'When a feeling is outside you, you can manage it instead of being it.', ev:'Externalizing (narrative)' },
+  { id:'surf', g:'feel', icon:'surf', name:'Ride the wave', ages:'ta', v:['bh'], min:3, player:'steps',
+    what:'Let the feeling rise and fall like a wave, without acting on it.',
+    how:['Notice where the feeling sits in your body.','Rate it 0 to 10.','Breathe and watch it, like a surfer on a wave.','Rate it again after two minutes. Waves always fall.'],
+    why:'Urges and emotions peak and pass. Waiting them out builds confidence you can.', ev:'Urge surfing (DBT/MBRP)' },
+  { id:'thought', g:'feel', icon:'bulb', name:'Thought check', kid:'Thought detective', ages:'kta', v:['bh','aut'], min:4, player:'thought',
+    what:'Catch an unhelpful thought, check the evidence and find a fairer one.',
+    how:['Write down the thought.','What supports it? What doesn’t?','What would you tell a friend who thought this?','Write a fairer, kinder thought.'],
+    kidSteps:['What is my thinking?','Is it true for sure?','Find a helpful thought'],
+    why:'Thoughts are guesses, not facts. Testing them takes away their power.', ev:'CBT cognitive restructuring' },
+  { id:'jar', g:'feel', icon:'jar', name:'Park the worry', kid:'Worry jar', ages:'kta', v:['bh','aut'], min:2, player:'jar',
+    what:'Write the worry down, put it in the jar and come back to it later.',
+    how:['Write the worry in a few words.','Put it in the jar.','Choose a worry time later today.','Go back to what you were doing.'],
+    kidSteps:['Draw or say the worry','Put it in the jar','Close the lid, play time!'],
+    why:'Setting a worry aside, on purpose, shows the brain it doesn’t have to solve it now.',
+    cg:'Use a real jar. Read the worries together at a set time each day.', ev:'Worry postponement (CBT)' },
+
+  /* ---------------- BRAVE, CONNECT & CREATE ---------------- */
+  { id:'onestep', g:'brave', icon:'steps', name:'One small step', kid:'One tiny step', ages:'kta', v:['aut','bh'], min:2, player:'steps',
+    what:'When it all feels like too much, do only the smallest first piece.',
+    how:['Name the thing that feels too big.','Find the tiniest first step, almost too easy.','Do only that step.','Notice: you started. That counts.'],
+    kidSteps:['What feels too big?','Find a tiny step','Do just that one'],
+    why:'Starting breaks the freeze. Action changes the feeling, not the other way round.', ev:'Behavioral activation' },
+  { id:'ladder', g:'brave', icon:'ladder', name:'Brave ladder', kid:'Brave ladder', ages:'kta', v:['aut','bh'], min:5, player:'ladder',
+    what:'Face a fear in small steps, from easiest to hardest, one rung at a time.',
+    how:['Name the fear.','List five steps toward it, easiest first.','Practice the bottom rung until it feels easy.','Climb one rung at a time.'],
+    kidSteps:['What is scary?','Pick the easiest step','Climb one rung'],
+    why:'Facing fears gradually teaches the brain that it can handle them.',
+    cg:'Celebrate every rung. Never skip ahead because they did well once.', ev:'Graded exposure' },
+  { id:'draw', g:'brave', icon:'pencil', name:'Draw it out', kid:'Draw my feeling', ages:'kta', v:['aut','bh'], min:3, player:'steps',
+    what:'Draw what the feeling looks like: its color, shape and size.',
+    how:['Pick a color that matches the feeling.','Draw its shape. Scribble, swirl or stab.','Then draw it smaller, or turn it into something else.','Notice how you feel now.'],
+    kidSteps:['Pick a feeling color','Draw it big','Now draw it small'],
+    why:'Getting the feeling onto paper puts some distance between you and it.', ev:'Expressive arts' },
+  { id:'write', g:'brave', icon:'note', name:'Write it out', ages:'ta', v:['bh'], min:5, player:'steps',
+    what:'Write without stopping for five minutes. No one has to read it.',
+    how:['Set a 5-minute timer.','Write exactly what you feel. No editing.','When the timer ends, read it once, or don’t.','Keep it, or tear it up.'],
+    why:'Expressive writing reduces rumination and helps make sense of hard events.', ev:'Expressive writing' },
+  { id:'coach', g:'brave', icon:'spark', name:'Coach voice', kid:'My brave words', ages:'kta', v:['aut','bh'], min:1, player:'steps',
+    what:'Talk to yourself the way a great coach would.',
+    how:['Notice the harsh voice.','Ask: what would a coach who believes in me say?','Say it out loud: “I can do hard things.”','Pick one line to keep for today.'],
+    kidSteps:['Pick my brave words','Say them strong','Say them again, louder!'],
+    why:'Supportive self-talk lowers stress and improves follow-through.', ev:'Self-talk / CBT' },
+  { id:'kind', g:'brave', icon:'gift', name:'Do a kind thing', kid:'Kindness mission', ages:'kta', v:['aut','bh'], min:3, player:'steps',
+    what:'Do one small kind thing for someone, or for yourself.',
+    how:['Pick someone: a friend, family member or yourself.','Choose one small kind act.','Do it now, or plan when.','Notice how it feels afterwards.'],
+    kidSteps:['Pick someone','Pick a kind thing','Do it!'],
+    why:'Kindness boosts mood and connection, and shifts attention outward.', ev:'Positive psychology' },
+  { id:'reach', g:'brave', icon:'people', name:'Reach out to my people', kid:'Tell my grown-up', ages:'kta', v:['aut','bh'], min:2, player:'steps',
+    what:'Contact someone on your support list. You don’t have to explain everything.',
+    how:['Open your list of people.','Pick one person.','Send a short message: “Rough moment. Can you talk?”','You can also just sit near someone.'],
+    kidSteps:['Find my grown-up','Show my feeling card','Get a hug or help'],
+    why:'Connection is one of the strongest protective factors there is.', ev:'Social support / safety planning' },
+  { id:'good', g:'brave', icon:'star', name:'Three good things', kid:'Happy jar', ages:'kta', v:['aut','bh'], min:2, player:'steps',
+    what:'Name three things that went okay today, and why.',
+    how:['Think back over today.','Find three things that went okay, even small ones.','For each, ask: why did it happen?','Notice how you feel now.'],
+    kidSteps:['One good thing','Two good things','Three good things!'],
+    why:'Training attention toward good things lifts mood over time.', ev:'Positive psychology' }
+];
+
+/* Demo people (fictional). Consistent with the NOVA Coach demo world. */
+const PEOPLE = {
+  mateo:  { name:'Mateo', age:7, vertical:'aut', grownup:'Lucia', clinician:'Dr. Rachel Kim, BCBA', plan:['balloon','heavy','squeeze','ground54321','jar','butterfly'] },
+  jordan: { name:'Jordan', age:15, vertical:'bh', band:'t', clinician:'Dr. Alicia Moreno, LMHC', next:'Thursday, 4:00 PM', plan:['paced','ground54321','thought','jar','surf','reach'] },
+  sam:    { name:'Sam', age:29, vertical:'bh', band:'a', clinician:'Intake team', next:'First appointment in 3 weeks (waitlist)', plan:['sigh','paced','ground54321','leaves','thought','heart'] }
+};
+
+const skill = id => SKILLS.find(s => s.id === id);
+const group = id => GROUPS.find(g => g.id === id);
+
+/* =====================================================================
+   ART · Pip (canonical NOVA child companion), Kindred (teen/adult),
+   and the NOVA skill icon set. All inline SVG, no external assets.
+   ===================================================================== */
+let __uid = 0;
+const uid = p => `${p}${++__uid}`;
+
+/* ---------- Pip · faithful to client/src/features/novabuddy/components/avatars/PipAvatar.jsx ---------- */
+function pip({ mood = 'idle', size = 120, cls = '' } = {}) {
+  const g = uid('pipb');
+  const eyes = {
+    idle:      { r: 14, ry: 14, pr: 7 },
+    happy:     { r: 16, ry: 16, pr: 8 },
+    celebrate: { r: 16, ry: 16, pr: 8 },
+    calm:      { r: 14, ry: 10, pr: 7 },
+    listen:    { r: 16, ry: 16, pr: 8 }
+  }[mood] || { r: 14, ry: 14, pr: 7 };
+  const mouth = {
+    idle:      '<path d="M90 123 Q100 129 110 123" stroke="#5eead4" stroke-width="3.5" fill="none" stroke-linecap="round"/>',
+    happy:     '<path d="M84 120 Q100 135 116 120" stroke="#5eead4" stroke-width="4.5" fill="none" stroke-linecap="round"/>',
+    celebrate: '<ellipse cx="100" cy="106" rx="10" ry="9" fill="#0ea5a4"/><path d="M92 121 Q100 126 108 121" stroke="#5eead4" stroke-width="2" fill="none"/>',
+    calm:      '<path d="M91 123 Q100 128 109 123" stroke="#5eead4" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".9"/>',
+    listen:    '<circle cx="100" cy="123" r="5" fill="#0ea5a4"/>'
+  }[mood];
+  const { r, ry, pr } = eyes;
+  const armL = mood === 'celebrate' ? '<circle cx="34" cy="86" r="11" fill="#0d9488"/>' : '<circle cx="40" cy="120" r="11" fill="#0d9488"/>';
+  const armR = mood === 'celebrate' ? '<circle cx="166" cy="86" r="11" fill="#0d9488"/>' : '<circle cx="160" cy="120" r="11" fill="#0d9488"/>';
+  return `<div class="pip pip--${mood} ${cls}" style="--s:${size}px" aria-hidden="true">
+  <div class="pip__glow"></div>
+  <svg viewBox="0 0 200 200" width="${size}" height="${size}">
+    <defs><linearGradient id="${g}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#0d9488"/></linearGradient></defs>
+    <ellipse class="pip__shadow" cx="100" cy="190" rx="48" ry="8" fill="#0f766e" opacity=".13"/>
+    <g class="pip__body">
+      <line x1="100" y1="40" x2="100" y2="26" stroke="#0d9488" stroke-width="5" stroke-linecap="round"/>
+      <circle class="pip__tip" cx="100" cy="22" r="7" fill="#fbbf24"/>
+      <rect x="46" y="40" width="108" height="130" rx="54" fill="url(#${g})"/>
+      <rect x="46" y="40" width="108" height="130" rx="54" fill="#fff" opacity=".07"/>
+      <ellipse cx="72" cy="62" rx="12" ry="7" fill="#fff" opacity=".18" transform="rotate(-30 72 62)"/>
+      <rect x="62" y="74" width="76" height="64" rx="30" fill="#0f3d3a"/>
+      <g class="pip__eyes">
+        <ellipse cx="80" cy="100" rx="${r}" ry="${ry}" fill="#eafffb"/><ellipse cx="120" cy="100" rx="${r}" ry="${ry}" fill="#eafffb"/>
+        <circle cx="80" cy="100" r="${pr}" fill="#0f172a"/><circle cx="120" cy="100" r="${pr}" fill="#0f172a"/>
+        <circle cx="76" cy="95" r="3" fill="#fff"/><circle cx="116" cy="95" r="3" fill="#fff"/>
+      </g>
+      ${mouth}
+      <circle cx="70" cy="104" r="6.5" fill="#fca5a5" opacity=".5"/><circle cx="130" cy="104" r="6.5" fill="#fca5a5" opacity=".5"/>
+      ${armL}${armR}
+    </g>
+  </svg></div>`;
+}
+
+/* ---------- Kindred · a companion made of light ----------
+   Design intent: calm, trustworthy, not childish. The light IS the breathing
+   pacer: Kindred co-regulates by breathing with you.
+   variant 'spark' (teens 11–17): open eyes, a small smile, livelier motes, violet in the light.
+   variant 'still' (adults 18+): no mouth, gentle crescent eyes, quieter light.
+   state: calm | listen | glad | steady | breathe                                   */
+function kindred({ variant = 'spark', state = 'calm', size = 160, cls = '', id = '' } = {}) {
+  const a = uid('kb'), c = uid('kc'), h = uid('kh');
+  const teen = variant === 'spark';
+  const top = teen ? '#9ef0e6' : '#a8eadf';
+  const mid = teen ? '#6aa8ff' : '#5f9be8';
+  const low = teen ? '#a98bff' : '#6f7fe0';
+  let face;
+  if (teen) {
+    face = state === 'glad'
+      ? `<path d="M80 104 q6 -7 12 0" stroke="#152043" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M108 104 q6 -7 12 0" stroke="#152043" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M90 118 q10 8 20 0" stroke="#152043" stroke-width="3.5" fill="none" stroke-linecap="round"/>`
+      : `<g class="k__eyes"><ellipse cx="86" cy="104" rx="5.5" ry="7.5" fill="#152043"/><ellipse cx="114" cy="104" rx="5.5" ry="7.5" fill="#152043"/><circle cx="88" cy="101" r="1.9" fill="#fff"/><circle cx="116" cy="101" r="1.9" fill="#fff"/></g>
+         <path d="M93 118 q7 ${state === 'steady' ? 3 : 5} 14 0" stroke="#152043" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+  } else {
+    face = state === 'listen'
+      ? `<g class="k__eyes"><ellipse cx="87" cy="106" rx="4.2" ry="5.2" fill="#152043"/><ellipse cx="113" cy="106" rx="4.2" ry="5.2" fill="#152043"/></g>`
+      : `<path d="M81 106 q6 5 12 0" stroke="#152043" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M107 106 q6 5 12 0" stroke="#152043" stroke-width="3.6" fill="none" stroke-linecap="round"/>`;
+  }
+  const motes = teen
+    ? `<g class="k__motes"><circle cx="34" cy="70" r="4" fill="#ffe3a3"/><circle cx="170" cy="96" r="3" fill="#c9f6ff"/><circle cx="150" cy="190" r="3.5" fill="#d9c9ff"/></g>`
+    : `<g class="k__motes k__motes--slow"><circle cx="40" cy="84" r="2.6" fill="#ffe3a3" opacity=".8"/><circle cx="164" cy="150" r="2.2" fill="#c9f6ff" opacity=".8"/></g>`;
+  return `<div class="kin kin--${variant} kin--${state} ${cls}" ${id ? `id="${id}"` : ''} style="--s:${size}px" aria-hidden="true">
+  <div class="kin__aura"></div>
+  <div class="kin__ring"></div><div class="kin__ring kin__ring--2"></div>
+  <svg viewBox="0 0 200 220" width="${size}" height="${size * 1.1}">
+    <defs>
+      <linearGradient id="${a}" x1=".3" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="${top}"/><stop offset=".55" stop-color="${mid}"/><stop offset="1" stop-color="${low}"/></linearGradient>
+      <radialGradient id="${c}" cx=".5" cy=".74" r=".5"><stop offset="0" stop-color="#fff4d1"/><stop offset=".35" stop-color="#ffd27a" stop-opacity=".85"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+      <radialGradient id="${c}h"><stop offset="0" stop-color="#fffaf0"/><stop offset=".45" stop-color="#ffe08f"/><stop offset="1" stop-color="#ffb84d" stop-opacity=".0"/></radialGradient>
+      <radialGradient id="${h}" cx=".35" cy=".25" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    </defs>
+    <ellipse cx="100" cy="216" rx="52" ry="6" fill="#04061a" opacity=".35"/>
+    ${motes}
+    <g class="k__body">
+      <path d="M100 30 C138 30 162 56 166 96 C170 132 176 166 162 186 C150 202 126 206 100 206 C74 206 50 202 38 186 C24 166 30 132 34 96 C38 56 62 30 100 30 Z" fill="url(#${a})"/>
+      <path class="k__core" d="M100 30 C138 30 162 56 166 96 C170 132 176 166 162 186 C150 202 126 206 100 206 C74 206 50 202 38 186 C24 166 30 132 34 96 C38 56 62 30 100 30 Z" fill="url(#${c})"/>
+      <path d="M100 30 C138 30 162 56 166 96 C170 132 176 166 162 186 C150 202 126 206 100 206 C74 206 50 202 38 186 C24 166 30 132 34 96 C38 56 62 30 100 30 Z" fill="url(#${h})"/>
+      <path d="M100 30 C138 30 162 56 166 96 C170 132 176 166 162 186 C150 202 126 206 100 206 C74 206 50 202 38 186 C24 166 30 132 34 96 C38 56 62 30 100 30 Z" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.5"/>
+      <circle class="k__heart" cx="100" cy="160" r="${teen ? 15 : 13}" fill="url(#${c}h)"/>
+      ${teen ? '<circle cx="72" cy="116" r="6" fill="#ff9fb8" opacity=".35"/><circle cx="128" cy="116" r="6" fill="#ff9fb8" opacity=".35"/>' : ''}
+      ${face}
+    </g>
+  </svg></div>`;
+}
+
+/* ---------- Icon set · 24px, stroke 1.8, round ---------- */
+const ICONS = {
+  balloon:'<ellipse cx="12" cy="9" rx="6" ry="7"/><path d="M11 16h2l-1 1.6zM12 17.6c0 2-2 2.2-1 4.4"/>',
+  box:'<rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="4" cy="12" r="1.8" fill="currentColor" stroke="none"/>',
+  flame:'<path d="M12 3c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-4.5 3-6.5 1 2 2 3 3 3 0-3-1-5 0-7.5z"/>',
+  hand:'<path d="M7.5 12V6.5a1.5 1.5 0 0 1 3 0V11M10.5 11V4.5a1.5 1.5 0 0 1 3 0V11M13.5 11V5.5a1.5 1.5 0 0 1 3 0V12M16.5 12V8.5a1.5 1.5 0 0 1 3 0V14c0 4-3 7-7 7s-6-2-7.5-5L3.4 13a1.5 1.5 0 0 1 2.4-1.7L7.5 13"/>',
+  infinity:'<path d="M12 12c-2-3-4-4-6-4a4 4 0 0 0 0 8c2 0 4-1 6-4zm0 0c2 3 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1-6 4z"/>',
+  wave:'<path d="M3 10c2-3 4-3 6 0s4 3 6 0 4-3 6 0M3 16c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/>',
+  sigh:'<path d="M3 9h10a3 3 0 1 0-3-3M3 13h14a3 3 0 1 1-3 3M3 17h6"/>',
+  wall:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M3 14.5h18M9 5v5M15 10v4.5M9 14.5V19"/>',
+  zigzag:'<path d="M3 12l3-4 3 8 3-8 3 8 3-8 3 4"/>',
+  fist:'<path d="M6 11V9.5a2 2 0 0 1 4 0V9a2 2 0 0 1 4 0v.5a2 2 0 0 1 4 0V14a6 6 0 0 1-6 6h-1a5 5 0 0 1-5-5v-4zM10 9.5V12M14 9.5V12"/>',
+  stretch:'<circle cx="12" cy="4.5" r="2"/><path d="M5 3.5l7 5 7-5M12 8.5v6.5M12 15l-3.5 6M12 15l3.5 6"/>',
+  paw:'<circle cx="7" cy="9" r="1.8"/><circle cx="10.5" cy="5.5" r="1.8"/><circle cx="14.5" cy="5.5" r="1.8"/><circle cx="18" cy="9" r="1.8"/><path d="M12.5 11c3 0 5.5 4 5.5 6.5 0 2-2 2.5-3 2.2-1.2-.4-1.6-.9-2.5-.9s-1.3.5-2.5.9c-1 .3-3-.2-3-2.2C7 15 9.5 11 12.5 11z"/>',
+  shoe:'<path d="M3 15l1.5-8 4 1 1.5 3 5 1.5c3.5 1 5.5 2 6 4.5H3zM3 15v3h18v-2.5"/>',
+  butterfly:'<path d="M12 7v12M12 10C9.5 4.5 4 4 4 8c0 3.5 4.5 4.5 8 3M12 10c2.5-5.5 8-6 8-2 0 3.5-4.5 4.5-8 3M12 13c-3-.5-6.5 1.5-5.5 4.5s4.5.5 5.5-3M12 13c3-.5 6.5 1.5 5.5 4.5s-4.5.5-5.5-3"/>',
+  drop:'<path d="M12 3c3 4 6 7.5 6 11a6 6 0 0 1-12 0c0-3.5 3-7 6-11z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/>',
+  blanket:'<rect x="3" y="6" width="18" height="13" rx="4"/><path d="M3 11.5c4 2.5 8-2.5 12 0s4.5 1 6 0M9 6v4"/>',
+  fidget:'<circle cx="12" cy="12" r="2"/><circle cx="12" cy="5" r="2.6"/><circle cx="6" cy="16" r="2.6"/><circle cx="18" cy="16" r="2.6"/><path d="M12 7.6V10M7.9 14.6l2.4-1.4M16.1 14.6l-2.4-1.4"/>',
+  scan:'<circle cx="12" cy="5" r="2.5"/><path d="M8 21v-7a4 4 0 0 1 8 0v7"/><path d="M3 12h3M18 12h3M3 16.5h3M18 16.5h3"/>',
+  heart:'<path d="M12 20s-7.5-4.5-7.5-10.2A4.2 4.2 0 0 1 12 7.2a4.2 4.2 0 0 1 7.5 2.6C19.5 15.5 12 20 12 20z"/>',
+  eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  anchor:'<circle cx="12" cy="5" r="2"/><path d="M12 7v14M5 13a7 7 0 0 0 14 0M8.5 10h7"/>',
+  pause:'<circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/>',
+  grid:'<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+  leaf:'<path d="M5 19C5 10 11 5 20 4c0 9-5 15-15 15zM5 19l8-8"/>',
+  tag:'<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8" r="1.5"/>',
+  meter:'<path d="M10 4.5a2 2 0 0 1 4 0V14a4 4 0 1 1-4 0z"/><path d="M12 9.5v7"/>',
+  chat:'<path d="M4 5h16v11H9.5L5 20v-4H4z"/><path d="M8.5 10.5h7"/>',
+  surf:'<path d="M2 18c3 0 4-2 6-2s3 2 6 2 4-2 6-2M4.5 14C5.5 8.5 10 4.5 16 4.5c-3 2-4.2 5.3-3.4 8.8"/>',
+  bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.8 10.6c.8.7.8 1.6.8 2.4h6c0-.8 0-1.7.8-2.4A6 6 0 0 0 12 3z"/>',
+  jar:'<path d="M8 3h8M8 3v2.5M16 3v2.5M7 6h10a1 1 0 0 1 1 1v11a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3V7a1 1 0 0 1 1-1z"/><path d="M9 12h6"/>',
+  steps:'<path d="M3 20h6v-5h6v-5h6"/><circle cx="18" cy="5.5" r="1.6"/>',
+  ladder:'<path d="M7 3v18M17 3v18M7 7h10M7 12h10M7 17h10"/>',
+  pencil:'<path d="M4 20l4-1 11-11-3-3L5 16zM14 7l3 3"/>',
+  note:'<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/>',
+  spark:'<path d="M12 3l1.9 6.1L20 11l-6.1 1.9L12 19l-1.9-6.1L4 11l6.1-1.9z"/><path d="M19 3v3M17.5 4.5h3"/>',
+  gift:'<rect x="3" y="9" width="18" height="4" rx="1"/><path d="M5 13v8h14v-8M12 9v12M12 9c-2-4-6.5-4-5.5-1 .8 2 5.5 1 5.5 1zm0 0c2-4 6.5-4 5.5-1-.8 2-5.5 1-5.5 1z"/>',
+  people:'<circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.3A4.5 4.5 0 0 1 21 18.5"/>',
+  star:'<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+  /* UI */
+  phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+  shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+  home:'<path d="M4 11l8-7 8 7v9h-5v-6h-6v6H4z"/>',
+  x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  back:'<path d="M19 12H5M11 6l-6 6 6 6"/>',
+  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  sound:'<path d="M4 9.5h4L13 5v14l-5-4.5H4z"/><path d="M16.5 9a4.5 4.5 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11"/>',
+  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  calm:'<path d="M3 12c3-4 6-4 9 0s6 4 9 0"/>',
+  send:'<path d="M4 12l16-8-6 16-2.5-6.5z"/>',
+  hive:'<path d="M12 2.5l4 2.3v4.6l-4 2.3-4-2.3V4.8zM7.5 10.3l4 2.3v4.6l-4 2.3-4-2.3v-4.6zM16.5 10.3l4 2.3v4.6l-4 2.3-4-2.3v-4.6z"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
+  sliders:'<path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/>'
+};
+function ico(name, size = 22, extra = '') {
+  return `<svg class="ico" viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" ${extra}>${ICONS[name] || ICONS.spark}</svg>`;
+}
+
+/* =====================================================================
+   PLAYERS · one engine, two skins (.pw = Pip world, .kw = Kindred world)
+   playSkill(host, skillObj, ctx) → renders an interactive guided skill.
+   ctx = { world:'pip'|'kin', variant, kid:boolean, onDone(), speak:boolean }
+   ===================================================================== */
+const RUN = { timers: [], raf: 0 };
+function stopPlayers() {
+  RUN.timers.forEach(clearTimeout); RUN.timers.forEach(clearInterval); RUN.timers = [];
+  cancelAnimationFrame(RUN.raf); RUN.raf = 0;
+  try { window.speechSynthesis && speechSynthesis.cancel(); } catch (e) {}
+}
+const later = (fn, ms) => { const t = setTimeout(fn, ms); RUN.timers.push(t); return t; };
+const every = (fn, ms) => { const t = setInterval(fn, ms); RUN.timers.push(t); return t; };
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+
+const VOICE = { on: false };
+function speak(text) {
+  if (!VOICE.on) return;
+  try {
+    const u = new SpeechSynthesisUtterance(String(text).replace(/<[^>]+>/g, ''));
+    u.rate = .9; u.pitch = 1.05;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  } catch (e) {}
+}
+
+function picHTML(s, ctx, size = 34) {
+  const g = group(s.g);
+  const bg = ctx.world === 'kin' ? g.hue : g.soft;
+  const fg = ctx.world === 'kin' ? '#0d1130' : g.hue;
+  return `<div class="pic" style="background:${bg};color:${fg}">${ico(s.icon, size)}</div>`;
+}
+function stepsFor(s, ctx) { return (ctx.kid && s.kidSteps) ? s.kidSteps : s.how; }
+function companion(ctx, state = 'calm', size = 110) {
+  return ctx.world === 'kin' ? kindred({ variant: ctx.variant, state, size }) : pip({ mood: state === 'glad' ? 'happy' : state === 'listen' ? 'listen' : 'idle', size });
+}
+function header(s, ctx) {
+  const g = group(s.g);
+  const pic = ctx.world === 'kin' ? '' : `<span style="width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:${g.soft};color:${g.hue}">${ico(s.icon, 26)}</span>`;
+  return `<div class="p-title">${pic}${esc(ctx.kid && s.kid ? s.kid : s.name)}</div>`;
+}
+function doneBtn(ctx, label) {
+  return ctx.world === 'kin'
+    ? `<button class="kbtn2" data-act="done">${label || 'I’m done'}</button>`
+    : `<button class="kbtn" data-act="done">${ico('check', 24)} ${label || 'All done!'}</button>`;
+}
+function wireDone(host, ctx) {
+  host.querySelectorAll('[data-act="done"]').forEach(b => b.onclick = () => { stopPlayers(); ctx.onDone(); });
+}
+
+function playSkill(host, s, ctx) {
+  stopPlayers();
+  const kind = s.player.split(':')[0];
+  const fn = { breath: playBreath, ground: playGround, squeeze: playSqueeze, butterfly: playButterfly, jar: playJar, thought: playThought, ladder: playLadder, steps: playSteps }[kind] || playSteps;
+  fn(host, s, ctx);
+}
+
+/* ---------------- BREATH ---------------- */
+const BREATH = {
+  balloon: { ph: [['in', 4, 'Breathe in'], ['out', 6, 'Blow out slowly']], n: 4 },
+  box:     { ph: [['in', 4, 'Breathe in'], ['hold', 4, 'Hold'], ['out', 4, 'Breathe out'], ['hold', 4, 'Hold']], n: 3 },
+  dragon:  { ph: [['in', 3, 'Big breath in'], ['out', 5, 'Dragon whoosh!']], n: 3 },
+  star:    { ph: [['in', 3, 'Up · breathe in'], ['out', 4, 'Down · breathe out']], n: 5 },
+  fig8:    { ph: [['in', 4, 'Breathe in'], ['out', 4, 'Breathe out']], n: 4 },
+  paced:   { ph: [['in', 4, 'Breathe in'], ['out', 6, 'Breathe out']], n: 6 },
+  sigh:    { ph: [['in', 2, 'Breathe in'], ['top', 1, 'Sniff in again'], ['out', 6, 'Long sigh out']], n: 3 }
+};
+function playBreath(host, s, ctx) {
+  const pat = s.player.split(':')[1];
+  const B = BREATH[pat];
+  const kin = ctx.world === 'kin';
+  const g = group(s.g);
+  const accent = kin ? '#8be9df' : g.hue;
+  const W = kin ? 230 : 250;
+  let vis = '';
+  if (pat === 'balloon') {
+    vis = `<svg viewBox="0 0 280 300" width="${W}" height="${W * 300 / 280}"><g id="bv">
+      <path d="M140 250 q-12 22 4 44" stroke="${kin ? '#a9b1dc' : '#9bb8b1'}" stroke-width="3" fill="none"/>
+      <g id="bal" style="transform-origin:140px 250px"><ellipse cx="140" cy="150" rx="88" ry="100" fill="${kin ? '#7aa8ff' : '#7dd3c8'}"/><ellipse cx="108" cy="104" rx="20" ry="32" fill="#fff" opacity=".35" transform="rotate(-24 108 104)"/><path d="M132 250 h16 l-8 10z" fill="${kin ? '#7aa8ff' : '#7dd3c8'}"/></g></g></svg>`;
+  } else if (pat === 'box') {
+    vis = `<svg viewBox="0 0 280 280" width="${W}" height="${W}"><rect x="40" y="40" width="200" height="200" rx="26" fill="${kin ? 'rgba(255,255,255,.05)' : '#fff'}" stroke="${kin ? 'rgba(255,255,255,.18)' : '#d3e6e1'}" stroke-width="10"/>
+      <path id="bside" d="" stroke="${accent}" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <circle id="bdot" r="15" fill="${kin ? '#fff' : g.hue}" stroke="${kin ? '#8be9df' : '#fff'}" stroke-width="5"/>
+      <text id="bnum" x="140" y="160" text-anchor="middle" style="font:700 64px var(--kidf);fill:${kin ? '#fff' : g.hue}"></text></svg>`;
+  } else if (pat === 'dragon') {
+    vis = `<svg viewBox="0 0 280 260" width="${W}" height="${W * 260 / 280}"><g id="dw">${[0, 1, 2, 3, 4].map(i => `<path class="wisp" d="M120 130 q${50 + i * 8} ${-60 + i * 30} ${130 + i * 6} ${-40 + i * 20}" stroke="${['#fb923c', '#f97362', '#fbbf24', '#f97362', '#fb923c'][i]}" stroke-width="${10 - i}" stroke-linecap="round" fill="none" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>`).join('')}</g>
+      <g id="dorb" style="transform-origin:90px 130px"><circle cx="90" cy="130" r="62" fill="${kin ? '#ff9f8a' : '#ffd4c7'}"/><circle cx="90" cy="130" r="44" fill="${kin ? '#ffc2a8' : '#ffe6dc'}"/>
+      <circle cx="78" cy="122" r="6" fill="#4a1d14"/><circle cx="104" cy="122" r="6" fill="#4a1d14"/><ellipse cx="91" cy="146" rx="10" ry="8" fill="#4a1d14"/><path d="M60 82 l10 18 M120 82 l-10 18" stroke="#f97362" stroke-width="7" stroke-linecap="round"/></g></svg>`;
+  } else if (pat === 'star') {
+    const F = [[66, 128, 200], [106, 62, 178], [144, 46, 174], [182, 60, 178], [220, 98, 186]];
+    const d = 'M48 270 ' + F.map(([x, ty, vy]) => `L${x - 13} ${vy} L${x - 13} ${ty + 13} A13 13 0 0 1 ${x + 13} ${ty + 13} L${x + 13} ${vy}`).join(' ') + ' L238 270 Q238 286 222 286 L64 286 Q48 286 48 270 Z';
+    vis = `<svg viewBox="0 0 280 296" width="${W}" height="${W * 296 / 280}"><path d="${d}" fill="${kin ? 'rgba(255,255,255,.06)' : '#fff3e3'}" stroke="${kin ? 'rgba(255,255,255,.25)' : '#f2c79a'}" stroke-width="5" stroke-linejoin="round"/>
+      <path id="strail" d="" stroke="${accent}" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <circle id="sdot" r="13" fill="${kin ? '#fff' : g.hue}" stroke="${kin ? '#8be9df' : '#fff'}" stroke-width="5"/></svg>`;
+    host.__F = F;
+  } else if (pat === 'fig8') {
+    vis = `<svg viewBox="0 0 300 200" width="${kin ? 280 : 300}" height="${kin ? 187 : 200}"><path id="f8" d="M150 100 C150 40 40 40 40 100 C40 160 150 160 150 100 C150 40 260 40 260 100 C260 160 150 160 150 100 Z" fill="none" stroke="${kin ? 'rgba(255,255,255,.16)' : '#d3e6e1'}" stroke-width="16" stroke-linecap="round"/>
+      <circle id="fdot" r="15" fill="${kin ? '#fff' : g.hue}" stroke="${kin ? '#8be9df' : '#fff'}" stroke-width="5"/>
+      <text x="95" y="108" text-anchor="middle" style="font:600 13px var(--body);fill:${kin ? '#a9b1dc' : '#6a8580'}">IN</text><text x="205" y="108" text-anchor="middle" style="font:600 13px var(--body);fill:${kin ? '#a9b1dc' : '#6a8580'}">OUT</text></svg>`;
+  } else {
+    vis = kin ? kindred({ variant: ctx.variant, state: 'breathe', size: 190, id: 'kbreath' })
+      : `<svg viewBox="0 0 280 280" width="${W}" height="${W}"><circle cx="140" cy="140" r="130" fill="${g.soft}"/><circle id="orb" cx="140" cy="140" r="90" fill="${g.hue}" opacity=".85"/><circle cx="140" cy="140" r="54" fill="#fff" opacity=".35"/></svg>`;
+  }
+  const side = kin && !['paced', 'sigh'].includes(pat) ? `<div style="position:absolute;right:-58px;bottom:-6px">${kindred({ variant: ctx.variant, state: 'breathe', size: 60, id: 'kmini' })}</div>`
+    : !kin ? `<div style="position:absolute;left:-118px;bottom:0">${pip({ mood: 'calm', size: 104 })}</div>` : '';
+  host.innerHTML = `<div class="player">
+    ${header(s, ctx)}
+    <div class="p-vis">${vis}${side}</div>
+    <div class="p-word" id="pword">Get ready…</div>
+    <div class="p-count" id="pcount">${B.n} slow breaths</div>
+    <div class="p-steps">${Array.from({ length: B.n }, (_, i) => `<span data-i="${i}"></span>`).join('')}</div>
+    <div class="p-ctrl"><button class="p-small" id="ppause">${ico('pause', 16)} Pause</button>${doneBtn(ctx, kin ? 'I feel a shift' : 'I feel calm')}</div>
+  </div>`;
+  wireDone(host, ctx);
+  const $ = q => host.querySelector(q);
+  const word = $('#pword'), count = $('#pcount');
+  const total = B.ph.reduce((a, p) => a + p[1], 0);
+  let paused = false, elapsed = -1.2, last = performance.now(), lastPhase = -1;
+  $('#ppause').onclick = () => { paused = !paused; $('#ppause').innerHTML = paused ? `${ico('arrow', 16)} Resume` : `${ico('pause', 16)} Pause`; };
+  const f8 = $('#f8'); const f8len = f8 ? f8.getTotalLength() : 0;
+  const setB = b => {
+    host.querySelectorAll('.kin').forEach(k => k.style.setProperty('--b', b.toFixed(3)));
+    if (pat === 'balloon') $('#bal').style.transform = `scale(${.5 + b * .5})`;
+    if (pat === 'paced' || pat === 'sigh') { const o = $('#orb'); if (o) o.setAttribute('r', 58 + b * 64); }
+    if (pat === 'dragon') $('#dorb').style.transform = `scale(${.8 + b * .28})`;
+  };
+  function frame(now) {
+    const dt = (now - last) / 1000; last = now;
+    if (!paused) elapsed += dt;
+    if (elapsed < 0) { RUN.raf = requestAnimationFrame(frame); return; }
+    const cyc = Math.floor(elapsed / total);
+    if (cyc >= B.n) {
+      word.textContent = kin ? 'Nice. Notice how you feel.' : 'You did it!';
+      count.textContent = ''; host.querySelectorAll('.p-steps span').forEach(x => x.className = 'done');
+      setB(.3); speak(word.textContent);
+      host.querySelector('[data-act="done"]').animate([{ transform: 'scale(1)' }, { transform: 'scale(1.06)' }, { transform: 'scale(1)' }], { duration: 900, iterations: 3 });
+      return;
+    }
+    let t = elapsed - cyc * total, pi = 0;
+    while (t >= B.ph[pi][1]) { t -= B.ph[pi][1]; pi++; }
+    const [kind, dur, label] = B.ph[pi];
+    const p = t / dur;
+    const key = cyc * 10 + pi;
+    if (key !== lastPhase) {
+      lastPhase = key; word.textContent = label; speak(label);
+      word.style.color = kind === 'out' ? (kin ? '#c9b8ff' : '#f97362') : kind.startsWith('hold') ? (kin ? '#a9b1dc' : '#6a8580') : (kin ? '#8be9df' : g.hue);
+      host.querySelectorAll('.p-steps span').forEach((x, i) => x.className = i < cyc ? 'done' : i === cyc ? 'on' : '');
+    }
+    count.textContent = `${Math.ceil(dur - t)}`;
+    let b;
+    if (pat === 'sigh') b = kind === 'in' ? ease(p) * .8 : kind === 'top' ? .8 + .2 * ease(p) : 1 - ease(p);
+    else b = kind === 'in' ? ease(p) : kind === 'out' ? 1 - ease(p) : (pi === 1 ? 1 : 0);
+    setB(b);
+    if (pat === 'box') {
+      const C = [[40, 240], [40, 40], [240, 40], [240, 240], [40, 240]];
+      const a = C[pi], z = C[pi + 1];
+      const x = a[0] + (z[0] - a[0]) * p, y = a[1] + (z[1] - a[1]) * p;
+      $('#bdot').setAttribute('cx', x); $('#bdot').setAttribute('cy', y);
+      $('#bside').setAttribute('d', `M${a[0]} ${a[1]} L${x} ${y}`);
+      $('#bnum').textContent = Math.ceil(dur - t);
+    }
+    if (pat === 'dragon') host.querySelectorAll('.wisp').forEach((w, i) => w.setAttribute('stroke-dashoffset', kind === 'out' ? Math.max(0, 100 - ease(Math.min(1, p * 1.4 - i * .05)) * 100) : 100));
+    if (pat === 'star') {
+      const [fx, fy, vy] = host.__F[cyc % 5];
+      const q = ease(p);
+      const A0 = [fx - 13, vy], T0 = [fx, fy], Z0 = [fx + 13, vy];
+      const [a, z] = kind === 'in' ? [A0, T0] : [T0, Z0];
+      const x = a[0] + (z[0] - a[0]) * q, y = a[1] + (z[1] - a[1]) * q;
+      $('#sdot').setAttribute('cx', x); $('#sdot').setAttribute('cy', y);
+      $('#strail').setAttribute('d', kind === 'in' ? `M${A0[0]} ${A0[1]} L${x} ${y}` : `M${A0[0]} ${A0[1]} L${T0[0]} ${T0[1]} L${x} ${y}`);
+      count.textContent = `Finger ${cyc % 5 + 1} of 5 · ${Math.ceil(dur - t)}`;
+    }
+    if (pat === 'fig8') {
+      const pt = f8.getPointAtLength(pi === 0 ? p * f8len / 2 : f8len / 2 + p * f8len / 2);
+      $('#fdot').setAttribute('cx', pt.x); $('#fdot').setAttribute('cy', pt.y);
+    }
+    RUN.raf = requestAnimationFrame(frame);
+  }
+  RUN.raf = requestAnimationFrame(frame);
+}
+
+/* ---------------- 5-4-3-2-1 GROUNDING ---------------- */
+function playGround(host, s, ctx) {
+  const kin = ctx.world === 'kin';
+  const S = [
+    { n: 5, icon: 'eye', t: 'things you can see', kt: 'things you can SEE' },
+    { n: 4, icon: 'hand', t: 'things you can touch', kt: 'things you can TOUCH' },
+    { n: 3, icon: 'sound', t: 'things you can hear', kt: 'things you can HEAR' },
+    { n: 2, icon: 'leaf', t: 'things you can smell', kt: 'things you can SMELL' },
+    { n: 1, icon: 'drop', t: 'thing you can taste', kt: 'thing you can TASTE' }
+  ];
+  let i = 0;
+  function render() {
+    const st = S[i];
+    host.innerHTML = `<div class="player">
+      ${header(s, ctx)}
+      <div style="display:flex;align-items:center;gap:18px">${kin ? '' : pip({ mood: 'listen', size: 100 })}<div class="g-big">${ico(st.icon, 52)}</div><div class="g-num">${st.n}</div></div>
+      <div class="p-word" style="font-size:${kin ? 28 : 30}px">${kin ? `Notice ${st.n} ${st.t}` : `Find ${st.n} ${st.kt}`}</div>
+      <div class="p-count">${kin ? 'Tap a circle each time you notice one. Name it quietly if you like.' : 'Point to each one. Tap a circle!'}</div>
+      <div class="g-dots">${Array.from({ length: st.n }, (_, k) => `<button class="g-dot" aria-label="Noticed ${k + 1}">${ico('check', 28)}</button>`).join('')}</div>
+      <div class="p-steps">${S.map((_, k) => `<span class="${k < i ? 'done' : k === i ? 'on' : ''}"></span>`).join('')}</div>
+      <div class="p-ctrl"><button class="p-small" id="gskip">Skip this sense</button>${i === S.length - 1 ? doneBtn(ctx) : ''}</div></div>`;
+    speak(kin ? `Notice ${st.n} ${st.t}` : `Find ${st.n} ${st.kt}`);
+    wireDone(host, ctx);
+    let got = 0;
+    host.querySelectorAll('.g-dot').forEach(d => d.onclick = () => {
+      if (d.classList.contains('on')) return;
+      d.classList.add('on'); got++;
+      if (got === st.n) later(next, 650);
+    });
+    host.querySelector('#gskip').onclick = next;
+  }
+  function next() { if (i < S.length - 1) { i++; render(); } else { stopPlayers(); ctx.onDone(); } }
+  render();
+}
+
+/* ---------------- SQUEEZE & RELEASE ---------------- */
+function playSqueeze(host, s, ctx) {
+  const kin = ctx.world === 'kin';
+  const parts = ['hands', 'shoulders', 'face', 'feet', 'all'];
+  const words = stepsFor(s, ctx);
+  const n = Math.min(words.length, 5);
+  let i = 0;
+  const body = `<svg viewBox="0 0 200 260" width="190" height="250" id="bodyfig">
+    <g fill="${kin ? 'rgba(255,255,255,.12)' : '#e3efec'}" stroke="${kin ? 'rgba(255,255,255,.3)' : '#bcd6cf'}" stroke-width="2">
+      <circle data-r="face" cx="100" cy="38" r="26"/>
+      <rect data-r="shoulders" x="62" y="70" width="76" height="34" rx="16"/>
+      <rect x="68" y="98" width="64" height="74" rx="18"/>
+      <rect data-r="arms" x="36" y="76" width="22" height="78" rx="11"/><rect data-r="arms" x="142" y="76" width="22" height="78" rx="11"/>
+      <circle data-r="hands" cx="47" cy="166" r="14"/><circle data-r="hands" cx="153" cy="166" r="14"/>
+      <rect x="72" y="168" width="24" height="64" rx="12"/><rect x="104" y="168" width="24" height="64" rx="12"/>
+      <ellipse data-r="feet" cx="80" cy="240" rx="20" ry="10"/><ellipse data-r="feet" cx="120" cy="240" rx="20" ry="10"/>
+    </g></svg>`;
+  function render() {
+    host.innerHTML = `<div class="player">
+      ${header(s, ctx)}
+      <div style="display:flex;align-items:center;gap:26px">
+        <div class="p-vis">${body}</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+          <svg width="150" height="150" class="ring"><circle cx="75" cy="75" r="64" stroke="${kin ? 'rgba(255,255,255,.1)' : '#e3efec'}" stroke-width="12"/><circle id="sqr" cx="75" cy="75" r="64" stroke="#f97362" stroke-width="12" stroke-dasharray="402" stroke-dashoffset="402"/></svg>
+          <div class="p-word" id="sqw" style="margin-top:-108px;height:70px;display:grid;place-items:center;font-size:30px">5</div>
+        </div>
+      </div>
+      <div class="scard" style="max-width:520px">${picHTML(s, ctx, 30)}<p id="sqt">${esc(words[i])}</p></div>
+      <div class="p-steps">${Array.from({ length: n }, (_, k) => `<span class="${k < i ? 'done' : k === i ? 'on' : ''}"></span>`).join('')}</div>
+      <div class="p-ctrl">${doneBtn(ctx)}</div></div>`;
+    wireDone(host, ctx);
+    const region = parts[i] || 'all';
+    host.querySelectorAll('#bodyfig [data-r]').forEach(el => {
+      const hit = region === 'all' || el.dataset.r === region || (region === 'hands' && el.dataset.r === 'arms');
+      el.style.transition = 'fill .4s, transform .4s';
+      el.style.transformBox = 'fill-box'; el.style.transformOrigin = 'center';
+      el.dataset.hit = hit ? '1' : '';
+    });
+    if (region === 'all') host.querySelectorAll('#bodyfig rect, #bodyfig circle, #bodyfig ellipse').forEach(el => el.dataset.hit = '1');
+    cycle();
+  }
+  function cycle() {
+    const ring = host.querySelector('#sqr'), w = host.querySelector('#sqw');
+    const hits = host.querySelectorAll('#bodyfig [data-hit="1"]');
+    const last = i >= n - 1 && (parts[i] === 'all' || i === n - 1) && /floppy|loose|noodle|notice/i.test(words[i]);
+    if (last) {
+      hits.forEach(el => { el.style.fill = kin ? 'rgba(139,233,223,.45)' : '#9fe3d3'; });
+      w.textContent = kin ? 'Loose' : 'Floppy!'; ring.style.stroke = '#14b8a6'; ring.style.strokeDashoffset = 0;
+      speak(words[i]); return;
+    }
+    speak(words[i] + '. Squeeze!');
+    hits.forEach(el => { el.style.fill = '#ffb4a6'; el.style.transform = 'scale(.92)'; });
+    ring.style.transition = 'none'; ring.style.stroke = '#f97362'; ring.style.strokeDashoffset = 402;
+    let c = 5; w.textContent = c;
+    requestAnimationFrame(() => { ring.style.transition = 'stroke-dashoffset 5s linear'; ring.style.strokeDashoffset = 0; });
+    const iv = every(() => { c--; if (c > 0) w.textContent = c; else { clearInterval(iv); release(); } }, 1000);
+    function release() {
+      speak(kin ? 'And let go.' : 'Let go!');
+      w.textContent = kin ? 'Let go' : 'Let go!';
+      hits.forEach(el => { el.style.fill = kin ? 'rgba(139,233,223,.45)' : '#9fe3d3'; el.style.transform = 'scale(1)'; });
+      ring.style.transition = 'stroke-dashoffset 4s ease-out, stroke .4s'; ring.style.stroke = '#14b8a6'; ring.style.strokeDashoffset = 402;
+      later(() => { if (i < n - 1) { i++; render(); } else { host.querySelector('[data-act="done"]').focus(); } }, 4200);
+    }
+  }
+  render();
+}
+
+/* ---------------- BUTTERFLY HUG ---------------- */
+function playButterfly(host, s, ctx) {
+  const kin = ctx.world === 'kin';
+  const g = group(s.g);
+  const c1 = kin ? '#a98bff' : '#b9a8ff', c2 = kin ? '#7aa8ff' : '#8be0d4';
+  host.innerHTML = `<div class="player">
+    ${header(s, ctx)}
+    <div class="p-count" style="max-width:400px">${esc(stepsFor(s, ctx).slice(0, 2).join(' · '))}</div>
+    <div style="display:flex;align-items:center;gap:22px">
+      <div class="bf-side" id="bl">LEFT</div>
+      <svg viewBox="0 0 240 200" width="260" height="216" id="bf">
+        <g class="bf-wing bf-l"><path d="M118 100 C80 20 14 20 20 70 C24 106 70 112 118 104Z" fill="${c1}"/><path d="M118 108 C80 112 40 140 56 168 C70 190 104 160 118 118Z" fill="${c2}"/><circle cx="62" cy="68" r="10" fill="#fff" opacity=".5"/></g>
+        <g class="bf-wing bf-r"><path d="M122 100 C160 20 226 20 220 70 C216 106 170 112 122 104Z" fill="${c1}"/><path d="M122 108 C160 112 200 140 184 168 C170 190 136 160 122 118Z" fill="${c2}"/><circle cx="178" cy="68" r="10" fill="#fff" opacity=".5"/></g>
+        <rect x="113" y="74" width="14" height="80" rx="7" fill="${kin ? '#e9ecff' : '#13302c'}"/><path d="M116 76 q-10 -22 -20 -26 M124 76 q10 -22 20 -26" stroke="${kin ? '#e9ecff' : '#13302c'}" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="bf-side" id="br">RIGHT</div>
+    </div>
+    <div class="p-word" id="bfw">Tap along</div>
+    <div class="p-count" id="bfc">12 taps</div>
+    <div class="p-ctrl">${doneBtn(ctx, kin ? 'Calmer now' : 'I feel calmer')}</div></div>`;
+  wireDone(host, ctx);
+  const bf = host.querySelector('#bf'), L = host.querySelector('#bl'), R = host.querySelector('#br'), w = host.querySelector('#bfw'), c = host.querySelector('#bfc');
+  let n = 0;
+  every(() => {
+    n++;
+    const left = n % 2 === 1;
+    bf.classList.toggle('bf-tap-l', left); bf.classList.toggle('bf-tap-r', !left);
+    L.classList.toggle('on', left); R.classList.toggle('on', !left);
+    w.textContent = left ? 'Tap left' : 'Tap right';
+    c.textContent = n >= 12 ? (kin ? 'Keep going as long as it helps.' : 'Beautiful. Keep going if you like!') : `${12 - n} more`;
+  }, 900);
+}
+
+/* ---------------- PARK THE WORRY (jar) ---------------- */
+function playJar(host, s, ctx) {
+  const kin = ctx.world === 'kin';
+  const chips = kin ? ['A test this week', 'Something someone said', 'Money stuff', 'What happens next'] : ['School', 'Loud noises', 'Bedtime', 'Something new'];
+  host.innerHTML = `<div class="player">
+    ${header(s, ctx)}
+    <div class="p-count">${kin ? 'Write it in a few words. It will be safe here until worry time.' : 'What is the worry? Pick one or type it.'}</div>
+    <div class="jarwrap">
+      <div class="paper" id="paper" style="opacity:0">…</div>
+      <svg viewBox="0 0 220 240" width="220" height="240">
+        <rect x="40" y="70" width="140" height="160" rx="30" fill="${kin ? 'rgba(139,233,223,.10)' : '#e8f7f3'}" stroke="${kin ? 'rgba(139,233,223,.6)' : '#7dc9bb'}" stroke-width="5"/>
+        <rect x="58" y="96" width="14" height="80" rx="7" fill="#fff" opacity=".45"/>
+        <g class="jar-lid" id="lid"><rect x="50" y="46" width="120" height="26" rx="10" fill="${kin ? '#7aa8ff' : '#f5b524'}"/><rect x="92" y="38" width="36" height="12" rx="6" fill="${kin ? '#5f88e0' : '#d9980e'}"/></g>
+        <g id="stars" opacity="0"><circle cx="90" cy="190" r="5" fill="#ffd27a"/><circle cx="130" cy="176" r="4" fill="#ffd27a"/><circle cx="112" cy="204" r="3" fill="#ffd27a"/></g>
+      </svg>
+    </div>
+    <div id="jstep" style="display:flex;flex-direction:column;gap:10px;align-items:center;width:100%">
+      <div class="pick-chips">${chips.map(c => `<button data-c="${esc(c)}">${esc(c)}</button>`).join('')}</div>
+      <div class="winput"><input id="wtext" maxlength="48" placeholder="${kin ? 'The worry, in a few words…' : 'Or type the worry…'}" aria-label="Worry"><button class="${kin ? 'kbtn2' : 'kbtn'}" id="wput" style="width:auto;padding:12px 16px;font-size:15px">${kin ? 'Park it' : 'In the jar!'}</button></div>
+    </div></div>`;
+  const $ = q => host.querySelector(q);
+  host.querySelectorAll('.pick-chips button').forEach(b => b.onclick = () => { $('#wtext').value = b.dataset.c; host.querySelectorAll('.pick-chips button').forEach(x => x.setAttribute('aria-pressed', x === b)); });
+  $('#wput').onclick = () => {
+    const v = ($('#wtext').value || '').trim() || chips[0];
+    const paper = $('#paper'); paper.textContent = v; paper.style.opacity = 1;
+    speak(kin ? 'Parked. You can come back to it later.' : 'In the jar it goes!');
+    later(() => paper.classList.add('drop'), 120);
+    later(() => { $('#lid').classList.add('shut'); $('#stars').setAttribute('opacity', 1); }, 200);
+    later(() => {
+      $('#jstep').innerHTML = `<div class="p-word" style="font-size:24px">${kin ? 'When is worry time?' : 'We will look at it later'}</div>
+        <div class="pick-chips">${(kin ? ['After dinner', '6:30 PM', 'Tomorrow, after school', 'At my next session'] : ['After dinner', 'With my grown-up', 'Tomorrow']).map(c => `<button data-t>${esc(c)}</button>`).join('')}</div>
+        <div class="p-ctrl">${doneBtn(ctx, kin ? 'Done, back to my day' : 'Play time!')}</div>`;
+      wireDone(host, ctx);
+      host.querySelectorAll('[data-t]').forEach(b => b.onclick = () => host.querySelectorAll('[data-t]').forEach(x => x.setAttribute('aria-pressed', x === b)));
+    }, 1500);
+  };
+}
+
+/* ---------------- THOUGHT CHECK ---------------- */
+function playThought(host, s, ctx) {
+  const kin = ctx.world === 'kin';
+  const T = kin ? [
+    { t: 'Everyone thinks I’m weird.', for: ['Two people laughed when I talked', 'Nobody sat with me at lunch'], against: ['Maya texted me last night', 'I don’t actually know what they think', 'People laugh for lots of reasons'], fair: ['Some people might not get me, and some clearly do.', 'I’m guessing what they think. I can check before I decide.', 'One bad lunch isn’t the whole story.'] },
+    { t: 'I’m going to fail this test.', for: ['I didn’t finish the review sheet', 'The last quiz was hard'], against: ['I passed the last two tests', 'There are two days left to study', 'I can ask for help on chapter 4'], fair: ['I’m not ready yet, and I still have two days.', 'It might be hard. Hard isn’t the same as failing.', 'I can make a small study plan tonight.'] },
+    { t: 'I always mess things up.', for: ['I forgot the assignment today'], against: ['I fixed it with my teacher', 'I helped my brother this week', '“Always” isn’t true'], fair: ['I made a mistake today, and I handled it.', 'Mistakes happen to everyone. They don’t define me.', 'I mess up sometimes. I also get a lot right.'] }
+  ] : [
+    { t: 'Nobody wants to play with me.', for: ['Sam played with Leo today'], against: ['Ava played tag with me yesterday', 'Sam said I can play tomorrow'], fair: ['Today was hard. Tomorrow I can ask again.', 'Some friends DO want to play with me.'] },
+    { t: 'I can’t do it.', for: ['It was hard last time'], against: ['I did the puzzle after practice', 'My grown-up can help'], fair: ['It’s hard, and I can try one small step.', 'I can do hard things with help.'] }
+  ];
+  let pick = null, step = 0;
+  function render() {
+    let inner = '';
+    if (step === 0) {
+      inner = `<div class="p-word" style="font-size:${kin ? 26 : 26}px">${kin ? 'What’s the thought?' : 'What is my thinking?'}</div>
+        <div class="p-count">${kin ? 'Pick the closest one, or write your own in the real app.' : 'Pick the thinking that feels true right now.'}</div>
+        <div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:440px">${T.map((x, k) => `<button class="ev" data-k="${k}" style="font-size:16px;padding:14px">${esc(x.t)}</button>`).join('')}</div>`;
+    } else if (step === 1) {
+      inner = `<div class="tc-card tc-old"><small>The thought</small><p>${esc(pick.t)}</p></div>
+        <div class="p-count">${kin ? 'Tap what’s actually true. Be fair, like a good detective.' : 'Detective time! Tap the clues.'}</div>
+        <div class="ev-cols"><div><h5>${kin ? 'Supports it' : 'Clues it’s true'}</h5>${pick.for.map(e => `<button class="ev">${esc(e)}</button>`).join('')}</div><div><h5>${kin ? 'Doesn’t fit' : 'Clues it’s NOT true'}</h5>${pick.against.map(e => `<button class="ev">${esc(e)}</button>`).join('')}</div></div>
+        <button class="${kin ? 'kbtn2' : 'kbtn'}" id="tnext" style="${kin ? 'max-width:440px' : ''}">${kin ? 'Find a fairer thought' : 'Find a helpful thought'}</button>`;
+    } else if (step === 2) {
+      inner = `<div class="tc-card tc-old"><small>The thought</small><p>${esc(pick.t)}</p></div>
+        <div class="p-count">${kin ? 'Which of these feels fair and believable?' : 'Pick a helpful thought'}</div>
+        <div style="display:flex;flex-direction:column;gap:8px;width:100%;max-width:440px">${pick.fair.map((f, k) => `<button class="ev" data-f="${k}" style="font-size:15.5px;padding:13px">${esc(f)}</button>`).join('')}</div>`;
+    } else {
+      inner = `<div class="tc-card tc-old struck"><small>Old thought</small><p>${esc(pick.t)}</p></div>
+        <div class="tc-card tc-new"><small>${kin ? 'Fairer thought' : 'Helpful thought'}</small><p style="font-size:18px">${esc(pick.chosen)}</p></div>
+        <div class="p-count">${kin ? 'Thoughts are guesses, not facts. You just tested one.' : 'Great detective work!'}</div>
+        <div class="p-ctrl">${doneBtn(ctx, kin ? 'Keep this thought' : 'Done!')}</div>`;
+    }
+    host.innerHTML = `<div class="player">${header(s, ctx)}${inner}</div>`;
+    wireDone(host, ctx);
+    host.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { pick = T[+b.dataset.k]; step = 1; render(); });
+    host.querySelectorAll('.ev-cols .ev').forEach(b => b.onclick = () => b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'));
+    const tn = host.querySelector('#tnext'); if (tn) tn.onclick = () => { step = 2; render(); };
+    host.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { pick.chosen = pick.fair[+b.dataset.f]; step = 3; render(); speak(pick.chosen); });
+  }
+  render();
+}
+
+/* ---------------- BRAVE LADDER ---------------- */
+function playLadder(host, s, ctx) {
+  const kin = ctx.world === 'kin';
+  const F = kin ? [
+    { t: 'Speaking up in class', r: ['Ask the teacher a question after class', 'Answer a question I’m sure about', 'Ask one question during class', 'Share an idea in a small group', 'Share an idea with the whole class'] },
+    { t: 'Texting a friend first', r: ['Reply to a group chat', 'React to a friend’s post', 'Send “hey, how’s it going?”', 'Suggest a plan for the weekend', 'Call instead of text'] }
+  ] : [
+    { t: 'Dogs', r: ['Look at dog pictures', 'Watch a dog from far away', 'Stand near a calm dog', 'Say hi to a calm dog', 'Pet a calm dog with my grown-up'] },
+    { t: 'The dark', r: ['Talk about the dark', 'Dim the lights with my grown-up', 'Lights off for 1 minute, grown-up close', 'Night-light only', 'Night-light, door open, I fall asleep'] }
+  ];
+  let f = null, done = 0;
+  function render() {
+    if (!f) {
+      host.innerHTML = `<div class="player">${header(s, ctx)}
+        <div class="p-word" style="font-size:26px">${kin ? 'What would you like to get braver at?' : 'What feels scary?'}</div>
+        <div class="pick-chips">${F.map((x, k) => `<button data-k="${k}" style="padding:14px 18px;font-size:16px">${esc(x.t)}</button>`).join('')}</div></div>`;
+      host.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { f = F[+b.dataset.k]; render(); });
+      return;
+    }
+    host.innerHTML = `<div class="player">${header(s, ctx)}
+      <div class="p-count">${esc(f.t)} · ${kin ? 'one rung at a time. Each step stays until it feels easy.' : 'one step at a time!'}</div>
+      <div style="display:flex;align-items:flex-end;gap:16px">
+        <div class="ladder">${f.r.map((r, k) => `<div class="rung ${k < done ? 'done' : k === done ? 'next' : ''}"><i>${k < done ? '★' : k + 1}</i>${esc(r)}</div>`).join('')}</div>
+        ${kin ? kindred({ variant: ctx.variant, state: done ? 'glad' : 'calm', size: 80 }) : pip({ mood: done ? 'happy' : 'idle', size: 92 })}
+      </div>
+      <div class="p-ctrl"><button class="${kin ? 'kbtn2' : 'kbtn amber'}" id="climb" style="${kin ? 'width:auto' : ''}">${ico('star', 20)} ${kin ? 'I did this step' : 'I did it!'}</button>${done ? doneBtn(ctx, kin ? 'Save my progress' : 'All done for today') : ''}</div></div>`;
+    wireDone(host, ctx);
+    host.querySelector('#climb').onclick = () => { if (done < f.r.length) { done++; speak(kin ? 'That was brave.' : 'You climbed a step! So brave!'); render(); burst(host); } };
+  }
+  render();
+}
+
+/* ---------------- GENERIC GUIDED STEPS ---------------- */
+function playSteps(host, s, ctx) {
+  const kin = ctx.world === 'kin';
+  const st = stepsFor(s, ctx);
+  let i = 0;
+  function render() {
+    host.innerHTML = `<div class="player">
+      ${header(s, ctx)}
+      <div class="p-vis">${companion(ctx, i === st.length - 1 ? 'glad' : 'listen', kin ? 120 : 120)}</div>
+      <div class="scard" style="max-width:520px">${picHTML(s, ctx, 34)}<p>${esc(st[i])}</p></div>
+      <div class="p-count">Step ${i + 1} of ${st.length}${kin && i === 0 ? ` · ${esc(s.why)}` : ''}</div>
+      <div class="p-steps">${st.map((_, k) => `<span class="${k < i ? 'done' : k === i ? 'on' : ''}"></span>`).join('')}</div>
+      <div class="p-ctrl">${i > 0 ? `<button class="p-small" id="sback">${ico('back', 16)} Back</button>` : ''}
+        ${i < st.length - 1 ? `<button class="${kin ? 'kbtn2' : 'kbtn'}" id="snext" style="${kin ? 'width:auto;padding:14px 22px' : ''}">${kin ? 'Next' : 'Next'} ${ico('arrow', 20)}</button>` : doneBtn(ctx)}</div></div>`;
+    speak(st[i]);
+    wireDone(host, ctx);
+    const n = host.querySelector('#snext'); if (n) n.onclick = () => { i++; render(); };
+    const b = host.querySelector('#sback'); if (b) b.onclick = () => { i--; render(); };
+  }
+  render();
+}
+
+/* ---------------- confetti ---------------- */
+function burst(host, n = 36) {
+  if (document.body.classList.contains('calm-mode')) return;
+  const box = document.createElement('div'); box.className = 'confetti';
+  const C = ['#14b8a6', '#f5b524', '#f97362', '#8b7cf6', '#5eead4', '#3b82f6'];
+  for (let k = 0; k < n; k++) {
+    const i = document.createElement('i');
+    i.style.left = Math.random() * 100 + '%'; i.style.background = C[k % C.length];
+    i.style.animationDelay = (Math.random() * .4) + 's'; i.style.transform = `rotate(${Math.random() * 180}deg)`;
+    box.appendChild(i);
+  }
+  (host.closest('.screen') || host).appendChild(box);
+  setTimeout(() => box.remove(), 2600);
+}
+
+/* =====================================================================
+   ACT 1 · PLATFORM — one library, every vertical
+   ===================================================================== */
+const EVENTS = []; // live events from Acts 2 and 3, shown in Act 4
+
+function renderPlatform() {
+  const el = document.getElementById('act-platform');
+  const counts = GROUPS.map(g => SKILLS.filter(s => s.g === g.id).length);
+  const both = SKILLS.filter(s => s.v.includes('aut') && s.v.includes('bh')).length;
+  el.innerHTML = `<div class="p1">
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">NOVA Shared Apps · first release</span>
+      <h1>One <span>coping-skills</span> library. <em>Every NOVA vertical.</em></h1>
+      <p>A clinician-curated library of ${SKILLS.length} skills, built once in NOVA Core and delivered through the companion each person needs: Pip for autistic children, Kindred for teens and adults in behavioral-health care. Every use is measured, and every measurement makes the Hive smarter.</p>
+      <div class="hero-cta">
+        <a class="btn teal" href="#autism">${ico('arrow', 18)} See it with Pip</a>
+        <a class="btn dusk" href="#bh">${ico('arrow', 18)} See it with Kindred</a>
+        <a class="btn line" href="#clinician">Clinician &amp; Hive</a>
+      </div>
+    </div>
+    <div class="duo" id="duo">
+      <div class="day">${pip({ mood: 'calm', size: 150, cls: 'duo-pip' })}<span class="cap">Pip · Autism · ages 4–10</span></div>
+      <div class="night">${kindred({ variant: 'spark', state: 'breathe', size: 140, id: 'duoKin' })}<span class="cap">Kindred · Behavioral health</span></div>
+      <canvas id="duoWave" width="1200" height="160" aria-hidden="true"></canvas>
+      <div class="breathcap" id="duoCap">Same skill · same engine · breathe in</div>
+    </div>
+  </section>
+
+  <section class="arch" aria-labelledby="archH">
+    <div class="sec-h"><div><span class="eyebrow">Architecture</span><h2 id="archH" style="margin-top:6px">Shared apps sit between NOVA Core and the verticals</h2>
+      <p>Build a capability once, with one clinical review, one safety layer and one outcomes model. Each vertical gets it in its own language, characters and care plan.</p></div></div>
+    <div class="tier-lab">Verticals</div>
+    <div class="tier verts">
+      <div class="vert"><div class="vi">${pip({ mood: 'happy', size: 52 })}</div><div><b>Autism <span class="pill live">Live</span></b><span>NOVA Clinic · NOVA Home · NovaBuddy</span></div></div>
+      <div class="vert bh"><div class="vi" style="background:#1b2250;border-radius:14px">${kindred({ variant: 'spark', state: 'calm', size: 40 })}</div><div><b>Behavioral health <span class="pill pilot">Pilot</span></b><span>Children 3+, teens, adults · between-session care</span></div></div>
+      <div class="vert muted"><div class="vi" style="color:var(--ink-3)">${ico('sun', 34)}</div><div><b>Longevity <span class="pill next">2027</span></b><span>Agent-based companion for wellness clients</span></div></div>
+    </div>
+    <div class="flowzone"><svg viewBox="0 0 1000 56" preserveAspectRatio="none" aria-hidden="true">
+      <path class="flowline" d="M90 56 C90 20 160 20 160 0" stroke="#14b8a6" stroke-width="2.5" fill="none" vector-effect="non-scaling-stroke"/>
+      <path class="flowline" d="M90 56 C90 20 500 30 500 0" stroke="#8b7cf6" stroke-width="2.5" fill="none" vector-effect="non-scaling-stroke"/>
+      <path d="M90 56 C90 20 840 30 840 0" stroke="#c5d3cf" stroke-width="2" stroke-dasharray="3 6" fill="none" vector-effect="non-scaling-stroke"/>
+    </svg></div>
+    <div class="tier-lab">Shared apps</div>
+    <div class="tier apps">
+      <div class="app hot"><span class="ai">${ico('wave', 20)}</span><b>Coping Skills</b>${SKILLS.length} skills, 6 groups, guided players<span class="soon">● In this demo</span></div>
+      <div class="app"><span class="ai">${ico('meter', 20)}</span><b>Mood check-in</b>Daily feelings meter, both verticals<span class="soon">Next</span></div>
+      <div class="app"><span class="ai">${ico('shield', 20)}</span><b>Safety plan</b>Clinician-authored, always one tap away<span class="soon">Partly built (NOVA Coach)</span></div>
+      <div class="app"><span class="ai">${ico('clock', 20)}</span><b>Sleep &amp; routines</b>Visual schedules, bedtime plans<span class="soon">Planned</span></div>
+      <div class="app"><span class="ai">${ico('chat', 20)}</span><b>Social stories</b>Rehearse new situations<span class="soon">Planned</span></div>
+      <div class="app"><span class="ai">${ico('note', 20)}</span><b>Journal</b>Private notes, shared by choice<span class="soon">Planned</span></div>
+    </div>
+    <div class="flowzone" style="height:28px"></div>
+    <div class="tier-lab">NOVA Core</div>
+    <div class="tier core">
+      <div class="core-cell"><b>${ico('check', 18)} Clinical library</b>Versioned content, clinician review and sign-off per skill</div>
+      <div class="core-cell"><b>${ico('sparkle' in ICONS ? 'sparkle' : 'spark', 18)} Companion engine</b>Pip and Kindred share one expression and guidance engine</div>
+      <div class="core-cell"><b>${ico('shield', 18)} Safety layer</b>Risk check, crisis routing, 988, care-team alerts</div>
+      <div class="core-cell"><b>${ico('hive', 18)} Hive outcomes</b>Before/after on every use; learns what works for whom</div>
+      <div class="core-cell"><b>${ico('lock', 18)} Identity &amp; consent</b>Org, vertical and role scoping; client chooses what is shared</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="contH">
+    <div class="sec-h"><div><span class="eyebrow">Companion continuum</span><h2 id="contH" style="margin-top:6px">A companion that grows up with the person</h2>
+      <p>The same skills move with the client as they age. The companion changes its look, voice and reading level. The history and what works stay with them.</p></div></div>
+    <div class="continuum">
+      <div class="cstep">${pip({ mood: 'happy', size: 120 })}<span class="age">Ages 4–10</span><h3>Pip</h3><p>Picture-first, first-then boards, caregiver co-regulation, sensory-calm mode.</p></div>
+      <div class="cstep">${kindred({ variant: 'spark', state: 'glad', size: 104 })}<span class="age">Ages 11–17</span><h3>Kindred Spark</h3><p>Warm and a little playful. Talks like a supportive older peer, never like a cartoon.</p></div>
+      <div class="cstep">${kindred({ variant: 'still', state: 'calm', size: 104 })}<span class="age">Adults 18+</span><h3>Kindred</h3><p>Quiet and steady. A light that breathes with you between sessions or on a waitlist.</p></div>
+    </div>
+  </section>
+
+  <section class="lib" aria-labelledby="libH">
+    <div class="sec-h"><div><span class="eyebrow">The library</span><h2 id="libH" style="margin-top:6px">Standard, evidence-informed techniques, one source of truth</h2>
+      <p>Each skill carries its steps, a plain-language "why it works", age bands, the verticals it serves, a caregiver tip and its clinical basis.</p></div></div>
+    <div class="stats">
+      <div class="stat"><b>${SKILLS.length}</b><span>skills at launch</span></div>
+      <div class="stat"><b>${GROUPS.length}</b><span>skill groups</span></div>
+      <div class="stat"><b>${both}</b><span>serve both verticals</span></div>
+      <div class="stat"><b>3</b><span>age bands, 4 to adult</span></div>
+      <div class="stat"><b>100%</b><span>of uses measured before and after</span></div>
+    </div>
+    <div class="groups">${GROUPS.map((g, gi) => `<div class="gcol" style="--gh:${g.hue}"><h4><i></i>${g.name}<span style="margin-left:auto;font:600 12px var(--body);color:var(--ink-3)">${counts[gi]}</span></h4><p>${g.blurb}</p>
+      <div class="gskills">${SKILLS.filter(s => s.g === g.id).map(s => `<span class="gs" style="--gs-soft:${g.soft};--gh:${g.hue}" title="${esc(s.ev)}">${ico(s.icon, 16)}${esc(s.name)} <em>${s.ages.split('').map(a => ({ k: 'K', t: 'T', a: 'A' }[a])).join('')}</em></span>`).join('')}</div></div>`).join('')}</div>
+    <p style="font-size:12.5px;color:var(--ink-3);margin-top:14px">K = child (Pip) · T = teen (Kindred Spark) · A = adult (Kindred). Wording is NOVA’s own; techniques are standard practice (paced breathing, PMR, sensory grounding, CBT, DBT and ACT skills, graded exposure). Content is pending clinical review.</p>
+  </section>
+  </div>`;
+}
+
+/* hero: Pip and Kindred breathe in sync on one shared wave */
+const DUO = { raf: 0 };
+function startDuo() {
+  cancelAnimationFrame(DUO.raf);
+  const cv = document.getElementById('duoWave'); if (!cv) return;
+  const cx = cv.getContext('2d');
+  const cap = document.getElementById('duoCap');
+  const pipEl = document.querySelector('.duo-pip svg');
+  const kin = document.getElementById('duoKin');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const T0 = performance.now(), IN = 4, OUT = 6, P = IN + OUT;
+  let lastWord = '';
+  function frame(now) {
+    const t = ((now - T0) / 1000) % P;
+    const b = t < IN ? ease(t / IN) : 1 - ease((t - IN) / OUT);
+    if (pipEl) pipEl.style.transform = `scale(${.94 + b * .1})`;
+    if (kin) kin.style.setProperty('--b', b.toFixed(3));
+    const word = t < IN ? 'breathe in' : 'breathe out';
+    if (word !== lastWord) { cap.textContent = `Same skill · same engine · ${word}`; lastWord = word; }
+    const W = cv.width, H = cv.height;
+    cx.clearRect(0, 0, W, H);
+    const grd = cx.createLinearGradient(0, 0, W, 0);
+    grd.addColorStop(0, '#14b8a6'); grd.addColorStop(.5, '#7aa8ff'); grd.addColorStop(1, '#a98bff');
+    cx.lineWidth = 5; cx.strokeStyle = grd; cx.lineCap = 'round';
+    cx.beginPath();
+    const phase = ((now - T0) / 1000) / P * Math.PI * 2;
+    for (let x = 0; x <= W; x += 8) {
+      const y = H / 2 - Math.sin(x / W * Math.PI * 4 - phase) * 34 * (.6 + .4 * b);
+      x === 0 ? cx.moveTo(x, y) : cx.lineTo(x, y);
+    }
+    cx.globalAlpha = .9; cx.stroke(); cx.globalAlpha = 1;
+    const dx = W * (.5 + .45 * Math.sin(phase - Math.PI / 2) * 0), dy = H / 2 - Math.sin(dx / W * Math.PI * 4 - phase) * 34 * (.6 + .4 * b);
+    cx.beginPath(); cx.arc(dx, dy, 11, 0, Math.PI * 2); cx.fillStyle = '#fff'; cx.fill();
+    cx.lineWidth = 4; cx.strokeStyle = '#f5b524'; cx.stroke();
+    if (!reduce) DUO.raf = requestAnimationFrame(frame);
+  }
+  DUO.raf = requestAnimationFrame(frame);
+}
+
+/* =====================================================================
+   ACT 2 · AUTISM — Mateo (7) with Pip, Lucia nearby
+   ===================================================================== */
+const LEVELS = [
+  { n: 1, name: 'Calm',    sub: 'ready to play',   c: '#3fb67b', s: '#bfe9d3' },
+  { n: 2, name: 'Wiggly',  sub: 'a little wobbly', c: '#e9b31c', s: '#f6e2a6' },
+  { n: 3, name: 'Big',     sub: 'big feeling',     c: '#f08a3c', s: '#f9cfaa' },
+  { n: 4, name: 'Too big', sub: 'I need help',     c: '#e5534b', s: '#f6b9b4' }
+];
+function face(n) {
+  const L = LEVELS[n - 1];
+  const mouths = ['M30 50 Q40 60 50 50', 'M30 53 Q35 48 40 53 T50 53', 'M31 56 Q40 49 49 56', 'M30 57 Q40 47 50 57'];
+  const brows = ['', '', '<path d="M24 28 l10 4 M56 28 l-10 4" stroke="#3b1d0a" stroke-width="3.5" stroke-linecap="round"/>', '<path d="M23 26 l12 6 M57 26 l-12 6" stroke="#3b1d0a" stroke-width="4" stroke-linecap="round"/>'];
+  const eyes = n === 4 ? '<path d="M27 37 l6 3 -6 3 M53 37 l-6 3 6 3" stroke="#3b1d0a" stroke-width="3.5" stroke-linecap="round" fill="none"/>'
+    : `<circle cx="31" cy="39" r="${n === 2 ? 4.5 : 4}" fill="#3b1d0a"/><circle cx="49" cy="39" r="${n === 2 ? 4.5 : 4}" fill="#3b1d0a"/>`;
+  return `<svg class="mface" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="${L.c}"/><circle cx="40" cy="40" r="36" fill="#fff" opacity=".18"/><ellipse cx="28" cy="22" rx="9" ry="5" fill="#fff" opacity=".35" transform="rotate(-25 28 22)"/>${brows[n - 1]}${eyes}<path d="${mouths[n - 1]}" stroke="#3b1d0a" stroke-width="4" fill="none" stroke-linecap="round"/>${n === 2 ? '<path d="M8 30 q-5 6 0 12 M72 30 q5 6 0 12" stroke="' + L.c + '" stroke-width="3" fill="none"/>' : ''}</svg>`;
+}
+const THENS = [
+  { id: 'blocks', name: 'Blocks', svg: '<svg viewBox="0 0 48 48"><rect x="6" y="26" width="16" height="16" rx="3" fill="#f97362"/><rect x="24" y="26" width="16" height="16" rx="3" fill="#3b82f6"/><rect x="15" y="9" width="16" height="16" rx="3" fill="#f5b524"/></svg>' },
+  { id: 'swing', name: 'Swing', svg: '<svg viewBox="0 0 48 48"><path d="M6 8h36M10 8l-4 34M38 8l4 34" stroke="#4d9e6b" stroke-width="3.5" stroke-linecap="round"/><path d="M20 8v20M30 8v20" stroke="#8a6a3a" stroke-width="2"/><rect x="17" y="27" width="16" height="5" rx="2" fill="#f97362"/></svg>' },
+  { id: 'trains', name: 'Trains', svg: '<svg viewBox="0 0 48 48"><rect x="6" y="16" width="22" height="16" rx="3" fill="#3b82f6"/><rect x="10" y="10" width="8" height="8" rx="2" fill="#3b82f6"/><rect x="28" y="20" width="14" height="12" rx="3" fill="#8b7cf6"/><circle cx="12" cy="35" r="4" fill="#13302c"/><circle cx="23" cy="35" r="4" fill="#13302c"/><circle cx="36" cy="35" r="4" fill="#13302c"/></svg>' }
+];
+const PICKS = { 1: ['star', 'ground54321', 'jar'], 2: ['squeeze', 'ground54321', 'balloon'], 3: ['heavy', 'balloon', 'butterfly'], 4: ['balloon', 'heavy', 'cozy'] };
+const A = { screen: 'home', level: null, skill: null, alt: [], then: 'trains', before: null, after: null, stars: 12, cg: true };
+const kidCtx = () => ({ world: 'pip', kid: true, onDone: () => goA('after') });
+
+const NOTES_A = {
+  home:    { t: 'Check in with pictures, not words', b: ['<b>Mateo is 7 and minimally verbal.</b> Every choice is a picture card with a face, color and word.', 'The <b>feelings meter</b> catches a feeling while it is still small. That is when coping skills work best.', 'Pip is the same character Mateo already knows from NovaBuddy and NOVA Home. There is nothing new to learn.'] },
+  pick:    { t: 'First-then: a visual support from ABA', b: ['Pip offers <b>skills from Dr. Kim’s plan</b>, matched to how big the feeling is.', '<b>First-then boards</b> are a standard autism support. Mateo picks his own "then", which builds buy-in.', 'The <b>grown-up tip</b> coaches Lucia to co-regulate at the same moment. One screen serves child and parent.'] },
+  play:    { t: 'A guided player, not a video', b: ['Each skill is <b>interactive and paced</b>: visual timer, step dots, optional read-aloud.', '<b>Sensory-calm mode</b> removes motion and softens color for children who are easily overwhelmed.', 'The same player engine runs Kindred’s version in Act 3. Built once, skinned twice.'] },
+  after:   { t: 'Measure every use', b: ['A second meter check gives a <b>before → after</b> on every single use.', 'This is how NOVA learns which skills work for this child, at this level, at this time of day.'] },
+  done:    { t: 'Reinforce, then close the loop', b: ['Mateo earns a star and his "then" activity. This is <b>positive reinforcement</b>, built in.', 'The result goes to <b>Dr. Kim’s dashboard</b> automatically. Lucia doesn’t have to log anything.', 'Switch to Act 4 to see it arrive.'] },
+  toolbox: { t: 'Mateo’s calm toolbox', b: ['The top row is <b>assigned by his BCBA</b>. The rest of the library is there to explore.', 'Picture cards double as a <b>printable visual schedule</b> for school and the calm corner.'] }
+};
+
+function goA(screen) {
+  if (screen !== 'play') stopPlayers();
+  A.screen = screen; renderAutismScreen(); renderNotes('autism', NOTES_A[screen === 'after' ? 'after' : screen], ['home', 'pick', 'play', 'after', 'done'], screen);
+}
+
+function renderAutism() {
+  const el = document.getElementById('act-autism');
+  el.innerHTML = `<div class="stage"><div class="stage-main">
+    <div class="stage-head"><div><span class="eyebrow">Act 2 · Autism vertical · NOVA Home</span><h2>Mateo, 7, with Pip</h2><p>After school, the transition home is hard. Lucia opens NOVA Home on the family tablet.</p></div>
+      <div class="toggles">
+        <button class="tog" id="tgCg" aria-pressed="true"><span class="sw"></span>Grown-up tips</button>
+        <button class="tog" id="tgCalm" aria-pressed="false"><span class="sw"></span>Sensory-calm mode</button>
+        <button class="tog" id="tgVoice" aria-pressed="false"><span class="sw"></span>Read aloud</button>
+      </div></div>
+    <div class="tablet"><div class="screen" id="aScreen"></div></div>
+  </div><aside class="notes" id="notes-autism"></aside></div>`;
+  const tg = (id, fn) => { const b = document.getElementById(id); b.onclick = () => { const v = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', v); fn(v); }; };
+  tg('tgCg', v => { A.cg = v; document.getElementById('aScreen').classList.toggle('cg-hide', !v); });
+  tg('tgCalm', v => document.body.classList.toggle('calm-mode', v));
+  tg('tgVoice', v => { VOICE.on = v; if (!v) try { speechSynthesis.cancel(); } catch (e) {} });
+  goA(A.screen === 'play' ? 'home' : A.screen);
+}
+
+function pcard(s, { sm = false, pressed = false, plan = false } = {}) {
+  const g = group(s.g);
+  return `<button class="pcard ${sm ? 'sm' : ''}" data-skill="${s.id}" aria-pressed="${pressed}" style="--pc:${g.hue};--pc-soft:${g.soft}"><span class="pic">${ico(s.icon, sm ? 26 : 40)}</span><span>${esc(s.kid || s.name)}${plan ? '<br><span class="tag-plan">Dr. Kim’s plan</span>' : ''}</span></button>`;
+}
+
+function renderAutismScreen() {
+  const host = document.getElementById('aScreen'); if (!host) return;
+  host.classList.toggle('cg-hide', !A.cg);
+  const top = `<div class="pw-top">${A.screen !== 'home' ? `<button class="pw-icon" id="aHome" aria-label="Home">${ico('home', 22)}</button>` : ''}<div class="who"><i>M</i>Mateo</div><span class="sp"></span><div class="pw-stars">${ico('star', 18, 'style="color:#f5b524;fill:#f5b524"')} ${A.stars}</div><button class="pw-icon" id="aBox" aria-label="My toolbox">${ico('grid', 22)}</button></div>`;
+  let body = '';
+  const sc = A.screen;
+  if (sc === 'home' || sc === 'after') {
+    const asking = sc === 'after';
+    body = `<div class="pw-hello">${pip({ mood: asking ? 'listen' : 'happy', size: 112 })}<div class="say">${asking ? 'You did it! How does your body feel <b>now</b>?' : 'Hi Mateo! How does your body feel?'}<button class="rd" id="aRead" aria-label="Read aloud">${ico('sound', 22)}</button></div></div>
+      <div class="meter">${LEVELS.map(L => `<button class="mcard" data-lv="${L.n}" style="--mc:${L.c};--mc-s:${L.s}">${face(L.n)}<b>${L.name}</b><span>${L.sub}</span></button>`).join('')}</div>
+      ${asking ? '' : `<div class="tb-sec" style="margin-top:14px">My calm toolbox · from Dr. Kim</div><div class="toolbox" style="grid-template-columns:repeat(6,1fr);gap:10px">${PEOPLE.mateo.plan.map(id => pcard(skill(id), {})).join('').replace(/class="pcard /g, 'class="pcard mini ')}</div>`}
+      ${asking ? '' : `<div class="cg"><span>${ico('people', 26)}</span><div><b>Grown-up tip</b>Kneel to Mateo’s eye level and point to the faces. Name what you see: “Your hands are tight. Is your body big?”</div></div>`}`;
+  } else if (sc === 'pick') {
+    const s = A.skill;
+    body = `<div class="pw-hello" style="margin:0 0 6px">${pip({ mood: 'idle', size: 84 })}<div class="say">${A.level >= 3 ? 'That’s a big feeling. Let’s make it smaller together.' : A.level === 2 ? 'Wiggly! Let’s help your body feel calm.' : 'You feel calm! Want to practice and earn a star?'}<button class="rd" id="aRead" aria-label="Read aloud">${ico('sound', 22)}</button></div></div>
+      <div class="fte">
+        <div class="col"><div class="lab">FIRST</div>${pcard(s, { pressed: true, plan: PEOPLE.mateo.plan.includes(s.id) })}
+          <div class="orpick"><span>or</span>${A.alt.map(id => pcard(skill(id), { sm: true })).join('')}</div></div>
+        <div class="arrow">${ico('arrow', 34)}</div>
+        <div class="col"><div class="lab">THEN</div><div class="then-opts">${THENS.map(t => `<button data-then="${t.id}" aria-pressed="${A.then === t.id}">${t.svg}${t.name}</button>`).join('')}</div>
+          <div style="font:500 14px/1.3 var(--kidf);color:#6a8580;text-align:center">Mateo picks what comes next.</div>
+          <button class="kbtn" id="aStart" style="margin-top:auto">${ico('arrow', 24)} Let’s start</button></div>
+      </div>
+      ${s.cg ? `<div class="cg"><span>${ico('people', 26)}</span><div><b>Grown-up tip</b>${esc(s.cg)}</div></div>` : ''}
+`;
+  } else if (sc === 'play') {
+    body = `<div id="aPlayer" style="flex:1;display:flex;flex-direction:column;min-height:0"></div>`;
+  } else if (sc === 'done') {
+    const b = LEVELS[(A.before || 3) - 1], a = LEVELS[(A.after || 1) - 1];
+    const th = THENS.find(t => t.id === A.then);
+    const better = (A.before || 3) > (A.after || 1);
+    body = `<div style="display:flex;align-items:center;gap:24px;justify-content:center;margin-top:4px">${pip({ mood: 'celebrate', size: 150 })}
+      <div style="display:flex;flex-direction:column;gap:12px"><h3>${better ? 'Your body got calmer!' : 'You practiced. That counts!'}</h3>
+        <div class="result"><div class="r-box"><small>Before</small>${face(b.n)}<div style="font-weight:600">${b.name}</div></div>${ico('arrow', 34, 'style="color:#9bb8b1"')}<div class="r-box"><small>After</small>${face(a.n)}<div style="font-weight:600">${a.name}</div></div></div></div></div>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+        <div class="pcard" style="--pc:#e8a317;--pc-soft:#fdf0cc;flex-direction:row;gap:12px;padding:12px 20px"><span class="pic" style="width:56px;height:56px">${ico('star', 34, 'style="fill:#f5b524;color:#e8a317"')}</span><span>+1 star!<br><span style="font:500 14px var(--kidf);color:#8a6a1a">${A.stars} stars</span></span></div>
+        <div class="pcard" style="--pc:#14b8a6;--pc-soft:#ccfbf1;flex-direction:row;gap:12px;padding:12px 20px"><span class="pic" style="width:56px;height:56px">${th.svg.replace('<svg', '<svg width="40" height="40"')}</span><span>THEN:<br>${th.name} time!</span></div>
+      </div>
+      <div style="display:flex;justify-content:center;margin-top:14px"><span class="sent">${ico('send', 16)} Sent to Dr. Rachel Kim, BCBA · ${esc(A.skill.kid || A.skill.name)} · ${b.name} → ${a.name}</span></div>
+      <div class="krow"><button class="kbtn ghost" id="aAgain">${ico('home', 22)} Home</button></div>`;
+  } else if (sc === 'toolbox') {
+    const plan = PEOPLE.mateo.plan.map(skill);
+    const more = SKILLS.filter(s => s.ages.includes('k') && s.v.includes('aut') && !PEOPLE.mateo.plan.includes(s.id));
+    body = `<div style="display:flex;align-items:center;gap:14px">${pip({ mood: 'happy', size: 84 })}<h3>My calm toolbox</h3></div>
+      <div class="tb-sec">From Dr. Kim</div><div class="toolbox">${plan.map(s => pcard(s)).join('')}</div>
+      <div class="tb-sec">More to try</div><div class="toolbox">${more.map(s => pcard(s)).join('')}</div>`;
+  }
+  host.innerHTML = `<div class="pw">${top}<div class="pw-body">${body}</div></div>`;
+
+  const $ = q => host.querySelector(q);
+  if ($('#aHome')) $('#aHome').onclick = () => goA('home');
+  $('#aBox').onclick = () => goA('toolbox');
+  if ($('#aRead')) $('#aRead').onclick = () => { const was = VOICE.on; VOICE.on = true; speak(host.querySelector('.say').textContent); VOICE.on = was; };
+  host.querySelectorAll('.mcard').forEach(m => m.onclick = () => {
+    const lv = +m.dataset.lv;
+    m.setAttribute('aria-pressed', 'true');
+    if (sc === 'home') {
+      A.level = A.before = lv;
+      const p = PICKS[lv]; A.skill = skill(p[0]); A.alt = p.slice(1);
+      later(() => goA('pick'), 260);
+    } else {
+      A.after = lv; A.stars++;
+      logEvent({ who: 'mateo', skill: A.skill.id, before: A.before, after: lv, scale: 'meter' });
+      later(() => { goA('done'); burst(host.querySelector('.pw'), 50); }, 260);
+    }
+  });
+  if (sc === 'pick') {
+    host.querySelectorAll('.orpick .pcard').forEach(b => b.onclick = () => { const cur = A.skill.id; A.skill = skill(b.dataset.skill); A.alt = A.alt.map(x => x === b.dataset.skill ? cur : x); renderAutismScreen(); });
+    host.querySelectorAll('[data-then]').forEach(b => b.onclick = () => { A.then = b.dataset.then; host.querySelectorAll('[data-then]').forEach(x => x.setAttribute('aria-pressed', x === b)); });
+    $('#aStart').onclick = () => goA('play');
+  }
+  if (sc === 'toolbox' || sc === 'home') host.querySelectorAll('.toolbox .pcard').forEach(b => b.onclick = () => { A.skill = skill(b.dataset.skill); A.before = A.before || 2; goA('play'); });
+  if (sc === 'play') playSkill($('#aPlayer'), A.skill, kidCtx());
+  if (sc === 'done') $('#aAgain').onclick = () => { A.before = A.after = null; goA('home'); };
+}
+
+/* =====================================================================
+   ACT 3 · BEHAVIORAL HEALTH — Jordan (15) or Sam (29) with Kindred
+   ===================================================================== */
+const K = { who: 'jordan', screen: 'home', suds: 7, feel: ['Anxious'], skill: null, before: null, after: null, share: true, filter: 'all', q: '' };
+const SUDS_WORDS = ['Calm', 'Calm', 'Calm', 'Uneasy', 'Uneasy', 'Hard', 'Hard', 'Very hard', 'Very hard', 'Overwhelming', 'Overwhelming'];
+const FEELINGS = ['Anxious', 'Angry', 'Low', 'Overwhelmed', 'Lonely', 'Numb'];
+const kp = () => PEOPLE[K.who];
+const kvar = () => kp().band === 't' ? 'spark' : 'still';
+const kinCtx = () => ({ world: 'kin', variant: kvar(), kid: false, onDone: () => goK('after') });
+
+function suggestFor() {
+  const f = K.feel;
+  const p = kp().plan;
+  let ids;
+  if (f.includes('Angry') || f.includes('Restless')) ids = K.who === 'sam' ? ['sigh', 'paced', 'thought'] : ['paced', 'surf', 'thought'];
+  else if (f.includes('Low') || f.includes('Numb') || f.includes('Lonely') || f.includes('Ashamed')) ids = K.who === 'sam' ? ['heart', 'leaves', 'paced'] : ['reach', 'paced', 'thought'];
+  else ids = K.who === 'sam' ? ['sigh', 'ground54321', 'thought'] : ['paced', 'ground54321', 'jar'];
+  return ids.filter(id => p.includes(id)).concat(p.filter(id => !ids.includes(id))).slice(0, 3);
+}
+
+const NOTES_B = {
+  home:    { t: 'Between sessions, or on a waitlist', b: ['<b>Jordan, 15</b>, sees Dr. Moreno weekly. It’s 10:42 PM on a school night. <b>Sam, 29</b>, is on a three-week waitlist. Switch personas above the phone.', '<b>Kindred</b> is the teen/adult companion: a light that breathes with you. Teens get <b>Kindred Spark</b>; adults get the quieter form.', 'Same library as Pip, in different words, pacing and look. One intensity check (0–10) starts every use.'] },
+  safety:  { t: 'Safety comes before skills', b: ['At <b>8 or above</b>, Kindred asks a direct safety question before offering any skill.', 'This follows the same safe-messaging rules as the NOVA Coach film: name the warning sign, offer connection, no method talk.', 'Try “I’m not sure” to see the crisis path.'] },
+  crisis:  { t: 'Crisis path: connection, not chat', b: ['<b>988</b> first, 911 for immediate danger, then the client’s own <b>clinician-authored safety plan</b>.', 'The care team is alerted. For a minor, the parent is too.', 'Kindred can stay and breathe with the client. It never replaces a person here.'] },
+  suggest: { t: 'Skills from the therapist’s plan', b: ['Suggestions come from <b>Dr. Moreno’s plan first</b>, matched to the feelings Jordan picked.', 'The full library is one tap away, filtered to what’s approved for this age band and vertical.'] },
+  library: { t: 'The same library, filtered', b: ['Only skills approved for <b>this vertical and age band</b> appear.', 'Search and group filters make it fast to find a skill at 10 PM.'] },
+  play:    { t: 'Kindred breathes with you', b: ['For paced breathing, <b>Kindred is the pacer</b>: its light grows as you breathe in and dims as you breathe out.', 'Grounding, thought checks and “park the worry” use the same engine as Pip, with an adult skin.'] },
+  after:   { t: 'Before → after, every time', b: ['A second rating turns each use into a <b>measured outcome</b>.', 'Over weeks, this shows the therapist what actually helps between sessions.'] },
+  done:    { t: 'The client decides what is shared', b: ['Sharing to the therapist is a <b>visible choice</b>, on by default for plan skills.', 'Dr. Moreno walks into Thursday knowing what happened on Tuesday night. See it in Act 4.'] }
+};
+
+function goK(screen) {
+  if (screen !== 'play') stopPlayers();
+  K.screen = screen; renderKScreen();
+  renderNotes('bh', NOTES_B[screen], ['home', 'suggest', 'play', 'after', 'done'], screen);
+}
+
+function renderBH() {
+  const el = document.getElementById('act-bh');
+  el.innerHTML = `<div class="stage"><div class="stage-main">
+    <div class="stage-head"><div><span class="eyebrow" style="color:#5b5fd6">Act 3 · Behavioral-health vertical</span><h2>Kindred, for teens and adults</h2><p>Coping-skills support between sessions or until a session is available, grounded in a clinician-approved library.</p></div>
+      <div class="toggles"><div class="seg" role="group" aria-label="Persona"><button data-who="jordan" aria-pressed="${K.who === 'jordan'}">Jordan · 15</button><button data-who="sam" aria-pressed="${K.who === 'sam'}">Sam · 29 · waitlist</button></div>
+      <button class="tog" id="tgVoiceB" aria-pressed="${VOICE.on}"><span class="sw"></span>Read aloud</button></div></div>
+    <div class="phone"><div class="screen" id="kScreen"></div></div>
+  </div><aside class="notes" id="notes-bh"></aside></div>`;
+  el.querySelectorAll('[data-who]').forEach(b => b.onclick = () => {
+    K.who = b.dataset.who; K.suds = K.who === 'sam' ? 6 : 7; K.feel = K.who === 'sam' ? ['Overwhelmed'] : ['Anxious'];
+    el.querySelectorAll('[data-who]').forEach(x => x.setAttribute('aria-pressed', x === b)); goK('home');
+  });
+  const v = document.getElementById('tgVoiceB');
+  v.onclick = () => { VOICE.on = !VOICE.on; v.setAttribute('aria-pressed', VOICE.on); };
+  goK(K.screen === 'play' ? 'home' : K.screen);
+}
+
+function sudsBlock(id, val) {
+  return `<div class="suds"><div class="suds-val"><b id="${id}V">${val}</b><span id="${id}W">${SUDS_WORDS[val]}<br>out of 10</span></div>
+    <input type="range" min="0" max="10" step="1" value="${val}" id="${id}" aria-label="Intensity from 0 to 10">
+    <div class="ends"><span>0 · calm</span><span>10 · overwhelming</span></div></div>`;
+}
+function wireSuds(host, id, onChange) {
+  const r = host.querySelector('#' + id);
+  r.oninput = () => { host.querySelector('#' + id + 'V').textContent = r.value; host.querySelector('#' + id + 'W').innerHTML = SUDS_WORDS[r.value] + '<br>out of 10'; onChange(+r.value); };
+}
+function krow(s) {
+  const g = group(s.g);
+  return `<button class="krow2" data-skill="${s.id}"><span class="kpic" style="background:${g.hue}">${ico(s.icon, 24)}</span><span class="kt"><b>${esc(s.name)}</b><span>${esc(s.what)}</span></span><span class="km">${s.min} min</span></button>`;
+}
+
+function renderKScreen() {
+  const host = document.getElementById('kScreen'); if (!host) return;
+  const P = kp(), V = kvar(), sc = K.screen;
+  const first = P.name;
+  const top = `<div class="kw-top">${sc !== 'home' ? `<button class="kw-ib" id="kBack" aria-label="Home">${ico(sc === 'play' ? 'x' : 'back', 20)}</button>` : `<div class="who"><b>Kindred</b>with ${first}</div>`}<span class="sp"></span><button class="kw-help" id="kHelp">${ico('shield', 16)} Get help now</button></div>`;
+  let body = '';
+  if (sc === 'home') {
+    body = `<div style="display:flex;justify-content:center;margin:2px 0 4px">${kindred({ variant: V, state: 'listen', size: 104 })}</div>
+      <h3>${K.who === 'jordan' ? 'Hey Jordan.' : 'Hi Sam.'} <em>I’m here.</em></h3>
+      <p class="ksub">${K.who === 'jordan' ? 'Your next session with Dr. Moreno is Thursday at 4:00. Until then, we can use the skills you two picked.' : 'You’re on the waitlist for your first appointment, about three weeks out. Until then, I can guide you through skills your care team approved.'}</p>
+      <div class="kcard" style="margin-top:14px"><span class="klabel">How intense is it right now?</span>${sudsBlock('suds1', K.suds)}
+        <div class="fchips" role="group" aria-label="Feelings">${FEELINGS.map(f => `<button class="fchip" data-f="${f}" aria-pressed="${K.feel.includes(f)}">${f}</button>`).join('')}</div></div>
+      <div class="kstack"><button class="kbtn2" id="kGo">Continue ${ico('arrow', 18)}</button><button class="kbtn2 ghost" id="kLib">Browse all skills</button></div>`;
+  } else if (sc === 'safety') {
+    body = `<div style="display:flex;justify-content:center;margin:6px 0 10px">${kindred({ variant: V, state: 'steady', size: 110 })}</div>
+      <h3>Before anything else: <em>are you safe right now?</em></h3>
+      <p class="ksub">${K.suds} out of 10 is a lot to carry. Your answer helps me find the right kind of support.</p>
+      <div class="kstack" style="margin-top:18px">
+        <button class="krow2" data-safe="yes"><span class="kpic" style="background:#8be9df">${ico('check', 22)}</span><span class="kt"><b>Yes, I’m safe</b><span>Let’s bring the intensity down together.</span></span></button>
+        <button class="krow2" data-safe="unsure"><span class="kpic" style="background:#c9b8ff">${ico('chat', 22)}</span><span class="kt"><b>I’m not sure</b><span>That’s okay. Let’s get you connected.</span></span></button>
+        <button class="krow2" data-safe="no"><span class="kpic" style="background:#ff9f9f">${ico('shield', 22)}</span><span class="kt"><b>No, I might hurt myself</b><span>You won’t go through this alone.</span></span></button>
+      </div>`;
+  } else if (sc === 'crisis') {
+    const minor = K.who === 'jordan';
+    body = `<div style="display:flex;align-items:center;gap:12px;margin:2px 0 8px">${kindred({ variant: V, state: 'steady', size: 70 })}<h3 style="font-size:28px">You don’t have to handle this <em>alone.</em></h3></div>
+      <div class="crisis">
+        <div class="big988"><span style="width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;flex:none">${ico('phone', 26)}</span><span><b>Call or text 988</b><span>Suicide &amp; Crisis Lifeline · free, confidential, 24/7</span></span></div>
+        <p class="ksub" style="margin:0">If you’re in immediate danger, call <b style="color:#fff">911</b>.</p>
+        <div class="kcard"><span class="klabel">${first}’s safety plan · from ${minor ? 'Dr. Moreno' : 'the intake team'}</span>
+          <div class="sp-list" style="margin-top:10px">
+            <div class="sp-item"><i>1</i><span><b>Warning signs:</b> thoughts won’t slow down, pulling away from people</span></div>
+            <div class="sp-item"><i>2</i><span><b>Things that help:</b> long exhale, a hot shower, my playlist</span></div>
+            <div class="sp-item"><i>3</i><span><b>My people:</b> ${minor ? 'Mom (Erin), Aunt Rosa' : 'Alex, my sister Dana'}</span></div>
+            <div class="sp-item"><i>4</i><span><b>Professionals:</b> ${minor ? 'Dr. Moreno, after-hours line' : 'Care team on-call line'}, 988</span></div>
+            <div class="sp-item"><i>5</i><span><b>Make my space safer</b> ${minor ? 'with Mom' : 'with Alex'}</span></div>
+          </div></div>
+        <span class="sent">${ico('send', 16)} ${minor ? 'Mom and Dr. Moreno’s team have been alerted' : 'Your care team has been alerted'}</span>
+      </div>
+      <div class="kstack"><button class="kbtn2" id="kStay">Stay with me and breathe</button></div>`;
+  } else if (sc === 'suggest') {
+    const ids = suggestFor();
+    body = `<div style="display:flex;align-items:center;gap:12px;margin:4px 0 6px">${kindred({ variant: V, state: 'calm', size: 76 })}<div><h3 style="font-size:30px">Let’s bring it down <em>a little.</em></h3></div></div>
+      <p class="ksub">From ${K.suds} to a bit lower is a real win. Pick one. ${K.feel.length ? `You said: ${K.feel.map(f => f.toLowerCase()).join(', ')}.` : ''}</p>
+      <span class="from-plan">${ico('check', 15)} From your plan with ${K.who === 'jordan' ? 'Dr. Moreno' : 'your care team'}</span>
+      <div style="display:flex;flex-direction:column;gap:8px">${ids.map(id => krow(skill(id))).join('')}</div>
+      <div class="kstack"><button class="kbtn2 ghost" id="kLib">${ico('search', 18)} Explore the library</button></div>`;
+  } else if (sc === 'library') {
+    const band = P.band;
+    let list = SKILLS.filter(s => s.ages.includes(band) && s.v.includes('bh'));
+    const total = list.length;
+    if (K.filter !== 'all') list = list.filter(s => s.g === K.filter);
+    if (K.q) list = list.filter(s => (s.name + ' ' + s.what).toLowerCase().includes(K.q.toLowerCase()));
+    body = `<h3 style="font-size:30px">All skills <em>for you</em></h3><p class="ksub">${total} skills approved for ${band === 't' ? 'teens' : 'adults'} in behavioral-health care.</p>
+      <label class="ksearch">${ico('search', 18)}<input id="kq" placeholder="Search skills" value="${esc(K.q)}" aria-label="Search skills"></label>
+      <div class="kfilters">${[{ id: 'all', name: 'All' }].concat(GROUPS).map(g => `<button data-g="${g.id}" aria-pressed="${K.filter === g.id}">${g.name}</button>`).join('')}</div>
+      <div style="display:flex;flex-direction:column;gap:8px" id="klist">${list.map(krow).join('') || '<p class="ksub">No skills match. Try another word.</p>'}</div>`;
+  } else if (sc === 'play') {
+    body = `<div id="kPlayer" style="flex:1;display:flex;flex-direction:column;min-height:0"></div>`;
+  } else if (sc === 'after') {
+    body = `<div style="display:flex;justify-content:center;margin:4px 0 8px">${kindred({ variant: V, state: 'listen', size: 120 })}</div>
+      <h3>How intense is it <em>now?</em></h3><p class="ksub">You started at ${K.before}. Be honest. Any answer is useful.</p>
+      <div class="kcard" style="margin-top:14px">${sudsBlock('suds2', K.after ?? Math.max(0, K.before - 4))}</div>
+      <div class="kstack"><button class="kbtn2" id="kSave">Save</button></div>`;
+  } else if (sc === 'done') {
+    const drop = K.before - K.after;
+    body = `<div style="display:flex;justify-content:center;margin:2px 0 6px">${kindred({ variant: V, state: 'glad', size: 120 })}</div>
+      <h3>${drop > 0 ? `From ${K.before} to ${K.after}. <em>That was you.</em>` : `You showed up for yourself. <em>That counts.</em>`}</h3>
+      <div class="result" style="margin:16px 0"><div class="r-box"><small>Before</small><b>${K.before}</b></div>${ico('arrow', 28, 'style="color:#a9b1dc"')}<div class="r-box"><small>After</small><b>${K.after}</b></div><div class="r-box" style="text-align:left;max-width:120px"><small>Skill</small><span style="font-size:14px;color:#fff">${esc(K.skill.name)}</span></div></div>
+      <button class="krow2" id="kShare" aria-pressed="${K.share}"><span class="kpic" style="background:${K.share ? '#8be9df' : 'rgba(255,255,255,.15)'}">${ico(K.share ? 'check' : 'lock', 22)}</span><span class="kt"><b>${K.share ? 'Shared with ' + (K.who === 'jordan' ? 'Dr. Moreno' : 'your care team') : 'Kept private'}</b><span>${K.share ? 'Added to your between-session notes. Tap to keep it private.' : 'Only you can see this. Tap to share.'}</span></span></button>
+      <div class="kstack"><button class="kbtn2" id="kHome">Back to my day</button><button class="kbtn2 ghost" id="kMore">Try another skill</button></div>`;
+  }
+  host.innerHTML = `<div class="kw">${top}<div class="kw-body">${body}</div></div>`;
+
+  const $ = q => host.querySelector(q);
+  if ($('#kBack')) $('#kBack').onclick = () => goK(sc === 'library' && K.skill ? 'suggest' : 'home');
+  $('#kHelp').onclick = () => goK('crisis');
+  host.querySelectorAll('.krow2[data-skill]').forEach(b => b.onclick = () => { K.skill = skill(b.dataset.skill); if (K.before == null) K.before = K.suds; goK('play'); });
+  if (sc === 'home') {
+    wireSuds(host, 'suds1', v => K.suds = v);
+    host.querySelectorAll('.fchip').forEach(b => b.onclick = () => { const f = b.dataset.f; K.feel = K.feel.includes(f) ? K.feel.filter(x => x !== f) : K.feel.concat(f); b.setAttribute('aria-pressed', K.feel.includes(f)); });
+    $('#kGo').onclick = () => { K.before = K.suds; K.after = null; goK(K.suds >= 8 ? 'safety' : 'suggest'); };
+    $('#kLib').onclick = () => { K.before = K.suds; goK('library'); };
+  }
+  if (sc === 'safety') host.querySelectorAll('[data-safe]').forEach(b => b.onclick = () => { if (b.dataset.safe === 'yes') goK('suggest'); else { logEvent({ who: K.who, skill: null, safety: true }); goK('crisis'); } });
+  if (sc === 'crisis') $('#kStay').onclick = () => { K.skill = skill('paced'); K.before = K.before ?? K.suds; goK('play'); };
+  if (sc === 'suggest') $('#kLib').onclick = () => goK('library');
+  if (sc === 'library') {
+    const q = $('#kq');
+    q.oninput = () => { K.q = q.value; const pos = q.selectionStart; renderKScreen(); const n = host.querySelector('#kq'); n.focus(); n.setSelectionRange(pos, pos); };
+    host.querySelectorAll('[data-g]').forEach(b => b.onclick = () => { K.filter = b.dataset.g; renderKScreen(); });
+  }
+  if (sc === 'play') playSkill($('#kPlayer'), K.skill, kinCtx());
+  if (sc === 'after') {
+    K.after = K.after ?? Math.max(0, K.before - 4);
+    wireSuds(host, 'suds2', v => K.after = v);
+    $('#kSave').onclick = () => { logEvent({ who: K.who, skill: K.skill.id, before: K.before, after: K.after, scale: 'suds', shared: K.share }); goK('done'); };
+  }
+  if (sc === 'done') {
+    $('#kShare').onclick = () => { K.share = !K.share; const e = EVENTS.find(x => x.who === K.who && !x.safety); if (e) e.shared = K.share; renderKScreen(); };
+    $('#kHome').onclick = () => { K.before = K.after = null; K.skill = null; goK('home'); };
+    $('#kMore').onclick = () => { K.before = K.after; K.after = null; goK('suggest'); };
+  }
+}
+
+/* =====================================================================
+   ACT 4 · CLINICIAN & HIVE — the same panel inside both clinical portals
+   All numbers are illustrative demo data, plus live events from Acts 2–3.
+   ===================================================================== */
+const CL = {
+  who: 'jordan',
+  applied: { jordan: false, mateo: false },
+  data: {
+    jordan: {
+      title: 'Jordan R.', meta: '15 · Generalized anxiety · Dr. Alicia Moreno, LMHC · weekly', v: 'bh', color: '#5b5fd6',
+      scale: { min: 0, max: 10, unit: 'SUDS 0–10', fmt: v => v.toFixed(1) },
+      kpi: [
+        { l: 'Skill uses', v: '37', s: 'last 28 days · 31 shared', st: ['good', '↑ 12 vs prior 28'] },
+        { l: 'Average drop per use', v: '−3.1', s: 'points on 0–10 intensity', st: ['good', 'Strong response'] },
+        { l: 'Practice days', v: '19/28', s: 'used on 68% of days' },
+        { l: 'Safety checks', v: '1', s: 'Oct 28 · 988 shown, team alerted', st: ['warn', 'Reviewed in session'] }
+      ],
+      rows: [['paced', 7.6, 4.1, 14], ['ground54321', 7.9, 4.6, 9], ['jar', 6.2, 3.9, 5], ['reach', 6.8, 4.0, 2], ['thought', 6.0, 4.4, 5], ['surf', 7.1, 5.0, 2]],
+      heat: [[0,0,0,1,1,3],[0,0,1,0,2,4],[0,0,0,1,1,5],[0,1,0,0,2,3],[0,0,0,1,3,2],[0,1,1,1,1,1],[0,0,1,0,2,3]],
+      heatNote: 'Most help is needed <b>9 PM to midnight on school nights</b>. Consider an evening check-in and a bedtime routine skill.',
+      hive: { cohort: 'Teens 13–17 · anxiety · 2,140 NOVA clients', big: 'Grounding first <span>doubles</span> Thought check completion', body: 'When 5-4-3-2-1 comes right before a Thought check, teens finish the thought check 64% of the time instead of 31%, and the intensity drop grows from −1.9 to −3.4.', action: 'Pair 5-4-3-2-1 before Thought check', done: 'Paired in Jordan’s plan. Kindred will offer them together from tonight.' },
+      feed: [['Tue 10:42 PM', 'paced', '8 → 4', 'Shared: “fight with dad”'], ['Mon 9:58 PM', 'ground54321', '7 → 5', 'Shared'], ['Sun 11:20 PM', 'jar', '6 → 4', 'Worry time 6:30 PM'], ['Sat 3:10 PM', 'thought', '6 → 5', 'Private'], ['Thu 10:05 PM', 'paced', '7 → 3', 'Shared']]
+    },
+    mateo: {
+      title: 'Mateo G.', meta: '7 · Autism (ASD level 2) · Dr. Rachel Kim, BCBA · NOVA Home + clinic', v: 'aut', color: '#0d9488',
+      scale: { min: 1, max: 4, unit: 'Feelings meter 1–4', fmt: v => ['', 'Calm', 'Wiggly', 'Big', 'Too big'][Math.round(v)] + ` (${v.toFixed(1)})` },
+      kpi: [
+        { l: 'Skill uses', v: '52', s: 'last 28 days · 46 with Lucia', st: ['good', '↑ 18 vs prior 28'] },
+        { l: 'Average drop per use', v: '−1.6', s: 'levels on the 4-level meter', st: ['good', 'Strong response'] },
+        { l: 'Calm within 5 min', v: '81%', s: 'of “Big” or “Too big” moments' },
+        { l: 'Grown-up co-regulated', v: '88%', s: 'caregiver tip followed', st: ['good', 'Parent training effect'] }
+      ],
+      rows: [['heavy', 3.4, 1.7, 13], ['balloon', 3.2, 1.4, 15], ['squeeze', 2.6, 1.3, 8], ['butterfly', 3.0, 1.8, 7], ['ground54321', 2.4, 1.5, 5], ['jar', 2.2, 1.4, 4]],
+      heat: [[0,0,1,4,1,0],[0,0,0,5,2,0],[0,1,0,4,1,0],[0,0,1,5,2,1],[0,0,0,3,1,0],[1,1,2,1,1,0],[0,2,1,1,1,0]],
+      heatNote: 'Peaks at <b>3–6 PM on school days</b>, the transition home. Suggest a first-then routine right at pickup.',
+      hive: { cohort: 'Autistic children 5–8 · sensory-seeking profile · 860 NOVA clients', big: 'Heavy work before breathing reaches calm <span>2.1× faster</span>', body: 'For sensory-seeking children, a wall push before balloon breath brings a “Too big” moment to calm in a median 3.4 minutes, compared with 7.1 for breathing alone.', action: 'Add Wall push before Balloon breath', done: 'Added to Mateo’s first-then board. Pip will offer Wall push first when the meter reads Big or Too big.' },
+      feed: [['Today 3:52 PM', 'heavy', 'Too big → Wiggly', 'with Lucia'], ['Yesterday 4:15 PM', 'balloon', 'Big → Calm', 'with Lucia'], ['Wed 3:40 PM', 'squeeze', 'Wiggly → Calm', 'with Lucia'], ['Tue 7:55 PM', 'butterfly', 'Big → Wiggly', 'bedtime'], ['Mon 3:31 PM', 'balloon', 'Too big → Calm', 'with Lucia']]
+    }
+  }
+};
+CL.plan = { jordan: PEOPLE.jordan.plan.slice(), mateo: PEOPLE.mateo.plan.slice() };
+
+const NOTES_C = { t: 'One panel, both clinical portals', b: [
+  'The same Coping Skills panel sits inside the <b>BCBA workspace</b> and the <b>behavioral-health clinician view</b>. Switch clients above.',
+  '<b>Before → after by skill</b> shows what actually works for this person, between sessions, where clinicians have never had data.',
+  'Anything done in Acts 2 and 3 appears in <b>Recent moments</b> as <b>New</b>.',
+  'The <b>Hive</b> card is the moat: outcomes from every NOVA client, across verticals, turn into plan suggestions. One click and the companion changes tonight.'
+], foot: 'Illustrative demo data. Hive figures are a product mock-up, not study results.' };
+
+function logEvent(e) { e.at = new Date(); EVENTS.unshift(e); }
+
+function renderClin() {
+  const el = document.getElementById('act-clinician');
+  const D = CL.data[CL.who];
+  const isA = CL.who === 'mateo';
+  el.innerHTML = `<div class="stage"><div class="stage-main" style="align-items:stretch">
+    <div class="stage-head"><div><span class="eyebrow">Act 4 · Clinician view · NOVA Core shared panel</span><h2>What works, for whom, and when</h2><p>Every use from the companion apps arrives here as a measured moment. The Hive turns them into suggestions.</p></div>
+      <div class="seg" role="group" aria-label="Client"><button data-c="jordan" aria-pressed="${!isA}">Jordan · BH</button><button data-c="mateo" aria-pressed="${isA}">Mateo · Autism</button></div></div>
+    <div class="cl-shell">
+      <nav class="cl-rail" aria-hidden="true"><span class="m">N</span><span>${ico('home', 20)}</span><span class="on">${ico('people', 20)}</span><span>${ico('clock', 20)}</span><span>${ico('hive', 20)}</span><span>${ico('sliders', 20)}</span></nav>
+      <div class="cl-main">
+        <div class="crumbs">${isA ? 'NOVA Clinic · BCBA workspace' : 'NOVA Behavioral Health · Clinician'} <span>›</span> Clients <span>›</span> ${D.title} <span>›</span> <b style="color:var(--ink)">Coping Skills</b></div>
+        <div class="cl-head"><div class="avatar" style="background:${D.color}">${D.title[0]}</div><div><h2>${D.title} <span class="vchip ${D.v}">${isA ? 'Autism' : 'Behavioral health'}</span></h2><div class="meta">${D.meta}</div></div><span class="sp"></span><span class="crumbs">${ico('clock', 16)} Last 28 days</span></div>
+        <div class="kpis">${D.kpi.map(k => `<div class="kpi"><small>${k.l}</small><b>${k.v}</b><span>${k.s}</span>${k.st ? `<span class="st ${k.st[0]}">${k.st[0] === 'good' ? ico('check', 13) : ico('shield', 13)} ${k.st[1]}</span>` : ''}</div>`).join('')}</div>
+        <div class="cl-grid">
+          <div class="panel chart" id="dumb"><div class="ph"><div><h3>Before → after, by skill</h3><p>Average ${D.scale.unit} at the start and end of each use · sorted by size of drop</p></div><div class="legend"><span><i style="background:#b8c6c2"></i>Before</span><span><i style="background:${isA ? '#0d9488' : '#5b5fd6'}"></i>After</span></div></div><div id="dumbSvg"></div><div class="tip" id="tip1"></div></div>
+          <div class="panel hive"><div class="ph"><div><h3>${ico('hive', 18)} Hive insight</h3><p>${D.hive.cohort}</p></div></div>
+            <div class="big">${D.hive.big}</div><p>${D.hive.body}</p>
+            <button class="apply" id="applyHive" ${CL.applied[CL.who] ? 'disabled' : ''}>${CL.applied[CL.who] ? ico('check', 16) + ' Applied' : ico('plus', 16) + ' ' + D.hive.action}</button>
+            ${CL.applied[CL.who] ? `<p style="margin-top:10px;color:#bdf3e8">${D.hive.done}</p>` : ''}
+            <p class="fine">Illustrative figures for the demo. In production, insights need a minimum cohort size and clinician review before they’re shown.</p></div>
+          <div class="panel chart" id="heatP"><div class="ph"><div><h3>When help is needed</h3><p>Skill uses by day and time · darker = more</p></div><div class="legend" id="heatLeg"></div></div><div id="heatSvg"></div><p style="font-size:13px;color:var(--ink-2);margin-top:8px">${D.heatNote}</p><div class="tip" id="tip2"></div></div>
+          <div class="panel"><div class="ph"><div><h3>Recent moments</h3><p>From ${isA ? 'NOVA Home (Pip)' : 'Kindred'} · ${isA ? 'logged automatically' : 'shared by the client'}</p></div></div><div class="feed" id="feed"></div></div>
+          <div class="panel" style="grid-column:1/-1"><div class="ph"><div><h3>Assigned skills</h3><p>Toggle a skill to add it to ${isA ? 'Mateo’s toolbox and first-then board' : 'Jordan’s plan in Kindred'}. Showing skills approved for this vertical and age band.</p></div><span class="crumbs">${CL.plan[CL.who].length} assigned</span></div>
+            <div class="assign" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));max-height:330px">${assignable().sort((a, b) => CL.plan[CL.who].includes(b.id) - CL.plan[CL.who].includes(a.id)).map(s => { const g = group(s.g); const on = CL.plan[CL.who].includes(s.id); return `<button class="arow ${on ? 'on' : ''}" data-s="${s.id}"><span class="ai" style="background:${g.soft};color:${g.hue}">${ico(s.icon, 18)}</span><span class="at"><b>${esc(s.name)}</b><span>${esc(g.name)} · ${esc(s.ev)}</span></span><span class="mini-tog"></span></button>`; }).join('')}</div></div>
+        </div>
+      </div>
+    </div>
+  </div><aside class="notes" id="notes-clinician"></aside></div>`;
+  el.querySelectorAll('[data-c]').forEach(b => b.onclick = () => { CL.who = b.dataset.c; renderClin(); });
+  el.querySelector('#applyHive').onclick = () => { CL.applied[CL.who] = true; const add = CL.who === 'mateo' ? 'heavy' : 'ground54321'; if (!CL.plan[CL.who].includes(add)) CL.plan[CL.who].push(add); renderClin(); };
+  el.querySelectorAll('.arow').forEach(b => b.onclick = () => { const id = b.dataset.s, p = CL.plan[CL.who]; const i = p.indexOf(id); if (i >= 0) p.splice(i, 1); else p.push(id); renderClin(); });
+  drawDumbbell(D, isA);
+  drawHeat(D, isA);
+  drawFeed(D, isA);
+  renderNotes('clinician', NOTES_C);
+}
+function assignable() {
+  const isA = CL.who === 'mateo';
+  return SKILLS.filter(s => isA ? (s.ages.includes('k') && s.v.includes('aut')) : (s.ages.includes('t') && s.v.includes('bh')));
+}
+
+function drawDumbbell(D, isA) {
+  const rows = D.rows.map(r => ({ s: skill(r[0]), b: r[1], a: r[2], n: r[3] })).sort((x, y) => (y.b - y.a) - (x.b - x.a));
+  const box = document.getElementById('dumbSvg');
+  const W = Math.max(460, Math.round(box.clientWidth || 620)), L = 178, R = 104, rowH = 40, top = 14, H = top + rows.length * rowH + 30;
+  const { min, max } = D.scale;
+  const x = v => L + (v - min) / (max - min) * (W - L - R);
+  const after = isA ? '#0d9488' : '#5b5fd6';
+  const ticks = isA ? [1, 2, 3, 4] : [0, 2, 4, 6, 8, 10];
+  const tickLab = v => isA ? ['', 'Calm', 'Wiggly', 'Big', 'Too big'][v] : v;
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Before and after averages by skill">`;
+  ticks.forEach(t => { svg += `<line x1="${x(t)}" x2="${x(t)}" y1="${top - 4}" y2="${H - 26}" stroke="#e7eeec"/><text x="${x(t)}" y="${H - 8}" text-anchor="middle">${tickLab(t)}</text>`; });
+  rows.forEach((r, i) => {
+    const y = top + i * rowH + rowH / 2;
+    svg += `<g class="dbrow" data-i="${i}">
+      <rect x="0" y="${y - rowH / 2}" width="${W}" height="${rowH}" fill="transparent"/>
+      <text class="lab" x="0" y="${y + 4}">${esc(r.s.name.length > 24 ? r.s.name.slice(0, 23) + '…' : r.s.name)}</text>
+      <line x1="${x(r.a)}" x2="${x(r.b)}" y1="${y}" y2="${y}" stroke="${after}" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="${x(r.b)}" cy="${y}" r="7" fill="#b8c6c2" stroke="#fff" stroke-width="2"/>
+      <circle cx="${x(r.a)}" cy="${y}" r="8" fill="${after}" stroke="#fff" stroke-width="2"/>
+      <text x="${W - R + 14}" y="${y + 4}" style="font-weight:700;fill:var(--ink);font-variant-numeric:tabular-nums">−${(r.b - r.a).toFixed(1)}</text>
+      <text x="${W - 4}" y="${y + 4}" text-anchor="end" style="fill:var(--ink-3);font-size:11px">${r.n} uses</text></g>`;
+  });
+  svg += '</svg>';
+  box.innerHTML = svg;
+  const tip = document.getElementById('tip1'), panel = document.getElementById('dumb');
+  box.querySelectorAll('.dbrow').forEach(g => {
+    g.onmousemove = ev => { const r = rows[+g.dataset.i]; const pr = panel.getBoundingClientRect(); tip.innerHTML = `<b>${esc(r.s.name)}</b><br>Before ${D.scale.fmt(r.b)} → after ${D.scale.fmt(r.a)}<br>${r.n} uses`; tip.style.left = (ev.clientX - pr.left) + 'px'; tip.style.top = (ev.clientY - pr.top - 8) + 'px'; tip.style.opacity = 1; };
+    g.onmouseleave = () => tip.style.opacity = 0;
+  });
+}
+
+function drawHeat(D, isA) {
+  const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const blocks = ['6–9a', '9–12', '12–3p', '3–6p', '6–9p', '9p–12'];
+  const ramp = isA ? ['#f1f6f5', '#c9efe7', '#8edcce', '#3fbfab', '#0d9488', '#0a6e66'] : ['#f3f3fa', '#dcdcf6', '#b7b8ee', '#8f8fe0', '#5b5fd6', '#3c3fa8'];
+  const max = Math.max(...D.heat.flat());
+  const box = document.getElementById('heatSvg');
+  const W = Math.max(360, Math.round(box.clientWidth || 420)), L = 44, T = 24, cw = (W - L) / 6, ch = 32, H = T + 7 * ch + 4;
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Skill uses by day and time">`;
+  blocks.forEach((b, j) => svg += `<text x="${L + j * cw + cw / 2}" y="14" text-anchor="middle" style="font-size:11px">${b}</text>`);
+  D.heat.forEach((row, i) => {
+    svg += `<text x="0" y="${T + i * ch + ch / 2 + 4}" style="font-size:12px">${days[i]}</text>`;
+    row.forEach((v, j) => {
+      const k = v === 0 ? 0 : Math.max(1, Math.round(v / max * 5));
+      svg += `<rect class="hc" data-d="${i}" data-b="${j}" data-v="${v}" x="${L + j * cw + 1}" y="${T + i * ch + 1}" width="${cw - 2}" height="${ch - 2}" rx="5" fill="${ramp[k]}"/>`;
+    });
+  });
+  svg += '</svg>';
+  box.innerHTML = svg;
+  document.getElementById('heatLeg').innerHTML = `<span>Fewer</span>${ramp.map(c => `<i style="background:${c};border-radius:3px;margin:0"></i>`).join('')}<span>More</span>`;
+  const tip = document.getElementById('tip2'), panel = document.getElementById('heatP');
+  box.querySelectorAll('.hc').forEach(r => {
+    r.onmousemove = ev => { const pr = panel.getBoundingClientRect(); tip.innerHTML = `<b>${days[r.dataset.d]} ${blocks[r.dataset.b]}</b><br>${r.dataset.v} uses`; tip.style.left = (ev.clientX - pr.left) + 'px'; tip.style.top = (ev.clientY - pr.top - 8) + 'px'; tip.style.opacity = 1; };
+    r.onmouseleave = () => tip.style.opacity = 0;
+  });
+}
+
+function drawFeed(D, isA) {
+  const mine = EVENTS.filter(e => e.who === CL.who || (!isA && e.who === 'sam' && false));
+  const live = mine.map(e => {
+    const t = e.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    if (e.safety) return `<div class="fitem new"><span><time>Just now · ${t}</time><b>Safety check</b> · 988 and safety plan shown · team alerted<span class="badge-new">NEW</span></span><span class="delta safety">Alert</span></div>`;
+    const s = skill(e.skill);
+    const d = e.scale === 'meter' ? `${LEVELS[e.before - 1].name} → ${LEVELS[e.after - 1].name}` : `${e.before} → ${e.after}`;
+    const flat = e.after >= e.before;
+    return `<div class="fitem new"><span><time>Just now · ${t}</time><b>${esc(s.name)}</b> · ${isA ? 'with Lucia' : (e.shared === false ? 'Private' : 'Shared')}<span class="badge-new">NEW</span></span><span class="delta ${flat ? 'flat' : ''}">${d}</span></div>`;
+  });
+  const hist = D.feed.map(f => `<div class="fitem"><span><time>${f[0]}</time><b>${esc(skill(f[1]).name)}</b> · ${esc(f[3])}</span><span class="delta">${f[2]}</span></div>`);
+  document.getElementById('feed').innerHTML = live.concat(hist).slice(0, 7).join('');
+}
+
+/* =====================================================================
+   APP · presenter notes, routing, keyboard
+   ===================================================================== */
+function renderNotes(act, n, flow, cur) {
+  const el = document.getElementById('notes-' + act); if (!el || !n) return;
+  const labels = { home: 'Check-in', pick: 'First-then', play: 'Skill', after: 'Re-check', done: 'Result', suggest: 'Plan skills' };
+  el.innerHTML = `<h4>Presenter notes</h4><div class="n-title">${n.t}</div><ul>${n.b.map(x => `<li><span>${x}</span></li>`).join('')}</ul>
+    ${flow ? `<div class="n-flow">${flow.map(f => `<span class="${f === cur ? 'on' : ''}">${labels[f] || f}</span>`).join('')}</div>` : ''}
+    <div class="n-foot">${n.foot || 'Press <b>N</b> to hide notes · <b>1–4</b> to jump between acts.'}</div>`;
+}
+
+const ACTS = ['platform', 'autism', 'bh', 'clinician'];
+let current = null;
+function route() {
+  const h = (location.hash || '#platform').slice(1);
+  const act = ACTS.includes(h) ? h : 'platform';
+  if (act === current) return;
+  stopPlayers(); cancelAnimationFrame(DUO.raf);
+  current = act;
+  document.querySelectorAll('.act').forEach(s => s.classList.toggle('on', s.id === 'act-' + act));
+  document.querySelectorAll('.acts a').forEach(a => { if (a.dataset.act === act) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  if (act === 'platform') { renderPlatform(); startDuo(); }
+  if (act === 'autism') renderAutism();
+  if (act === 'bh') renderBH();
+  if (act === 'clinician') renderClin();
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input, textarea')) return;
+  if (e.key === 'n' || e.key === 'N') document.getElementById('notesBtn').click();
+  const i = ['1', '2', '3', '4'].indexOf(e.key);
+  if (i >= 0) location.hash = ACTS[i];
+});
+document.getElementById('notesBtn').onclick = function () {
+  const on = this.getAttribute('aria-pressed') !== 'true';
+  this.setAttribute('aria-pressed', on);
+  document.body.classList.toggle('notes-off', !on);
+};
+route();
+
+</script>
+</body></html>
