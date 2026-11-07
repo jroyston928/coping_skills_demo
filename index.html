@@ -502,6 +502,24 @@ p{margin:0}
 .foot{max-width:1360px;margin:0 auto;padding:0 24px 30px;font-size:12.5px;color:var(--ink-3);display:flex;gap:10px 18px;flex-wrap:wrap;justify-content:space-between}
 .foot b{color:var(--ink-2)}
 
+/* access gate */
+.gate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:radial-gradient(80% 70% at 30% 20%,#e3fbf4,#f2f6f4 50%),var(--paper)}
+.gate[hidden]{display:none}
+.gate-card{width:min(380px,100%);background:#fff;border-radius:28px;box-shadow:var(--shadow);padding:30px 28px 26px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.gate-card .mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(150deg,#2dd4bf,#0d9488);display:grid;place-items:center;color:#fff;font:800 22px/1 var(--display)}
+.gate-card h1{font:800 24px/1.15 var(--display);letter-spacing:-.02em}
+.gate-card p{font-size:14.5px;color:var(--ink-2)}
+.gate-dots{display:flex;gap:12px;margin:4px 0}
+.gate-dots span{width:52px;height:60px;border-radius:14px;border:2px solid var(--line);display:grid;place-items:center;font:800 26px/1 var(--display);color:var(--ink);background:#fbfdfc;transition:border-color .15s}
+.gate-dots span.on{border-color:var(--teal)}
+.gate-dots.bad{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.gate-pad{display:grid;grid-template-columns:repeat(3,64px);gap:10px}
+.gate-pad button{height:56px;border-radius:16px;background:#eef3f1;font:700 21px/1 var(--display);color:var(--ink)}
+.gate-pad button:hover{background:#e2ebe8}
+.gate-pad button.alt{background:transparent;font-size:14px;color:var(--ink-2)}
+.gate-msg{min-height:20px;font:600 13.5px/1.3 var(--body);color:#b42318}
+
 /* sensory-calm mode (Pip world) */
 .calm-mode .pw{filter:saturate(.72)}
 .calm-mode .pw *, .calm-mode .pw *::before{animation-duration:0s !important;animation-iteration-count:1 !important;transition-duration:.01s !important}
@@ -540,6 +558,22 @@ p{margin:0}
 </style>
 </head>
 <body>
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateH">
+  <div class="gate-card">
+    <span class="mark">N</span>
+    <h1 id="gateH">NOVA Coping Skills</h1>
+    <p>Investor preview. Enter the 4-digit access code.</p>
+    <div class="gate-dots" id="gateDots" aria-live="polite"><span></span><span></span><span></span><span></span></div>
+    <input id="gateInput" class="sr" inputmode="numeric" autocomplete="off" maxlength="4" aria-label="Access code">
+    <div class="gate-pad">
+      <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button>
+      <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button>
+      <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button>
+      <button class="alt" data-k="clear">Clear</button><button data-k="0">0</button><button class="alt" data-k="del" aria-label="Delete">⌫</button>
+    </div>
+    <div class="gate-msg" id="gateMsg"></div>
+  </div>
+</div>
 <header class="bar">
   <div class="brand"><span class="mark">N</span>NOVA <small>Shared Apps · Coping Skills</small></div>
   <nav class="acts" aria-label="Demo acts">
@@ -2091,7 +2125,29 @@ document.getElementById('notesBtn').onclick = function () {
   this.setAttribute('aria-pressed', on);
   document.body.classList.toggle('notes-off', !on);
 };
-route();
+/* ---------- access gate (client-side only: keeps casual visitors out, not a security control) ---------- */
+(function gate() {
+  const H = '4ribo';                       // hash of the access code
+  const hash = s => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 1000000007, 7).toString(36);
+  const el = document.getElementById('gate'), dots = document.getElementById('gateDots'), msg = document.getElementById('gateMsg'), inp = document.getElementById('gateInput');
+  let code = '';
+  const open = () => { el.hidden = true; try { sessionStorage.setItem('nova_cs_ok', '1'); } catch (e) {} route(); };
+  try { if (sessionStorage.getItem('nova_cs_ok') === '1') return open(); } catch (e) {}
+  const paint = () => dots.querySelectorAll('span').forEach((d, i) => { d.textContent = i < code.length ? '•' : ''; d.classList.toggle('on', i === code.length); });
+  const press = k => {
+    msg.textContent = '';
+    if (k === 'clear') code = ''; else if (k === 'del') code = code.slice(0, -1); else if (/^\d$/.test(k) && code.length < 4) code += k;
+    paint();
+    if (code.length === 4) {
+      if (hash(code) === H) return open();
+      dots.classList.remove('bad'); void dots.offsetWidth; dots.classList.add('bad');
+      msg.textContent = 'That code didn’t work. Try again.'; code = ''; setTimeout(paint, 350);
+    }
+  };
+  el.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { press(b.dataset.k); inp.focus(); });
+  document.addEventListener('keydown', e => { if (el.hidden) return; e.stopPropagation(); if (/^\d$/.test(e.key)) press(e.key); else if (e.key === 'Backspace') press('del'); else if (e.key === 'Escape') press('clear'); }, true);
+  paint(); inp.focus();
+})();
 
 </script>
 </body></html>
