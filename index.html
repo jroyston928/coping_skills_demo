@@ -502,6 +502,73 @@ p{margin:0}
 .foot{max-width:1360px;margin:0 auto;padding:0 24px 30px;font-size:12.5px;color:var(--ink-3);display:flex;gap:10px 18px;flex-wrap:wrap;justify-content:space-between}
 .foot b{color:var(--ink-2)}
 
+/* ---- Kindred: safety + talk ---- */
+.kw-foot{position:relative;z-index:2;text-align:center;font:600 10.5px/1.2 var(--body);letter-spacing:.02em;color:var(--moon-2);padding:7px 16px 16px;opacity:.85}
+a.big988{text-decoration:none}
+.kchoice{padding:16px}
+.asq-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:22px 20px}
+.asq-card p{font:400 25px/1.3 var(--serif);color:#fff}
+.asq-card span{display:block;margin-top:10px;font-size:13px;color:var(--moon-2)}
+.asq-a{font-size:17px}
+.asq-skip{color:var(--moon-2);font:600 14px/1 var(--body);padding:10px;text-decoration:underline;text-underline-offset:3px}
+.asq-src{margin-top:10px;text-align:center;font-size:11px;color:var(--moon-2);opacity:.7}
+.kdet summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between}
+.kdet summary::after{content:"+";color:var(--glow);font:700 18px/1 var(--body)}
+.kdet[open] summary::after{content:"–"}
+.kdet summary::-webkit-details-marker{display:none}
+.heard{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:20px}
+.heard button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 4px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:var(--moon)}
+.heard button b{font:400 30px/1 var(--serif);color:#fff}
+.heard button span{font-size:10.5px;line-height:1.15;color:var(--moon-2);min-height:24px}
+.heard button[aria-pressed="true"]{background:rgba(139,233,223,.18);border-color:var(--glow)}
+.kbtn2[disabled]{opacity:.45;cursor:default}
+.kw-body.kw-chat{padding:0;overflow:hidden}
+.chat{display:flex;flex-direction:column;height:100%;min-height:0}
+.chat-head{display:flex;align-items:center;gap:10px;padding:6px 18px 10px;border-bottom:1px solid rgba(255,255,255,.08)}
+.chat-head span{flex:1;display:flex;flex-direction:column}
+.chat-head b{color:#fff;font-size:15px}
+.chat-head small{color:var(--moon-2);font-size:11.5px}
+.msgs{flex:1;min-height:0;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;scrollbar-width:none}
+.msgs::-webkit-scrollbar{display:none}
+.msg{display:flex;gap:8px;align-items:flex-end;max-width:92%;animation:cardIn .35s both}
+.msg p{padding:11px 14px;border-radius:18px;font-size:15px;line-height:1.45}
+.msg.k p{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.08);color:#f2f3ff;border-bottom-left-radius:6px}
+.msg.u{align-self:flex-end}
+.msg.u p{background:linear-gradient(135deg,#8be9df,#7aa8ff);color:#0d1130;border-bottom-right-radius:6px;font-weight:600}
+.mav{flex:none;width:28px;display:grid;place-items:center}
+.typing p{display:flex;gap:5px;align-items:center;min-height:42px}
+.typing p i{width:7px;height:7px;border-radius:50%;background:var(--moon-2);animation:dot 1.2s infinite}
+.typing p i:nth-child(2){animation-delay:.15s}.typing p i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+.composer{padding:10px 14px 4px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:8px}
+.chips{display:flex;flex-direction:column;gap:7px;align-items:flex-end}
+.tchip{padding:10px 14px;border-radius:16px;border:1px solid rgba(139,233,223,.5);color:#e9fffb;font:600 14px/1.3 var(--body);text-align:right;background:rgba(139,233,223,.08);max-width:92%}
+.tchip:hover{background:rgba(139,233,223,.16)}
+.comp-note{font-size:10.5px;color:var(--moon-2);text-align:center;opacity:.8}
+.kin-input{display:flex;gap:8px;align-items:flex-end}
+.kin-input textarea{flex:1;resize:none;min-height:46px;max-height:110px;padding:12px 14px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff;font:15px/1.4 var(--body);outline:none}
+/* ---- Pip: choice, tell, grown-up check-in ---- */
+.choice2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+.choice2 .pcard{background:#fff;box-shadow:0 5px 0 #dbe9e4;padding:22px 12px;font-size:24px}
+.choice2 .pcard .pic{width:100px;height:100px;border-radius:30px;background:var(--pc-soft)}
+.cg-btn{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:7px 12px;border-radius:12px;background:#fff;border:1.5px solid #f0cf86;font:600 13px/1 var(--kidf);color:#8a5a00}
+.gflags{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.gflag{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:#fff;box-shadow:0 2px 0 #dbe9e4;font:500 17px/1.25 var(--kidf);text-align:left;border:2px solid transparent;color:#13302c}
+.gflag .ico{width:26px;height:26px;border-radius:8px;border:2px solid #b8cfc9;color:transparent;padding:2px}
+.gflag[aria-pressed="true"]{border-color:var(--teal);background:#f0fdf9}
+.gflag[aria-pressed="true"] .ico{background:var(--teal);border-color:var(--teal);color:#fff}
+.mcard.tf b{font-size:18px}
+
+.tstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+.tstats div{background:#f4f8f6;border-radius:12px;padding:10px 12px}
+.tstats b{display:block;font:800 22px/1.05 var(--display);font-variant-numeric:tabular-nums}
+.tstats span{font-size:11.5px;color:var(--ink-2);line-height:1.25;display:block;margin-top:3px}
+.sfi{border-left:3px solid #cfdcd8;padding-left:10px}
+.sfi.warn{border-left-color:#e8a317}.sfi.crit{border-left-color:#d64535}
+.sfi small{display:block;font-size:12px;color:var(--ink-3);margin-top:2px}
+.ackbtn{padding:7px 10px;border-radius:9px;background:var(--ink);color:#fff;font:700 12px/1 var(--display);white-space:nowrap}
+.ackbtn[disabled]{background:#dcf6e8;color:#11643e}
+.delta.warnd{background:#fff0d1;color:#8a5a00}
 /* access gate */
 .gate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:radial-gradient(80% 70% at 30% 20%,#e3fbf4,#f2f6f4 50%),var(--paper)}
 .gate[hidden]{display:none}
@@ -846,8 +913,8 @@ const SKILLS = [
 /* Demo people (fictional). Consistent with the NOVA Coach demo world. */
 const PEOPLE = {
   mateo:  { name:'Mateo', age:7, vertical:'aut', grownup:'Lucia', clinician:'Dr. Rachel Kim, BCBA', plan:['balloon','heavy','squeeze','ground54321','jar','butterfly'] },
-  jordan: { name:'Jordan', age:15, vertical:'bh', band:'t', clinician:'Dr. Alicia Moreno, LMHC', next:'Thursday, 4:00 PM', plan:['paced','ground54321','thought','jar','surf','reach'] },
-  sam:    { name:'Sam', age:29, vertical:'bh', band:'a', clinician:'Intake team', next:'First appointment in 3 weeks (waitlist)', plan:['sigh','paced','ground54321','leaves','thought','heart'] }
+  jordan: { name:'Jordan', age:15, vertical:'bh', band:'t', clinician:'Dr. Alicia Moreno, LMHC', next:'Thursday, 4:00 PM', memory:'Nights are the hardest. My brain replays everything.', schedDue:false, plan:['paced','ground54321','thought','jar','surf','reach'] },
+  sam:    { name:'Sam', age:29, vertical:'bh', band:'a', clinician:'Intake team', next:'First appointment in about 3 weeks (waitlist)', memory:'First week on the waitlist. Work has been a lot.', schedDue:true, plan:['sigh','paced','ground54321','leaves','thought','heart'] }
 };
 
 const skill = id => SKILLS.find(s => s.id === id);
@@ -1484,6 +1551,155 @@ function burst(host, n = 36) {
 }
 
 /* =====================================================================
+   SAFETY LAYER + TALK ENGINE (Kindred)
+   - Risk detection is deterministic and runs BEFORE any AI sees a message.
+   - ASQ (NIMH Ask Suicide-Screening Questions) is shown verbatim, in order,
+     as fixed cards. The AI never paraphrases or generates screening items.
+   - "Talk it through" follows Rogers' person-centered approach:
+     reflect → validate → gently open. Live Claude where the page can ask
+     Claude; a scripted, clinician-reviewable conversation everywhere else.
+   ===================================================================== */
+
+/* ---------- ASQ (NIMH, free to use; wording verbatim) ---------- */
+const ASQ_ITEMS = [
+  'In the past few weeks, have you wished you were dead?',
+  'In the past few weeks, have you felt that you or your family would be better off if you were dead?',
+  'In the past week, have you been having thoughts about killing yourself?',
+  'Have you ever tried to kill yourself?'
+];
+const ASQ_ACUITY = 'Are you having thoughts of killing yourself right now?';
+/* tier: 'negative' | 'nonacute' | 'imminent' */
+function asqTier(ans, acuity) {
+  const pos = ans.some(a => a !== 'no');          // refusal counts as positive
+  if (!pos) return 'negative';
+  return acuity === 'no' ? 'nonacute' : 'imminent'; // refusal on acuity = imminent
+}
+
+/* ---------- deterministic risk detector ---------- */
+const RISK = {
+  self: /\b(kill(ing)?\s*(my\s*self|myself|me)|suicid\w*|end(ing)?\s+(it all|my life|things|it)|want(ed)?\s+to\s+die|wish\s+(i|i['’]?d)\s+(was|were|had)?\s*(dead|never been born)|wish\s+i\s+(wasn['’]?t|weren['’]?t)\s+(here|alive)|better\s+off\s+(dead|without\s+me)|don['’]?t\s+want\s+to\s+(be here|live|exist|wake up)|not\s+be\s+here\s+anymore|no\s+(reason|point)\s+(to|in)\s+(live|living|going on)|can['’]?t\s+go\s+on|hurt(ing)?\s+my\s*self|self[-\s]?harm|cut(ting)?\s+my\s*self|overdos\w*)/i,
+  others: /\b(kill|hurt|shoot|stab)\s+(him|her|them|someone|somebody|everyone|my\s+(dad|mom|father|mother|brother|sister|teacher))\b/i,
+  abuse: /\b(hits?\s+me|beats?\s+me|hurts?\s+me|touch(es|ed)?\s+me|abus\w*|scared\s+to\s+go\s+home|someone\s+hurt\s+me)\b/i,
+  hopeless: /\b(hopeless|nothing\s+(will\s+)?(ever\s+)?change|what['’]?s\s+the\s+point|never\s+get(s)?\s+better|no\s+way\s+out)\b/i
+};
+function detectRisk(text) {
+  const t = String(text || '').replace(/[’‘]/g, "'");
+  if (RISK.self.test(t)) return 'self';
+  if (RISK.others.test(t)) return 'others';
+  if (RISK.abuse.test(t)) return 'abuse';
+  if (RISK.hopeless.test(t)) return 'hopeless';
+  return null;
+}
+/* output guard: never let the companion say these */
+const BANNED_OUT = /(i missed you|i love you|only i (really )?(understand|get) you|our (little )?secret|keep (this|it) (a )?secret|don'?t tell (your|anyone|them)|i('?ve| have) been there too|i know exactly how you feel|commit(ted)? suicide)/i;
+
+/* ---------- scripted conversations (clinician-reviewable) ----------
+   Each node: k = Kindred's reply, c = reply chips [label, next node id, topic?]  */
+const TALK_SCRIPTS = {
+  jordan: {
+    start: { k: 'Hey Jordan. Last Tuesday you said nights are the hardest. I’m here. What’s going on tonight?',
+      c: [['I got in a fight with my dad', 'dad', 'Fight with dad'], ['My brain won’t stop replaying today', 'replay', 'Replaying the day'], ['I don’t really know', 'unsure']] },
+    replay: { k: 'It’s late and your brain is still running the replay. That sounds exhausting. Is it one moment on repeat, or kind of the whole day?',
+      c: [['Mostly the fight with my dad', 'dad', 'Fight with dad'], ['The whole day', 'whole']] },
+    unsure: { k: 'That’s okay. You don’t have to know. Sometimes it’s just a heavy feeling without a name yet. What’s it like right now?',
+      c: [['Heavy. I had a fight with my dad', 'dad', 'Fight with dad'], ['Just tired of everything', 'whole']] },
+    whole: { k: 'Tired of everything, all at once. That’s a lot to be carrying at 10:42 on a school night. What’s weighing the most?',
+      c: [['My dad, honestly', 'dad', 'Fight with dad'], ['School stuff', 'school', 'School pressure']] },
+    school: { k: 'School pressure on top of everything else. It sounds like there’s no corner of the day that feels easy right now. What part of school is loudest in your head?',
+      c: [['My dad yelled about my grades', 'dad', 'Fight with dad'], ['Just keeping up', 'tired']] },
+    dad: { k: 'A fight with your dad, and now it’s late and it’s still sitting with you. That sounds really heavy. What happened?',
+      c: [['He said I never try at anything', 'never'], ['He yelled about my grades again', 'grades']] },
+    grades: { k: 'Yelling about grades, again. It sounds like this keeps happening, and each time it lands a little harder. What did he say?',
+      c: [['That I never try at anything', 'never']] },
+    never: { k: '“You never try.” That hurts, especially when you have been trying. It sounds like what stings most is feeling unseen by him. Did I get that right?',
+      c: [['Yeah. Like nothing I do counts', 'counts'], ['Kind of. I’m more just angry', 'angry'], ['Honestly, sometimes I wish I wasn’t here', null]] },
+    counts: { k: 'Like your effort is invisible to him. That’s a lonely feeling, especially with someone whose opinion matters to you. What would you want him to see?',
+      c: [['That I’m actually trying', 'see'], ['That I’m tired', 'see']] },
+    angry: { k: 'Angry makes a lot of sense. Being told you never try, when you do, feels unfair. Where do you notice the anger right now?',
+      c: [['My chest. I’m all tense', 'tense'], ['Everywhere', 'tense']] },
+    tense: { k: 'Tight chest, a lot of energy with nowhere to go. That’s your body taking the hit too. Do you want to keep talking, or let some of it out with a skill?',
+      c: [['Keep talking', 'counts'], ['Try a skill', '#skill']] },
+    tired: { k: 'Just keeping up takes everything you’ve got right now. It sounds exhausting to run that hard and still feel behind. Did I get that right?',
+      c: [['Yeah. And my dad doesn’t see it', 'counts']] },
+    see: { k: 'That you’re trying, and that you’re tired. Both can be true at the same time. Would it help to bring this to Dr. Moreno on Thursday? I can save a short note of what you said, only if you want.',
+      c: [['Yes, save a note for Thursday', 'close', '#note'], ['Not right now', 'close']] },
+    close: { k: 'Okay. It’s late, and you put a lot into words tonight. That counts. Want to wind down with slow breathing, or are you good to rest?',
+      c: [['Slow breathing', '#breathe'], ['I’m good. Thanks, Kindred', '#end']] }
+  },
+  sam: {
+    start: { k: 'Hi Sam. I’m here. What’s on your mind tonight?',
+      c: [['The waiting is getting to me', 'wait', 'The waitlist'], ['Work is too much right now', 'work', 'Work stress'], ['I don’t know where to start', 'unsure']] },
+    unsure: { k: 'There’s no right place to start. We can begin anywhere, even in the middle. What’s been taking up the most space?',
+      c: [['The waiting', 'wait', 'The waitlist'], ['Work', 'work', 'Work stress']] },
+    work: { k: 'Work is too much, and you’re carrying it with no support in place yet. That sounds draining. What’s making it feel like too much right now?',
+      c: [['I’m holding it together all day and falling apart at night', 'hold'], ['It’s the waiting on top of it', 'wait', 'The waitlist']] },
+    wait: { k: 'Three weeks of waiting for help, with this much going on. No wonder you’re worn down. It sounds like the waiting has become another weight of its own. What’s the hardest part of it?',
+      c: [['Feeling like nothing will ever change', 'nochange'], ['Holding it together at work', 'hold'], ['Sometimes I think everyone would be better off without me', null]] },
+    nochange: { k: 'Like the waiting is proof that things won’t change. That’s a heavy thought to carry by yourself. I can’t know what’s ahead, but I hear how real that hopelessness feels tonight. Did I get that right?',
+      c: [['Yes, that’s it', 'hope'], ['It’s more that I’m exhausted', 'hold']] },
+    hope: { k: 'Thank you for letting me hear that. When things have felt this stuck before, even a little, what helped you get through?',
+      c: [['Talking to my sister', 'sister'], ['I honestly don’t know', 'sister']] },
+    sister: { k: 'Your sister has been someone you can lean on. It might help to let her know it’s been a hard week, even just a text. Would you want to bring this to your first appointment too? I can keep a short summary, only if you want.',
+      c: [['Yes, keep a summary', 'close', '#note'], ['Not right now', 'close']] },
+    hold: { k: 'Keeping it together all day while carrying all this. That takes a huge amount of energy, and most people around you can’t see it. How are your evenings, once you stop holding it?',
+      c: [['That’s when it all hits', 'nochange'], ['I just zone out', 'sister']] },
+    close: { k: 'You’ve said a lot tonight, and it matters. Want to finish with a slow breath together, or call it here?',
+      c: [['A slow breath', '#breathe'], ['Let’s call it here. Thank you', '#end']] }
+  }
+};
+
+/* ---------- live engine (Claude via the page's "ask Claude" capability) ---------- */
+const LIVE = { sample: null, ready: false, on: false, checked: false };
+(async () => {
+  try {
+    const s = window.claude && window.claude.use ? await window.claude.use('sample') : null;
+    if (s) { LIVE.sample = s; LIVE.ready = true; LIVE.on = true; if (typeof renderBH === 'function' && current === 'bh') renderBH(); }
+  } catch (e) { /* stays scripted */ }
+  LIVE.checked = true;
+})();
+
+function kindredPrompt(P) {
+  const band = P.band === 't' ? 'teen' : 'adult';
+  return `You are Kindred, an AI companion in NOVA, used by ${band} behavioral-health clients of a licensed provider between therapy sessions or while they wait for care. You are not a therapist and do not replace one. In "Talk it through" mode your purpose is for the person to feel genuinely heard and accepted, following Carl Rogers' person-centered approach.
+
+CLIENT: ${P.name}, ${P.age}. Clinician: ${P.clinician}. Next appointment: ${P.next}. Earlier, with consent, they said: "${P.memory}".
+
+SAFETY FIRST — HARD RULE
+If the user's message contains ANY risk signal (suicidal thoughts, self-harm, wanting to die or not be here, hopelessness, harm to others, abuse, medical emergency, overdose) or anything unclear about safety: do not continue reflecting. Call the tool safety_protocol with the category, and reply only: "Thank you for telling me. I want to make sure you're safe." Never describe methods. Never promise secrecy.
+
+HOW TO RESPOND (every reply)
+1. Reflect: name the feeling and situation in fresh words, tentatively ("It sounds like…", "I wonder if…").
+2. Validate: the feeling makes sense. Accept the person fully; you do not have to agree with their conclusions or approve of actions.
+3. Gently open: at most ONE open "what" or "how" question, OR offer a choice, OR simply leave space ("I'm here.").
+Every few turns, check: "Did I get that right?"
+
+NEVER: give advice unless asked; reassure too early; minimize ("at least…"); use clichés; push positivity; ask "why"; judge or lecture; flatter or over-praise; agree with harmful or distorted beliefs (reflect the feeling, not the claim); diagnose or discuss medication; contradict the clinician.
+
+HONESTY: you are an AI. Say so if asked. Never claim human experiences ("I've been there"). Say "I'm glad you told me", not "I know exactly how you feel".
+
+HEALTHY CONNECTION: you are one support among many. Never imply you are the only one who understands them. Never discourage talking to family, friends or the clinician. No romantic, possessive or "I missed you" language. When natural, offer to save a short note for ${P.clinician.split(',')[0]} (only with consent), and gently point to trusted people.
+
+LENGTH: ${band === 'teen' ? '1–3 sentences, at most 50 words, casual and respectful, no jargon' : '2–4 sentences, at most 70 words, plain and warm'}. Match the user's length. Plain text only, no lists, no emoji.`;
+}
+
+async function liveReply(P, history, onText, onSafety) {
+  let flagged = null;
+  const tools = [{
+    name: 'safety_protocol',
+    description: 'Call immediately if the user mentions any risk: suicidal thoughts, self-harm, harm to others, abuse, hopelessness, medical emergency.',
+    inputSchema: { type: 'object', properties: { category: { type: 'string', enum: ['self', 'others', 'abuse', 'hopeless', 'medical'] } }, required: ['category'] },
+    execute: (inp) => { flagged = (inp && inp.category) || 'self'; return { ok: true, note: 'Safety protocol started by the app. Reply only with the brief acknowledgment.' }; }
+  }];
+  const transcript = history.map(m => `${m.who === 'k' ? 'Kindred' : P.name}: ${m.text}`).join('\n');
+  const input = `${kindredPrompt(P)}\n\nCONVERSATION SO FAR:\n${transcript}\n\nWrite Kindred's next reply to ${P.name}'s last message. Reply text only.`;
+  const res = await LIVE.sample(input, { tools, modelTier: 'default', cache: false, onText: ({ text }) => onText(text) });
+  if (flagged) { onSafety(flagged); return null; }
+  let text = (res && res.text || '').trim();
+  if (BANNED_OUT.test(text)) text = 'I’m here with you. Tell me more about what’s going on.';
+  return text;
+}
+
+/* =====================================================================
    ACT 1 · PLATFORM — one library, every vertical
    ===================================================================== */
 const EVENTS = []; // live events from Acts 2 and 3, shown in Act 4
@@ -1540,7 +1756,7 @@ function renderPlatform() {
     <div class="tier core">
       <div class="core-cell"><b>${ico('check', 18)} Clinical library</b>Versioned content, clinician review and sign-off per skill</div>
       <div class="core-cell"><b>${ico('sparkle' in ICONS ? 'sparkle' : 'spark', 18)} Companion engine</b>Pip and Kindred share one expression and guidance engine</div>
-      <div class="core-cell"><b>${ico('shield', 18)} Safety layer</b>Risk check, crisis routing, 988, care-team alerts</div>
+      <div class="core-cell"><b>${ico('shield', 18)} Safety layer</b>Rule-based risk check, ASQ screening, crisis routing, 988, care-team alerts</div>
       <div class="core-cell"><b>${ico('hive', 18)} Hive outcomes</b>Before/after on every use; learns what works for whom</div>
       <div class="core-cell"><b>${ico('lock', 18)} Identity &amp; consent</b>Org, vertical and role scoping; client chooses what is shared</div>
     </div>
@@ -1635,7 +1851,7 @@ const THENS = [
   { id: 'trains', name: 'Trains', svg: '<svg viewBox="0 0 48 48"><rect x="6" y="16" width="22" height="16" rx="3" fill="#3b82f6"/><rect x="10" y="10" width="8" height="8" rx="2" fill="#3b82f6"/><rect x="28" y="20" width="14" height="12" rx="3" fill="#8b7cf6"/><circle cx="12" cy="35" r="4" fill="#13302c"/><circle cx="23" cy="35" r="4" fill="#13302c"/><circle cx="36" cy="35" r="4" fill="#13302c"/></svg>' }
 ];
 const PICKS = { 1: ['star', 'ground54321', 'jar'], 2: ['squeeze', 'ground54321', 'balloon'], 3: ['heavy', 'balloon', 'butterfly'], 4: ['balloon', 'heavy', 'cozy'] };
-const A = { screen: 'home', level: null, skill: null, alt: [], then: 'trains', before: null, after: null, stars: 12, cg: true };
+const A = { screen: 'home', level: null, skill: null, alt: [], then: 'trains', before: null, after: null, stars: 12, cg: true, tell: null, gflags: [] };
 const kidCtx = () => ({ world: 'pip', kid: true, onDone: () => goA('after') });
 
 const NOTES_A = {
@@ -1644,12 +1860,17 @@ const NOTES_A = {
   play:    { t: 'A guided player, not a video', b: ['Each skill is <b>interactive and paced</b>: visual timer, step dots, optional read-aloud.', '<b>Sensory-calm mode</b> removes motion and softens color for children who are easily overwhelmed.', 'The same player engine runs Kindred’s version in Act 3. Built once, skinned twice.'] },
   after:   { t: 'Measure every use', b: ['A second meter check gives a <b>before → after</b> on every single use.', 'This is how NOVA learns which skills work for this child, at this level, at this time of day.'] },
   done:    { t: 'Reinforce, then close the loop', b: ['Mateo earns a star and his "then" activity. This is <b>positive reinforcement</b>, built in.', 'The result goes to <b>Dr. Kim’s dashboard</b> automatically. Lucia doesn’t have to log anything.', 'Switch to Act 4 to see it arrive.'] },
+  choose:  { t: 'A calm activity, or tell Pip', b: ['After the feelings check, Mateo chooses: <b>do a calm activity</b> or <b>tell Pip</b> what happened.', 'Same choice Kindred offers teens and adults, in picture form.'] },
+  tell:    { t: 'Tell Pip: person-centered, in pictures', b: ['Pip <b>reflects</b> what Mateo shares in short literal words: “Your toy broke. You feel MAD. Mad is okay.”', 'No “why”, no demands to look or explain, and <b>no reward for talking</b>: Pip’s warmth never depends on behaving.', 'A <b>grown-up note</b> coaches Lucia at the same moment.'] },
+  tellSafe:{ t: 'If a child says someone hurt them', b: ['Pip stays calm, thanks him, and <b>gets his grown-up</b>. No probing questions.', 'Lucia gets clear steps, and <b>Dr. Kim’s team is alerted</b>. Young children are never asked suicide screening questions in the app; no tool is validated for that.'] },
+  gcheck:  { t: 'Grown-up check-in', b: ['For children, <b>the parent</b> answers a short warning-sign check-in instead of the child.', 'Any sign goes to the clinician the same day, with 911 and 988 shown.'] },
   toolbox: { t: 'Mateo’s calm toolbox', b: ['The top row is <b>assigned by his BCBA</b>. The rest of the library is there to explore.', 'Picture cards double as a <b>printable visual schedule</b> for school and the calm corner.'] }
 };
 
 function goA(screen) {
   if (screen !== 'play') stopPlayers();
-  A.screen = screen; renderAutismScreen(); renderNotes('autism', NOTES_A[screen === 'after' ? 'after' : screen], ['home', 'pick', 'play', 'after', 'done'], screen);
+  A.screen = screen; renderAutismScreen(); const fk = { tellSafe: 'tell', gcheck: 'home', toolbox: 'pick', after: 'done' }[screen] || screen;
+  renderNotes('autism', NOTES_A[screen], ['home', 'choose', 'tell', 'pick', 'play', 'done'], fk);
 }
 
 function renderAutism() {
@@ -1686,7 +1907,30 @@ function renderAutismScreen() {
     body = `<div class="pw-hello">${pip({ mood: asking ? 'listen' : 'happy', size: 112 })}<div class="say">${asking ? 'You did it! How does your body feel <b>now</b>?' : 'Hi Mateo! How does your body feel?'}<button class="rd" id="aRead" aria-label="Read aloud">${ico('sound', 22)}</button></div></div>
       <div class="meter">${LEVELS.map(L => `<button class="mcard" data-lv="${L.n}" style="--mc:${L.c};--mc-s:${L.s}">${face(L.n)}<b>${L.name}</b><span>${L.sub}</span></button>`).join('')}</div>
       ${asking ? '' : `<div class="tb-sec" style="margin-top:14px">My calm toolbox · from Dr. Kim</div><div class="toolbox" style="grid-template-columns:repeat(6,1fr);gap:10px">${PEOPLE.mateo.plan.map(id => pcard(skill(id), {})).join('').replace(/class="pcard /g, 'class="pcard mini ')}</div>`}
-      ${asking ? '' : `<div class="cg"><span>${ico('people', 26)}</span><div><b>Grown-up tip</b>Kneel to Mateo’s eye level and point to the faces. Name what you see: “Your hands are tight. Is your body big?”</div></div>`}`;
+      ${asking ? '' : `<div class="cg"><span>${ico('people', 26)}</span><div><b>Grown-up tip</b>Kneel to Mateo’s eye level and point to the faces. Name what you see: “Your hands are tight. Is your body big?”<br><button class="cg-btn" id="aG">${ico('shield', 16)} Grown-up check-in</button></div></div>`}`;
+  } else if (sc === 'choose') {
+    body = `<div class="pw-hello">${pip({ mood: 'listen', size: 104 })}<div class="say">${A.level >= 3 ? 'That’s a big feeling.' : 'Thanks for showing me.'} Do you want to do a <b>calm activity</b>, or <b>tell Pip</b> about it?<button class="rd" id="aRead" aria-label="Read aloud">${ico('sound', 22)}</button></div></div>
+      <div class="choice2">
+        <button class="pcard" id="aCalm" style="--pc:#14b8a6;--pc-soft:#ccfbf1"><span class="pic">${ico('wave', 48)}</span><span>Calm activity</span></button>
+        <button class="pcard" id="aTell" style="--pc:#8b7cf6;--pc-soft:#e7e3ff"><span class="pic">${ico('chat', 48)}</span><span>Tell Pip</span></button>
+      </div>
+      <div class="cg"><span>${ico('people', 26)}</span><div><b>Grown-up tip</b>Let Mateo pick. Either choice is a good one. Sit close and stay calm; your calm helps his.</div></div>`;
+  } else if (sc === 'tell') {
+    body = tellBody();
+  } else if (sc === 'tellSafe') {
+    const T = A.tell || {};
+    const hurtMe = T.what === 'hurtme';
+    body = `<div class="pw-hello">${pip({ mood: 'calm', size: 110 })}<div class="say">Thank you for telling Pip. That was important. Let’s get your grown-up now.</div></div>
+      <div class="krow" style="margin-top:18px;padding-top:0"><button class="kbtn amber" id="aGetG">${ico('people', 24)} Get my grown-up</button></div>
+      <div class="cg" style="margin-top:16px"><span>${ico('shield', 26)}</span><div><b>For Lucia · please read now</b>Mateo told Pip ${hurtMe ? 'that he wants to hurt himself' : 'that someone hurt him'}. Stay with him and stay calm. Thank him for telling. Please don’t ask a lot of questions; Dr. Kim’s team will help with that. <b style="display:inline;letter-spacing:0;text-transform:none;font-size:15px;color:#6b4a06">Dr. Kim’s team has been alerted and will call you today.</b> If he is in danger right now, call 911, or call or text 988.</div></div>`;
+  } else if (sc === 'gcheck') {
+    const flags = ['Talked about wanting to die or hurt himself', 'Hurt himself on purpose', 'Says he is bad or nobody loves him', 'Big change in sleep, eating or play', 'None of these today'];
+    const sent = A.gsent;
+    body = `<div style="display:flex;align-items:center;gap:14px">${pip({ mood: 'idle', size: 70 })}<div><h3 style="font-size:26px">Grown-up check-in</h3><div class="sub" style="font-size:15px">For Lucia · about 30 seconds · Mateo doesn’t answer these</div></div></div>
+      ${sent ? `<div class="cg" style="margin-top:16px"><span>${ico(sent === 'flag' ? 'shield' : 'check', 26)}</span><div><b>${sent === 'flag' ? 'Thank you for telling us' : 'Thanks for checking in'}</b>${sent === 'flag' ? 'Dr. Kim’s team has been alerted and will call you today. If Mateo is in danger right now, call 911, or call or text 988.' : 'Nothing to send today. You can check in any time.'}</div></div><div class="krow"><button class="kbtn ghost" id="aGHome">${ico('home', 22)} Home</button></div>`
+      : `<div class="tb-sec">Have you noticed any of these today?</div>
+      <div class="gflags">${flags.map((f, i) => `<button class="gflag" data-g="${i}" aria-pressed="${A.gflags.includes(i)}">${ico('check', 18)}<span>${f}</span></button>`).join('')}</div>
+      <div class="krow"><button class="kbtn" id="aGSend">${ico('send', 22)} Send to Dr. Kim’s team</button></div>`}`;
   } else if (sc === 'pick') {
     const s = A.skill;
     body = `<div class="pw-hello" style="margin:0 0 6px">${pip({ mood: 'idle', size: 84 })}<div class="say">${A.level >= 3 ? 'That’s a big feeling. Let’s make it smaller together.' : A.level === 2 ? 'Wiggly! Let’s help your body feel calm.' : 'You feel calm! Want to practice and earn a star?'}<button class="rd" id="aRead" aria-label="Read aloud">${ico('sound', 22)}</button></div></div>
@@ -1734,13 +1978,22 @@ function renderAutismScreen() {
     if (sc === 'home') {
       A.level = A.before = lv;
       const p = PICKS[lv]; A.skill = skill(p[0]); A.alt = p.slice(1);
-      later(() => goA('pick'), 260);
+      later(() => goA('choose'), 260);
     } else {
       A.after = lv; A.stars++;
-      logEvent({ who: 'mateo', skill: A.skill.id, before: A.before, after: lv, scale: 'meter' });
+      logEvent({ who: 'mateo', kind: 'skill', skill: A.skill.id, before: A.before, after: lv, scale: 'meter' });
       later(() => { goA('done'); burst(host.querySelector('.pw'), 50); }, 260);
     }
   });
+  if ($('#aG')) $('#aG').onclick = () => { A.gsent = null; A.gflags = []; goA('gcheck'); };
+  if (sc === 'choose') { $('#aCalm').onclick = () => goA('pick'); $('#aTell').onclick = () => { A.tell = { step: 0 }; goA('tell'); }; }
+  if (sc === 'tell') wireTell(host);
+  if (sc === 'tellSafe') $('#aGetG').onclick = () => { $('#aGetG').innerHTML = `${ico('check', 24)} Lucia is here`; $('#aGetG').disabled = true; };
+  if (sc === 'gcheck') {
+    host.querySelectorAll('.gflag').forEach(b => b.onclick = () => { const i = +b.dataset.g; if (i === 4) A.gflags = A.gflags.includes(4) ? [] : [4]; else { A.gflags = A.gflags.filter(x => x !== 4); A.gflags = A.gflags.includes(i) ? A.gflags.filter(x => x !== i) : A.gflags.concat(i); } renderAutismScreen(); });
+    if ($('#aGSend')) $('#aGSend').onclick = () => { const flag = A.gflags.some(i => i !== 4); A.gsent = flag ? 'flag' : 'ok'; if (flag) logEvent({ who: 'mateo', kind: 'safety', tier: 'caregiver-flag', via: 'Grown-up check-in', flags: A.gflags.length }); renderAutismScreen(); };
+    if ($('#aGHome')) $('#aGHome').onclick = () => goA('home');
+  }
   if (sc === 'pick') {
     host.querySelectorAll('.orpick .pcard').forEach(b => b.onclick = () => { const cur = A.skill.id; A.skill = skill(b.dataset.skill); A.alt = A.alt.map(x => x === b.dataset.skill ? cur : x); renderAutismScreen(); });
     host.querySelectorAll('[data-then]').forEach(b => b.onclick = () => { A.then = b.dataset.then; host.querySelectorAll('[data-then]').forEach(x => x.setAttribute('aria-pressed', x === b)); });
@@ -1751,58 +2004,156 @@ function renderAutismScreen() {
   if (sc === 'done') $('#aAgain').onclick = () => { A.before = A.after = null; goA('home'); };
 }
 
+/* ---------------- Tell Pip (person-centered, picture-based) ---------------- */
+const TELL_FEEL = [
+  { id: 'mad', name: 'MAD', c: '#e5534b' }, { id: 'sad', name: 'SAD', c: '#4f7fe0' },
+  { id: 'scared', name: 'SCARED', c: '#8b7cf6' }, { id: 'worried', name: 'WORRIED', c: '#e9b31c' }
+];
+const TELL_WHAT = [
+  { id: 'toy', icon: 'grid', label: 'My toy or game broke', say: 'Your toy broke.' },
+  { id: 'friend', icon: 'people', label: 'Friend trouble', say: 'Something happened with a friend.' },
+  { id: 'loud', icon: 'sound', label: 'Too loud', say: 'It was too loud.' },
+  { id: 'change', icon: 'clock', label: 'Plans changed', say: 'The plan changed.' },
+  { id: 'hurtby', icon: 'shield', label: 'Someone hurt me', safe: true },
+  { id: 'hurtme', icon: 'heart', label: 'I want to hurt me', safe: true }
+];
+const TELL_BODY = [{ id: 'tummy', label: 'Tummy' }, { id: 'head', label: 'Head' }, { id: 'hands', label: 'Hands' }, { id: 'chest', label: 'Chest' }];
+function feelFace(f, size = 64) {
+  const m = { mad: 'M24 58 Q40 46 56 58', sad: 'M26 58 Q40 48 54 58', scared: '', worried: 'M26 56 Q33 51 40 56 T54 56' }[f.id];
+  const brows = f.id === 'mad' ? '<path d="M22 27 l12 6 M58 27 l-12 6" stroke="#2a0f08" stroke-width="4" stroke-linecap="round"/>' : f.id === 'sad' ? '<path d="M24 31 l10 -4 M56 31 l-10 -4" stroke="#0f1d3a" stroke-width="3.5" stroke-linecap="round"/>' : '';
+  const mouth = f.id === 'scared' ? '<ellipse cx="40" cy="56" rx="7" ry="9" fill="#1d1238"/>' : `<path d="${m}" stroke="#1d1238" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+  const tear = f.id === 'sad' ? '<path d="M27 45 q-3 6 0 8 q3 -2 0 -8z" fill="#bfe1ff"/>' : '';
+  return `<svg width="${size}" height="${size}" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="${f.c}"/><circle cx="40" cy="40" r="36" fill="#fff" opacity=".16"/>${brows}<circle cx="30" cy="40" r="${f.id === 'scared' ? 5.5 : 4.5}" fill="#1d1238"/><circle cx="50" cy="40" r="${f.id === 'scared' ? 5.5 : 4.5}" fill="#1d1238"/>${tear}${mouth}</svg>`;
+}
+function tellBody() {
+  const T = A.tell;
+  const F = TELL_FEEL.find(x => x.id === T.feel), W = TELL_WHAT.find(x => x.id === T.what), B = TELL_BODY.find(x => x.id === T.body);
+  const cg = t => `<div class="cg"><span>${ico('people', 24)}</span><div><b>Grown-up note</b>${t}</div></div>`;
+  if (T.step === 0) return `<div class="pw-hello">${pip({ mood: 'listen', size: 100 })}<div class="say">Pip is listening. How do you feel?<button class="rd" id="aRead" aria-label="Read aloud">${ico('sound', 22)}</button></div></div>
+    <div class="meter">${TELL_FEEL.map(f => `<button class="mcard tf" data-f="${f.id}" style="--mc:${f.c};--mc-s:${f.c}55">${feelFace(f, 72)}<b>${f.name[0] + f.name.slice(1).toLowerCase()}</b></button>`).join('')}</div>
+    ${cg('Let Mateo point. If he can’t choose, offer two: “Mad or sad?”')}`;
+  if (T.step === 1) return `<div class="pw-hello">${pip({ mood: 'listen', size: 96 })}<div class="say">You feel <b style="color:${F.c}">${F.name}</b>. What happened?<button class="rd" id="aRead" aria-label="Read aloud">${ico('sound', 22)}</button></div></div>
+    <div class="toolbox" style="grid-template-columns:repeat(3,1fr)">${TELL_WHAT.map(w => `<button class="pcard tw" data-w="${w.id}" style="--pc:${w.safe ? '#e5534b' : '#3b82f6'};--pc-soft:${w.safe ? '#ffe1dc' : '#dbe8ff'}"><span class="pic">${ico(w.icon, 34)}</span><span>${w.label}</span></button>`).join('')}</div>
+    ${cg('No need to fix anything yet. Just be close while he shows Pip.')}`;
+  const line = T.step === 3 && B ? `You feel ${F.name} in your ${B.label.toLowerCase()}. Pip is here with you.` : `${W.say} You feel <b style="color:${F.c}">${F.name}</b>. ${F.name[0] + F.name.slice(1).toLowerCase()} is okay.`;
+  if (T.step === 2 && T.more) return `<div class="pw-hello">${pip({ mood: 'listen', size: 96 })}<div class="say">Where do you feel ${F.name.toLowerCase()} in your body?</div></div>
+    <div class="meter">${TELL_BODY.map(b => `<button class="mcard tb" data-b="${b.id}" style="--mc:${F.c};--mc-s:#dbe9e4"><span class="pic" style="width:64px;height:64px;display:grid;place-items:center;color:${F.c}">${ico('scan', 40)}</span><b>${b.label}</b></button>`).join('')}</div>`;
+  return `<div class="pw-hello">${pip({ mood: 'calm', size: 110 })}<div class="say">${line}<button class="rd" id="aRead" aria-label="Read aloud">${ico('sound', 22)}</button></div></div>
+    <div class="tb-sec">What do you want to do?</div>
+    <div class="toolbox" style="grid-template-columns:repeat(3,1fr)">
+      <button class="pcard" data-next="squeeze" style="--pc:#f97362;--pc-soft:#ffe1dc"><span class="pic">${ico('fist', 34)}</span><span>Squeeze my hands</span></button>
+      ${T.step === 3 ? `<button class="pcard" data-next="breathe" style="--pc:#14b8a6;--pc-soft:#ccfbf1"><span class="pic">${ico('balloon', 34)}</span><span>Balloon breath</span></button>` : `<button class="pcard" data-next="more" style="--pc:#8b7cf6;--pc-soft:#e7e3ff"><span class="pic">${ico('chat', 34)}</span><span>Tell Pip more</span></button>`}
+      <button class="pcard" data-next="hug" style="--pc:#e8a317;--pc-soft:#fdf0cc"><span class="pic">${ico('people', 34)}</span><span>Hug my grown-up</span></button>
+    </div>
+    ${cg(`${W.say.replace('Your', 'His').replace('your', 'his')} He feels ${F.name.toLowerCase()}. Sit close and name it with him: “You feel ${F.name.toLowerCase()}.” No need to fix it yet.`)}`;
+}
+function wireTell(host) {
+  const T = A.tell;
+  const rd = host.querySelector('#aRead'); if (rd) rd.onclick = () => { const was = VOICE.on; VOICE.on = true; speak(host.querySelector('.say').textContent); VOICE.on = was; };
+  host.querySelectorAll('.tf').forEach(b => b.onclick = () => { T.feel = b.dataset.f; T.step = 1; renderAutismScreen(); speak('You feel ' + T.feel + '. What happened?'); });
+  host.querySelectorAll('.tw').forEach(b => b.onclick = () => {
+    T.what = b.dataset.w;
+    const W = TELL_WHAT.find(x => x.id === T.what);
+    if (W.safe) { logEvent({ who: 'mateo', kind: 'safety', tier: 'child-disclosure', via: 'Tell Pip', what: W.label }); return goA('tellSafe'); }
+    T.step = 2; T.more = false; renderAutismScreen();
+    const F = TELL_FEEL.find(x => x.id === T.feel); speak(`${W.say} You feel ${F.name}. ${F.name} is okay.`);
+  });
+  host.querySelectorAll('.tb').forEach(b => b.onclick = () => { T.body = b.dataset.b; T.step = 3; T.more = false; renderAutismScreen(); });
+  host.querySelectorAll('[data-next]').forEach(b => b.onclick = () => {
+    const n = b.dataset.next;
+    if (n === 'more') { T.more = true; return renderAutismScreen(); }
+    logEvent({ who: 'mateo', kind: 'tell', feel: T.feel, what: T.what, choice: n });
+    if (n === 'squeeze' || n === 'breathe') { A.skill = skill(n === 'squeeze' ? 'squeeze' : 'balloon'); A.before = A.before || A.level || 3; return goA('play'); }
+    A.tell = null; goA('home');
+  });
+}
+
 /* =====================================================================
    ACT 3 · BEHAVIORAL HEALTH — Jordan (15) or Sam (29) with Kindred
+   Check-in → (safety screen when triggered) → Try a skill | Talk it through
    ===================================================================== */
-const K = { who: 'jordan', screen: 'home', suds: 7, feel: ['Anxious'], skill: null, before: null, after: null, share: true, filter: 'all', q: '' };
+const K = {
+  who: 'jordan', screen: 'home', suds: 6, feel: ['Angry'], note: '',
+  skill: null, before: null, after: null, share: true, filter: 'all', q: '',
+  screened: false, schedDone: {}, asq: null, ret: null,
+  talk: null, heard: null
+};
 const SUDS_WORDS = ['Calm', 'Calm', 'Calm', 'Uneasy', 'Uneasy', 'Hard', 'Hard', 'Very hard', 'Very hard', 'Overwhelming', 'Overwhelming'];
-const FEELINGS = ['Anxious', 'Angry', 'Low', 'Overwhelmed', 'Lonely', 'Numb'];
+const FEELINGS = ['Anxious', 'Angry', 'Low', 'Overwhelmed', 'Lonely', 'Hopeless'];
 const kp = () => PEOPLE[K.who];
 const kvar = () => kp().band === 't' ? 'spark' : 'still';
-const kinCtx = () => ({ world: 'kin', variant: kvar(), kid: false, onDone: () => goK('after') });
+const doc = () => K.who === 'jordan' ? 'Dr. Moreno' : 'your care team';
+const kinCtx = () => ({ world: 'kin', variant: kvar(), kid: false, onDone: () => { if (K.ret) { const r = K.ret; K.ret = null; goK(r); } else goK('after'); } });
+
+function resetPersona() {
+  const sam = K.who === 'sam';
+  Object.assign(K, { suds: sam ? 6 : 6, feel: sam ? ['Overwhelmed'] : ['Angry'], note: '', skill: null, before: null, after: null, screened: false, asq: null, ret: null, talk: null, heard: null });
+}
 
 function suggestFor() {
-  const f = K.feel;
-  const p = kp().plan;
+  const f = K.feel, p = kp().plan;
   let ids;
-  if (f.includes('Angry') || f.includes('Restless')) ids = K.who === 'sam' ? ['sigh', 'paced', 'thought'] : ['paced', 'surf', 'thought'];
-  else if (f.includes('Low') || f.includes('Numb') || f.includes('Lonely') || f.includes('Ashamed')) ids = K.who === 'sam' ? ['heart', 'leaves', 'paced'] : ['reach', 'paced', 'thought'];
+  if (f.includes('Angry')) ids = K.who === 'sam' ? ['sigh', 'paced', 'thought'] : ['paced', 'surf', 'thought'];
+  else if (f.includes('Low') || f.includes('Lonely') || f.includes('Hopeless')) ids = K.who === 'sam' ? ['heart', 'leaves', 'paced'] : ['reach', 'paced', 'thought'];
   else ids = K.who === 'sam' ? ['sigh', 'ground54321', 'thought'] : ['paced', 'ground54321', 'jar'];
   return ids.filter(id => p.includes(id)).concat(p.filter(id => !ids.includes(id))).slice(0, 3);
 }
 
+/* triage: decides whether the ASQ runs before the choice. Rule-based, never the AI. */
+function triage() {
+  const r = detectRisk(K.note);
+  if (r === 'others' || r === 'abuse') return { abuse: r };
+  if (r === 'self') return { why: 'what you wrote' };
+  if (r === 'hopeless') return { why: 'what you wrote' };
+  if (K.suds >= 7) return { why: 'intensity' };
+  if (K.feel.includes('Hopeless')) return { why: 'hopeless' };
+  if (kp().schedDue && !K.schedDone[K.who]) return { why: 'scheduled' };
+  return null;
+}
+function startASQ(why, ret, resumeNode) {
+  K.asq = { i: -1, ans: [], acuity: null, why, ret, resumeNode };
+  goK('asq');
+}
+
 const NOTES_B = {
-  home:    { t: 'Between sessions, or on a waitlist', b: ['<b>Jordan, 15</b>, sees Dr. Moreno weekly. It’s 10:42 PM on a school night. <b>Sam, 29</b>, is on a three-week waitlist. Switch personas above the phone.', '<b>Kindred</b> is the teen/adult companion: a light that breathes with you. Teens get <b>Kindred Spark</b>; adults get the quieter form.', 'Same library as Pip, in different words, pacing and look. One intensity check (0–10) starts every use.'] },
-  safety:  { t: 'Safety comes before skills', b: ['At <b>8 or above</b>, Kindred asks a direct safety question before offering any skill.', 'This follows the same safe-messaging rules as the NOVA Coach film: name the warning sign, offer connection, no method talk.', 'Try “I’m not sure” to see the crisis path.'] },
-  crisis:  { t: 'Crisis path: connection, not chat', b: ['<b>988</b> first, 911 for immediate danger, then the client’s own <b>clinician-authored safety plan</b>.', 'The care team is alerted. For a minor, the parent is too.', 'Kindred can stay and breathe with the client. It never replaces a person here.'] },
-  suggest: { t: 'Skills from the therapist’s plan', b: ['Suggestions come from <b>Dr. Moreno’s plan first</b>, matched to the feelings Jordan picked.', 'The full library is one tap away, filtered to what’s approved for this age band and vertical.'] },
-  library: { t: 'The same library, filtered', b: ['Only skills approved for <b>this vertical and age band</b> appear.', 'Search and group filters make it fast to find a skill at 10 PM.'] },
-  play:    { t: 'Kindred breathes with you', b: ['For paced breathing, <b>Kindred is the pacer</b>: its light grows as you breathe in and dims as you breathe out.', 'Grounding, thought checks and “park the worry” use the same engine as Pip, with an adult skin.'] },
-  after:   { t: 'Before → after, every time', b: ['A second rating turns each use into a <b>measured outcome</b>.', 'Over weeks, this shows the therapist what actually helps between sessions.'] },
-  done:    { t: 'The client decides what is shared', b: ['Sharing to the therapist is a <b>visible choice</b>, on by default for plan skills.', 'Dr. Moreno walks into Thursday knowing what happened on Tuesday night. See it in Act 4.'] }
+  home:    { t: 'Check in first: how are you doing?', b: ['Kindred says up front that it is an <b>AI, not a person or a therapist</b> (Utah, California and New York all require this).', 'Intensity (0–10), feeling words and an optional note. <b>Rules, not the AI, decide</b> whether the safety questions run: intensity 7+, “hopeless”, risk words in the note, or a clinician-scheduled check.', '<b>Jordan, 15</b> sees Dr. Moreno weekly; it’s 10:42 PM. <b>Sam, 29</b> is on a waitlist and has a weekly check due.'] },
+  asq:     { t: 'Suicide-risk screening: the ASQ, word for word', b: ['The <b>ASQ</b> (NIMH): four yes/no questions, then “right now?” if any answer is yes. Free to use, and shown <b>exactly as written</b>, so it stays valid.', 'Skipping a question counts as a yes. The AI never words these questions itself.', 'Answer <b>all No</b> to see warmth resume; any Yes shows the follow-up path; Yes to “right now” shows the crisis path.'] },
+  asqPos:  { t: 'A yes, but not right now', b: ['Kindred thanks them, explains <b>exactly what happens next</b>, and alerts the clinician the same day with follow-up within 72 hours (NIMH pathway).', 'They review their own <b>safety plan</b> and can practice one calm-down skill.', '988 stays one tap away the whole time.'] },
+  crisis:  { t: 'Thoughts right now: connect to a person', b: ['<b>988</b> (call or text) and <b>911</b> first. Kindred asks them to stay until they’ve connected with someone.', 'A gentle prompt to put distance from anything they could use to hurt themselves, plus their safety-plan people.', 'Clinician paged; for a minor, the parent is alerted too. Breathing is offered only <b>while</b> they connect.'] },
+  abuse:   { t: 'Harm to others or abuse', b: ['Kindred never promises secrecy. It says plainly that this goes to the care team, and that they’re not in trouble.', 'No probing questions, so a disclosure isn’t contaminated before a professional talks with them.'] },
+  choose:  { t: 'Their choice: a skill, or talk it through', b: ['Two equal options. Some moments need the body calmed first; some need to be heard first.', '<b>My calm-down plan</b> is where de-escalation skills are practiced on calm days.'] },
+  talk:    { t: 'Talk it through: Carl Rogers’ approach', b: ['Every reply <b>reflects</b> the feeling, <b>validates</b> it, then <b>gently opens</b> (one question at most). “Did I get that right?” every few turns.', 'No advice unless asked, no “why”, no flattery, and it <b>accepts the person without agreeing</b> with harmful beliefs.', 'It remembers what they shared before (with consent), offers a note for the therapist, and points to real people. Risk words are caught <b>before</b> the AI sees them.'] },
+  heard:   { t: '“Did you feel heard?”', b: ['One question after every talk. Research shows the <b>client’s sense of being understood</b> predicts outcome better than anything the helper does.', 'This becomes a trust measure the clinician can watch over weeks.'] },
+  plan:    { t: 'My calm-down plan (de-escalation)', b: ['Skills from DBT’s TIPP and grounding: paced breathing, squeeze and release, 5-4-3-2-1, cold water (with a health check).', 'Practiced <b>on calm days</b> so they’re ready on hard ones. During a crisis they are only a bridge while a person is reached.'] },
+  suggest: { t: 'Skills from the therapist’s plan', b: ['Suggestions come from the <b>clinician’s plan first</b>, matched to the feelings they picked.'] },
+  library: { t: 'The same library, filtered', b: ['Only skills approved for <b>this vertical and age band</b> appear.'] },
+  play:    { t: 'Kindred breathes with you', b: ['For paced breathing, <b>Kindred is the pacer</b>: its light grows as you breathe in and dims as you breathe out.'] },
+  after:   { t: 'Before → after, every time', b: ['A second rating turns each use into a <b>measured outcome</b> for the clinician.'] },
+  done:    { t: 'The client decides what is shared', b: ['Sharing to the therapist is a <b>visible choice</b>.', 'See it arrive in Act 4.'] }
 };
+NOTES_B.asqNeg = NOTES_B.asq; NOTES_B.talkDone = NOTES_B.heard;
 
 function goK(screen) {
   if (screen !== 'play') stopPlayers();
   K.screen = screen; renderKScreen();
-  renderNotes('bh', NOTES_B[screen], ['home', 'suggest', 'play', 'after', 'done'], screen);
+  const flowKey = { asq: 'asq', asqNeg: 'asq', asqPos: 'asq', crisis: 'asq', abuse: 'asq', talk: 'talk', heard: 'talk', talkDone: 'talk', play: 'skill', after: 'skill', done: 'skill', suggest: 'skill', library: 'skill', plan: 'skill' }[screen] || screen;
+  renderNotes('bh', NOTES_B[screen], ['home', 'asq', 'choose', 'talk', 'skill'], flowKey);
 }
 
 function renderBH() {
   const el = document.getElementById('act-bh');
   el.innerHTML = `<div class="stage"><div class="stage-main">
-    <div class="stage-head"><div><span class="eyebrow" style="color:#5b5fd6">Act 3 · Behavioral-health vertical</span><h2>Kindred, for teens and adults</h2><p>Coping-skills support between sessions or until a session is available, grounded in a clinician-approved library.</p></div>
+    <div class="stage-head"><div><span class="eyebrow" style="color:#5b5fd6">Act 3 · Behavioral-health vertical</span><h2>Kindred, for teens and adults</h2><p>Check in, then choose: a coping skill, or talk it through with a companion built on Carl Rogers’ person-centered approach. A rule-based safety layer screens for suicide risk.</p></div>
       <div class="toggles"><div class="seg" role="group" aria-label="Persona"><button data-who="jordan" aria-pressed="${K.who === 'jordan'}">Jordan · 15</button><button data-who="sam" aria-pressed="${K.who === 'sam'}">Sam · 29 · waitlist</button></div>
+      ${LIVE.ready ? `<div class="seg" role="group" aria-label="Talk engine"><button data-live="1" aria-pressed="${LIVE.on}">Live AI</button><button data-live="0" aria-pressed="${!LIVE.on}">Scripted</button></div>` : `<span class="tog" style="cursor:default" title="Live AI runs on the claude.ai page">${ico('chat', 16)} Scripted talk</span>`}
       <button class="tog" id="tgVoiceB" aria-pressed="${VOICE.on}"><span class="sw"></span>Read aloud</button></div></div>
     <div class="phone"><div class="screen" id="kScreen"></div></div>
   </div><aside class="notes" id="notes-bh"></aside></div>`;
-  el.querySelectorAll('[data-who]').forEach(b => b.onclick = () => {
-    K.who = b.dataset.who; K.suds = K.who === 'sam' ? 6 : 7; K.feel = K.who === 'sam' ? ['Overwhelmed'] : ['Anxious'];
-    el.querySelectorAll('[data-who]').forEach(x => x.setAttribute('aria-pressed', x === b)); goK('home');
-  });
+  el.querySelectorAll('[data-who]').forEach(b => b.onclick = () => { K.who = b.dataset.who; resetPersona(); renderBH(); });
+  el.querySelectorAll('[data-live]').forEach(b => b.onclick = () => { LIVE.on = b.dataset.live === '1'; el.querySelectorAll('[data-live]').forEach(x => x.setAttribute('aria-pressed', x === b)); if (K.screen === 'talk') { K.talk = null; goK('talk'); } });
   const v = document.getElementById('tgVoiceB');
   v.onclick = () => { VOICE.on = !VOICE.on; v.setAttribute('aria-pressed', VOICE.on); };
-  goK(K.screen === 'play' ? 'home' : K.screen);
+  goK(['play'].includes(K.screen) ? 'home' : K.screen);
 }
 
 function sudsBlock(id, val) {
@@ -1818,54 +2169,159 @@ function krow(s) {
   const g = group(s.g);
   return `<button class="krow2" data-skill="${s.id}"><span class="kpic" style="background:${g.hue}">${ico(s.icon, 24)}</span><span class="kt"><b>${esc(s.name)}</b><span>${esc(s.what)}</span></span><span class="km">${s.min} min</span></button>`;
 }
+function bigChoice(id, icon, title, sub, bg) {
+  return `<button class="krow2 kchoice" id="${id}"><span class="kpic" style="background:${bg};width:52px;height:52px;border-radius:16px">${ico(icon, 26)}</span><span class="kt"><b style="font-size:17px">${title}</b><span>${sub}</span></span>${ico('arrow', 20, 'style="color:#a9b1dc"')}</button>`;
+}
+function safetyPlanHTML(P) {
+  const minor = K.who === 'jordan';
+  return `<div class="sp-list" style="margin-top:10px">
+    <div class="sp-item"><i>1</i><span><b>Warning signs:</b> thoughts won’t slow down, pulling away from people</span></div>
+    <div class="sp-item"><i>2</i><span><b>Things that help:</b> long exhale, a hot shower, my playlist</span></div>
+    <div class="sp-item"><i>3</i><span><b>My people:</b> ${minor ? 'Mom (Erin), Aunt Rosa' : 'Alex, my sister Dana'}</span></div>
+    <div class="sp-item"><i>4</i><span><b>Professionals:</b> ${minor ? 'Dr. Moreno, after-hours line' : 'Care team on-call line'}, 988</span></div>
+    <div class="sp-item"><i>5</i><span><b>Make my space safer</b> ${minor ? 'with Mom' : 'with Alex'}</span></div>
+    <div class="sp-item"><i>6</i><span><b>My reasons:</b> ${minor ? 'my little brother, drawing, the summer trip' : 'Dana’s kids, my dog, getting better'}</span></div></div>`;
+}
 
+/* ---------------- screens ---------------- */
 function renderKScreen() {
   const host = document.getElementById('kScreen'); if (!host) return;
-  const P = kp(), V = kvar(), sc = K.screen;
-  const first = P.name;
-  const top = `<div class="kw-top">${sc !== 'home' ? `<button class="kw-ib" id="kBack" aria-label="Home">${ico(sc === 'play' ? 'x' : 'back', 20)}</button>` : `<div class="who"><b>Kindred</b>with ${first}</div>`}<span class="sp"></span><button class="kw-help" id="kHelp">${ico('shield', 16)} Get help now</button></div>`;
+  const P = kp(), V = kvar(), sc = K.screen, first = P.name;
+  const backable = !['home', 'crisis'].includes(sc);
+  const top = `<div class="kw-top">${backable ? `<button class="kw-ib" id="kBack" aria-label="${sc === 'talk' || sc === 'play' ? 'Close' : 'Back'}">${ico(sc === 'talk' || sc === 'play' ? 'x' : 'back', 20)}</button>` : `<div class="who"><b>Kindred</b>with ${first}</div>`}<span class="sp"></span><button class="kw-help" id="kHelp">${ico('shield', 16)} Get help now</button></div>`;
   let body = '';
+
   if (sc === 'home') {
-    body = `<div style="display:flex;justify-content:center;margin:2px 0 4px">${kindred({ variant: V, state: 'listen', size: 104 })}</div>
-      <h3>${K.who === 'jordan' ? 'Hey Jordan.' : 'Hi Sam.'} <em>I’m here.</em></h3>
-      <p class="ksub">${K.who === 'jordan' ? 'Your next session with Dr. Moreno is Thursday at 4:00. Until then, we can use the skills you two picked.' : 'You’re on the waitlist for your first appointment, about three weeks out. Until then, I can guide you through skills your care team approved.'}</p>
-      <div class="kcard" style="margin-top:14px"><span class="klabel">How intense is it right now?</span>${sudsBlock('suds1', K.suds)}
-        <div class="fchips" role="group" aria-label="Feelings">${FEELINGS.map(f => `<button class="fchip" data-f="${f}" aria-pressed="${K.feel.includes(f)}">${f}</button>`).join('')}</div></div>
-      <div class="kstack"><button class="kbtn2" id="kGo">Continue ${ico('arrow', 18)}</button><button class="kbtn2 ghost" id="kLib">Browse all skills</button></div>`;
-  } else if (sc === 'safety') {
-    body = `<div style="display:flex;justify-content:center;margin:6px 0 10px">${kindred({ variant: V, state: 'steady', size: 110 })}</div>
-      <h3>Before anything else: <em>are you safe right now?</em></h3>
-      <p class="ksub">${K.suds} out of 10 is a lot to carry. Your answer helps me find the right kind of support.</p>
-      <div class="kstack" style="margin-top:18px">
-        <button class="krow2" data-safe="yes"><span class="kpic" style="background:#8be9df">${ico('check', 22)}</span><span class="kt"><b>Yes, I’m safe</b><span>Let’s bring the intensity down together.</span></span></button>
-        <button class="krow2" data-safe="unsure"><span class="kpic" style="background:#c9b8ff">${ico('chat', 22)}</span><span class="kt"><b>I’m not sure</b><span>That’s okay. Let’s get you connected.</span></span></button>
-        <button class="krow2" data-safe="no"><span class="kpic" style="background:#ff9f9f">${ico('shield', 22)}</span><span class="kt"><b>No, I might hurt myself</b><span>You won’t go through this alone.</span></span></button>
-      </div>`;
-  } else if (sc === 'crisis') {
+    const isJ = K.who === 'jordan';
+    body = `<div style="display:flex;justify-content:center;margin:0 0 2px">${kindred({ variant: V, state: 'listen', size: 92 })}</div>
+      <h3 style="font-size:31px">${isJ ? 'Hey Jordan.' : 'Hi Sam.'} <em>I’m here.</em></h3>
+      <p class="ksub">${isJ ? 'I’m Kindred, an AI companion, not a person or a therapist. I’m here between your sessions with Dr. Moreno (next: Thursday, 4:00).' : 'I’m Kindred, an AI companion, not a person or a therapist. I’m here while you wait for your first appointment, with skills your care team approved.'}</p>
+      ${P.schedDue && !K.schedDone[K.who] ? `<div class="kcard" style="margin-top:10px;padding:10px 14px;display:flex;gap:10px;align-items:center;font-size:13.5px;color:var(--moon-2)">${ico('clock', 18, 'style="color:#8be9df"')}<span>Your weekly check-in questions are due today.</span></div>` : ''}
+      <div class="kcard" style="margin-top:12px"><span class="klabel">How intense is it right now?</span>${sudsBlock('suds1', K.suds)}
+        <div class="fchips" role="group" aria-label="Feelings">${FEELINGS.map(f => `<button class="fchip" data-f="${f}" aria-pressed="${K.feel.includes(f)}">${f}</button>`).join('')}</div>
+        <label class="ksearch" style="margin:12px 0 0">${ico('note', 18)}<input id="kNote" placeholder="Anything you want to add? (optional)" value="${esc(K.note)}" aria-label="Optional note"></label></div>
+      <div class="kstack"><button class="kbtn2" id="kGo">Continue ${ico('arrow', 18)}</button><button class="kbtn2 ghost" id="kPlan">${ico('shield', 18)} My calm-down plan</button></div>`;
+  }
+
+  else if (sc === 'asq') {
+    const A = K.asq;
+    const why = { intensity: `You said it’s a ${K.suds} out of 10 right now.`, hopeless: 'You said you feel hopeless.', 'what you wrote': 'Something you wrote matters a lot.', scheduled: `${doc() === 'your care team' ? 'Your care team' : 'Dr. Moreno'} asked me to check in with these each week.`, talk: 'What you just shared matters.' }[A.why] || '';
+    if (A.i === -1) {
+      body = `<div style="display:flex;justify-content:center;margin:6px 0 10px">${kindred({ variant: V, state: 'steady', size: 104 })}</div>
+        <h3>A few questions <em>I ask everyone.</em></h3>
+        <p class="ksub">${why} These questions help me make sure you’re safe and get you the right support. There are no wrong answers.</p>
+        <div class="kcard" style="margin-top:14px;font-size:13.5px;color:var(--moon-2);line-height:1.45">${ico('lock', 16, 'style="color:#8be9df;vertical-align:-3px"')} Your answers go to ${K.who === 'jordan' ? 'Dr. Moreno’s team' : 'your care team'}. If you need help at any point, tap <b style="color:#ffc2c2">Get help now</b>.</div>
+        <div class="kstack"><button class="kbtn2" id="asqStart">Okay, let’s go</button></div>`;
+    } else {
+      const acu = A.i >= ASQ_ITEMS.length;
+      const q = acu ? ASQ_ACUITY : ASQ_ITEMS[A.i];
+      const n = acu ? '' : `${A.i + 1} of ${ASQ_ITEMS.length}`;
+      body = `<div style="display:flex;align-items:center;gap:10px;margin:6px 0 16px">${kindred({ variant: V, state: 'steady', size: 54 })}<span class="klabel">${acu ? 'One more question' : 'Question ' + n}</span></div>
+        <div class="asq-card"><p>${esc(q)}</p>${A.i === 3 ? '<span>If yes, your clinician may ask when and how. You don’t need to share details here.</span>' : ''}</div>
+        <div class="kstack" style="margin-top:18px">
+          <button class="kbtn2 ghost asq-a" data-a="yes">Yes</button>
+          <button class="kbtn2 ghost asq-a" data-a="no">No</button>
+          <button class="asq-skip" data-a="skip">I’d rather not answer</button>
+        </div>
+        <p class="asq-src">ASQ · Ask Suicide-Screening Questions · NIMH</p>`;
+    }
+  }
+
+  else if (sc === 'asqNeg') {
+    body = `<div style="display:flex;justify-content:center;margin:10px 0 10px">${kindred({ variant: V, state: 'glad', size: 110 })}</div>
+      <h3>Thank you for <em>answering those.</em></h3>
+      <p class="ksub">I know they’re heavy questions. They’re part of how I look out for you. ${K.asq.ret === 'talk' ? 'I’m still right here. Let’s keep going.' : 'Now, what would help most right now?'}</p>
+      <div class="kstack"><button class="kbtn2" id="asqCont">${K.asq.ret === 'talk' ? 'Keep talking' : 'Continue'}</button></div>`;
+  }
+
+  else if (sc === 'asqPos') {
+    body = `<div style="display:flex;justify-content:center;margin:2px 0 8px">${kindred({ variant: V, state: 'steady', size: 90 })}</div>
+      <h3 style="font-size:30px">Thank you for being <em>honest with me.</em></h3>
+      <p class="ksub">That took courage. You don’t have to carry these thoughts alone, and you won’t.</p>
+      <div class="kcard" style="margin-top:12px"><span class="klabel">What happens next</span>
+        <div class="sp-list" style="margin-top:10px">
+          <div class="sp-item"><i>${ico('send', 14)}</i><span><b>${K.who === 'jordan' ? 'Dr. Moreno’s team' : 'Your care team'}</b> has been told and will reach out today.</span></div>
+          <div class="sp-item"><i>${ico('phone', 14)}</i><span><b>988</b> is here any time, day or night: call or text.</span></div>
+          <div class="sp-item"><i>${ico('shield', 14)}</i><span>Let’s look at <b>your safety plan</b> together.</span></div>
+        </div></div>
+      <details class="kcard kdet" style="margin-top:10px"><summary><span class="klabel">${first}’s safety plan</span></summary>${safetyPlanHTML(P)}</details>
+      <div class="kstack"><button class="kbtn2" id="posSkill">Practice a calm-down skill with me</button><button class="kbtn2 ghost" id="posCont">${K.asq.ret === 'talk' ? 'Keep talking' : 'Continue'}</button></div>`;
+  }
+
+  else if (sc === 'crisis') {
     const minor = K.who === 'jordan';
-    body = `<div style="display:flex;align-items:center;gap:12px;margin:2px 0 8px">${kindred({ variant: V, state: 'steady', size: 70 })}<h3 style="font-size:28px">You don’t have to handle this <em>alone.</em></h3></div>
+    body = `<div style="display:flex;align-items:center;gap:12px;margin:2px 0 8px">${kindred({ variant: V, state: 'steady', size: 64 })}<h3 style="font-size:27px">I’m really glad you told me. <em>Let’s get you to a person.</em></h3></div>
       <div class="crisis">
-        <div class="big988"><span style="width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;flex:none">${ico('phone', 26)}</span><span><b>Call or text 988</b><span>Suicide &amp; Crisis Lifeline · free, confidential, 24/7</span></span></div>
-        <p class="ksub" style="margin:0">If you’re in immediate danger, call <b style="color:#fff">911</b>.</p>
-        <div class="kcard"><span class="klabel">${first}’s safety plan · from ${minor ? 'Dr. Moreno' : 'the intake team'}</span>
-          <div class="sp-list" style="margin-top:10px">
-            <div class="sp-item"><i>1</i><span><b>Warning signs:</b> thoughts won’t slow down, pulling away from people</span></div>
-            <div class="sp-item"><i>2</i><span><b>Things that help:</b> long exhale, a hot shower, my playlist</span></div>
-            <div class="sp-item"><i>3</i><span><b>My people:</b> ${minor ? 'Mom (Erin), Aunt Rosa' : 'Alex, my sister Dana'}</span></div>
-            <div class="sp-item"><i>4</i><span><b>Professionals:</b> ${minor ? 'Dr. Moreno, after-hours line' : 'Care team on-call line'}, 988</span></div>
-            <div class="sp-item"><i>5</i><span><b>Make my space safer</b> ${minor ? 'with Mom' : 'with Alex'}</span></div>
-          </div></div>
-        <span class="sent">${ico('send', 16)} ${minor ? 'Mom and Dr. Moreno’s team have been alerted' : 'Your care team has been alerted'}</span>
+        <a class="big988" href="tel:988"><span style="width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;flex:none">${ico('phone', 26)}</span><span><b>Call or text 988</b><span>Suicide &amp; Crisis Lifeline · free, confidential, 24/7</span></span></a>
+        <p class="ksub" style="margin:0">In immediate danger? Call <b style="color:#fff">911</b>. Please stay with me until you’ve connected with someone.</p>
+        <div class="kcard" style="font-size:14px;line-height:1.45">${ico('shield', 16, 'style="color:#8be9df;vertical-align:-3px"')} If there’s anything nearby you could use to hurt yourself, can you put some distance between you and it, or ask ${minor ? 'Mom' : 'someone'} to hold onto it for now?</div>
+        <details class="kcard kdet"><summary><span class="klabel">${first}’s safety plan · people to reach</span></summary>${safetyPlanHTML(P)}</details>
+        <span class="sent">${ico('send', 16)} ${minor ? 'Mom and Dr. Moreno’s on-call clinician have been alerted' : 'Your care team’s on-call clinician has been alerted'}</span>
       </div>
-      <div class="kstack"><button class="kbtn2" id="kStay">Stay with me and breathe</button></div>`;
-  } else if (sc === 'suggest') {
+      <div class="kstack"><button class="kbtn2" id="kConnected">${ico('check', 18)} I’ve connected with someone</button><button class="kbtn2 ghost" id="kStay">Breathe with me while I connect</button></div>`;
+  }
+
+  else if (sc === 'abuse') {
+    body = `<div style="display:flex;justify-content:center;margin:6px 0 10px">${kindred({ variant: V, state: 'steady', size: 100 })}</div>
+      <h3>Thank you for <em>telling me.</em></h3>
+      <p class="ksub">What you shared is important. I can’t keep it secret, because ${K.who === 'jordan' ? 'Dr. Moreno’s team' : 'your care team'} needs to know so they can help keep everyone safe. You’re not in trouble for telling me.</p>
+      <div class="kcard" style="margin-top:14px"><div class="sp-list">
+        <div class="sp-item"><i>${ico('send', 14)}</i><span><b>Your care team</b> has been told and will contact you soon.</span></div>
+        <div class="sp-item"><i>${ico('phone', 14)}</i><span>If anyone is in danger right now, call <b>911</b>. You can also call or text <b>988</b>.</span></div></div></div>
+      <div class="kstack"><button class="kbtn2" id="abCont">${K.asq && K.asq.ret === 'talk' ? 'Keep talking' : 'Continue'}</button></div>`;
+  }
+
+  else if (sc === 'choose') {
+    body = `<div style="display:flex;justify-content:center;margin:2px 0 6px">${kindred({ variant: V, state: 'calm', size: 100 })}</div>
+      <h3>What would help <em>most right now?</em></h3>
+      <p class="ksub">${K.suds} out of 10${K.feel.length ? `, ${K.feel.map(f => f.toLowerCase()).join(', ')}` : ''}. There’s no wrong choice.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+        ${bigChoice('chSkill', 'wave', 'Try a skill', 'Calm my body first. From your plan with ' + doc() + '.', '#8be9df')}
+        ${bigChoice('chTalk', 'chat', 'Talk it through', 'Tell me what’s going on. I’ll listen.', '#c9b8ff')}
+      </div>
+      <div class="kstack"><button class="kbtn2 ghost" id="kPlan">${ico('shield', 18)} My calm-down plan</button></div>`;
+  }
+
+  else if (sc === 'talk') {
+    body = `<div class="chat"><div class="chat-head">${kindred({ variant: V, state: 'listen', size: 34 })}<span><b>Talking with Kindred</b><small>AI companion · ${LIVE.ready && LIVE.on ? 'live' : 'guided demo'}</small></span><button class="p-small" id="tEnd">End</button></div>
+      <div class="msgs" id="msgs" aria-live="polite"></div><div class="composer" id="composer"></div></div>`;
+  }
+
+  else if (sc === 'heard') {
+    body = `<div style="display:flex;justify-content:center;margin:12px 0 10px">${kindred({ variant: V, state: 'glad', size: 110 })}</div>
+      <h3>Did you feel <em>heard?</em></h3><p class="ksub">One quick question. It helps me get better at listening to you.</p>
+      <div class="heard">${[1, 2, 3, 4, 5].map(n => `<button data-h="${n}" aria-pressed="${K.heard === n}"><b>${n}</b><span>${['Not at all', '', 'Somewhat', '', 'Completely'][n - 1]}</span></button>`).join('')}</div>
+      <div class="kstack"><button class="kbtn2" id="hSave" ${K.heard ? '' : 'disabled'}>Done</button></div>`;
+  }
+
+  else if (sc === 'talkDone') {
+    const T = K.talk || {};
+    body = `<div style="display:flex;justify-content:center;margin:6px 0 8px">${kindred({ variant: V, state: 'glad', size: 104 })}</div>
+      <h3>Thanks for talking <em>with me tonight.</em></h3>
+      <p class="ksub">${K.who === 'jordan' ? 'Thursday you’ll see Dr. Moreno. And Mom is down the hall if tonight gets heavy again.' : 'Your sister is a text away, and I’ll be here tomorrow too.'}</p>
+      <button class="krow2" id="kShare" aria-pressed="${T.share}" style="margin-top:14px"><span class="kpic" style="background:${T.share ? '#8be9df' : 'rgba(255,255,255,.15)'}">${ico(T.share ? 'check' : 'lock', 22)}</span><span class="kt"><b>${T.share ? 'Note saved for ' + doc() : 'Kept private'}</b><span>${T.share ? `“${esc((T.topics || []).join(', ') || 'A hard night')}.” Tap to keep it private.` : 'Only you can see this conversation. Tap to share a short note.'}</span></span></button>
+      <div class="kstack"><button class="kbtn2" id="kHome">Back to my day</button><button class="kbtn2 ghost" id="kSkill">Try a skill</button></div>`;
+  }
+
+  else if (sc === 'plan') {
+    const ids = ['paced', 'squeeze', 'ground54321', 'cool'];
+    body = `<h3 style="font-size:30px">My calm-down <em>plan</em></h3>
+      <p class="ksub">Practice these on calm days so they’re ready on hard ones. If thoughts of suicide come, use 988 first; these help while you reach someone.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px">${ids.map(id => krow(skill(id))).join('')}</div>
+      <p class="ksub" style="font-size:12.5px;margin-top:6px">Skip cold water if you have a heart condition or take beta-blockers.</p>
+      <details class="kcard kdet" style="margin-top:10px"><summary><span class="klabel">Rehearse my safety plan</span></summary>${safetyPlanHTML(P)}</details>`;
+  }
+
+  else if (sc === 'suggest') {
     const ids = suggestFor();
     body = `<div style="display:flex;align-items:center;gap:12px;margin:4px 0 6px">${kindred({ variant: V, state: 'calm', size: 76 })}<div><h3 style="font-size:30px">Let’s bring it down <em>a little.</em></h3></div></div>
-      <p class="ksub">From ${K.suds} to a bit lower is a real win. Pick one. ${K.feel.length ? `You said: ${K.feel.map(f => f.toLowerCase()).join(', ')}.` : ''}</p>
-      <span class="from-plan">${ico('check', 15)} From your plan with ${K.who === 'jordan' ? 'Dr. Moreno' : 'your care team'}</span>
+      <p class="ksub">From ${K.suds} to a bit lower is a real win. Pick one.</p>
+      <span class="from-plan">${ico('check', 15)} From your plan with ${doc()}</span>
       <div style="display:flex;flex-direction:column;gap:8px">${ids.map(id => krow(skill(id))).join('')}</div>
       <div class="kstack"><button class="kbtn2 ghost" id="kLib">${ico('search', 18)} Explore the library</button></div>`;
-  } else if (sc === 'library') {
+  }
+
+  else if (sc === 'library') {
     const band = P.band;
     let list = SKILLS.filter(s => s.ages.includes(band) && s.v.includes('bh'));
     const total = list.length;
@@ -1875,35 +2331,102 @@ function renderKScreen() {
       <label class="ksearch">${ico('search', 18)}<input id="kq" placeholder="Search skills" value="${esc(K.q)}" aria-label="Search skills"></label>
       <div class="kfilters">${[{ id: 'all', name: 'All' }].concat(GROUPS).map(g => `<button data-g="${g.id}" aria-pressed="${K.filter === g.id}">${g.name}</button>`).join('')}</div>
       <div style="display:flex;flex-direction:column;gap:8px" id="klist">${list.map(krow).join('') || '<p class="ksub">No skills match. Try another word.</p>'}</div>`;
-  } else if (sc === 'play') {
+  }
+
+  else if (sc === 'play') {
     body = `<div id="kPlayer" style="flex:1;display:flex;flex-direction:column;min-height:0"></div>`;
-  } else if (sc === 'after') {
-    body = `<div style="display:flex;justify-content:center;margin:4px 0 8px">${kindred({ variant: V, state: 'listen', size: 120 })}</div>
+  }
+
+  else if (sc === 'after') {
+    body = `<div style="display:flex;justify-content:center;margin:4px 0 8px">${kindred({ variant: V, state: 'listen', size: 110 })}</div>
       <h3>How intense is it <em>now?</em></h3><p class="ksub">You started at ${K.before}. Be honest. Any answer is useful.</p>
       <div class="kcard" style="margin-top:14px">${sudsBlock('suds2', K.after ?? Math.max(0, K.before - 4))}</div>
       <div class="kstack"><button class="kbtn2" id="kSave">Save</button></div>`;
-  } else if (sc === 'done') {
+  }
+
+  else if (sc === 'done') {
     const drop = K.before - K.after;
-    body = `<div style="display:flex;justify-content:center;margin:2px 0 6px">${kindred({ variant: V, state: 'glad', size: 120 })}</div>
+    body = `<div style="display:flex;justify-content:center;margin:2px 0 6px">${kindred({ variant: V, state: 'glad', size: 110 })}</div>
       <h3>${drop > 0 ? `From ${K.before} to ${K.after}. <em>That was you.</em>` : `You showed up for yourself. <em>That counts.</em>`}</h3>
       <div class="result" style="margin:16px 0"><div class="r-box"><small>Before</small><b>${K.before}</b></div>${ico('arrow', 28, 'style="color:#a9b1dc"')}<div class="r-box"><small>After</small><b>${K.after}</b></div><div class="r-box" style="text-align:left;max-width:120px"><small>Skill</small><span style="font-size:14px;color:#fff">${esc(K.skill.name)}</span></div></div>
-      <button class="krow2" id="kShare" aria-pressed="${K.share}"><span class="kpic" style="background:${K.share ? '#8be9df' : 'rgba(255,255,255,.15)'}">${ico(K.share ? 'check' : 'lock', 22)}</span><span class="kt"><b>${K.share ? 'Shared with ' + (K.who === 'jordan' ? 'Dr. Moreno' : 'your care team') : 'Kept private'}</b><span>${K.share ? 'Added to your between-session notes. Tap to keep it private.' : 'Only you can see this. Tap to share.'}</span></span></button>
-      <div class="kstack"><button class="kbtn2" id="kHome">Back to my day</button><button class="kbtn2 ghost" id="kMore">Try another skill</button></div>`;
+      <button class="krow2" id="kShare" aria-pressed="${K.share}"><span class="kpic" style="background:${K.share ? '#8be9df' : 'rgba(255,255,255,.15)'}">${ico(K.share ? 'check' : 'lock', 22)}</span><span class="kt"><b>${K.share ? 'Shared with ' + doc() : 'Kept private'}</b><span>${K.share ? 'Added to your between-session notes. Tap to keep it private.' : 'Only you can see this. Tap to share.'}</span></span></button>
+      <div class="kstack"><button class="kbtn2" id="kHome">Back to my day</button><button class="kbtn2 ghost" id="kMore">Talk it through</button></div>`;
   }
-  host.innerHTML = `<div class="kw">${top}<div class="kw-body">${body}</div></div>`;
 
+  host.innerHTML = `<div class="kw">${top}<div class="kw-body ${sc === 'talk' ? 'kw-chat' : ''}">${body}</div><div class="kw-foot">AI companion · not a therapist · In crisis: call or text 988</div></div>`;
+  wireK(host, sc, P);
+}
+
+function wireK(host, sc, P) {
   const $ = q => host.querySelector(q);
-  if ($('#kBack')) $('#kBack').onclick = () => goK(sc === 'library' && K.skill ? 'suggest' : 'home');
-  $('#kHelp').onclick = () => goK('crisis');
-  host.querySelectorAll('.krow2[data-skill]').forEach(b => b.onclick = () => { K.skill = skill(b.dataset.skill); if (K.before == null) K.before = K.suds; goK('play'); });
+  const backTo = { asq: 'home', asqNeg: 'choose', asqPos: 'choose', abuse: 'choose', choose: 'home', talk: 'heard', heard: 'talkDone', talkDone: 'home', plan: K.asq ? 'choose' : 'home', suggest: 'choose', library: 'suggest', play: 'choose', after: 'choose', done: 'home' };
+  if ($('#kBack')) $('#kBack').onclick = () => {
+    if (sc === 'talk') return endTalk();
+    if (sc === 'play' && K.ret) { const r = K.ret; K.ret = null; return goK(r); }
+    goK(backTo[sc] || 'home');
+  };
+  $('#kHelp').onclick = () => { logEvent({ who: K.who, kind: 'safety', tier: 'help', via: 'Get help now' }); goK('crisis'); };
+  host.querySelectorAll('.krow2[data-skill]').forEach(b => b.onclick = () => {
+    K.skill = skill(b.dataset.skill); if (K.before == null) K.before = K.suds;
+    if (sc === 'plan') K.ret = 'plan';
+    goK('play');
+  });
+  if ($('#kPlan')) $('#kPlan').onclick = () => goK('plan');
+
   if (sc === 'home') {
     wireSuds(host, 'suds1', v => K.suds = v);
     host.querySelectorAll('.fchip').forEach(b => b.onclick = () => { const f = b.dataset.f; K.feel = K.feel.includes(f) ? K.feel.filter(x => x !== f) : K.feel.concat(f); b.setAttribute('aria-pressed', K.feel.includes(f)); });
-    $('#kGo').onclick = () => { K.before = K.suds; K.after = null; goK(K.suds >= 8 ? 'safety' : 'suggest'); };
-    $('#kLib').onclick = () => { K.before = K.suds; goK('library'); };
+    $('#kNote').oninput = e => K.note = e.target.value;
+    $('#kGo').onclick = () => {
+      K.before = K.suds; K.after = null;
+      const t = triage();
+      if (!t) return goK('choose');
+      if (t.abuse) { logEvent({ who: K.who, kind: 'safety', tier: t.abuse === 'abuse' ? 'abuse' : 'others', via: 'check-in note' }); K.asq = { ret: 'choose' }; return goK('abuse'); }
+      if (t.why === 'scheduled') K.schedDone[K.who] = true;
+      startASQ(t.why, 'choose');
+    };
   }
-  if (sc === 'safety') host.querySelectorAll('[data-safe]').forEach(b => b.onclick = () => { if (b.dataset.safe === 'yes') goK('suggest'); else { logEvent({ who: K.who, skill: null, safety: true }); goK('crisis'); } });
-  if (sc === 'crisis') $('#kStay').onclick = () => { K.skill = skill('paced'); K.before = K.before ?? K.suds; goK('play'); };
+  if (sc === 'asq') {
+    const A = K.asq;
+    if ($('#asqStart')) $('#asqStart').onclick = () => { A.i = 0; renderKScreen(); };
+    host.querySelectorAll('[data-a]').forEach(b => b.onclick = () => {
+      const a = b.dataset.a;
+      if (A.i < ASQ_ITEMS.length) {
+        A.ans[A.i] = a; A.i++;
+        if (A.i === ASQ_ITEMS.length && A.ans.every(x => x === 'no')) return finishASQ();
+        return renderKScreen();
+      }
+      A.acuity = a; finishASQ();
+    });
+  }
+  if (sc === 'asqNeg') $('#asqCont').onclick = () => resumeAfterSafety();
+  if (sc === 'asqPos') {
+    $('#posSkill').onclick = () => { K.skill = skill('paced'); K.ret = 'asqPos'; goK('play'); };
+    $('#posCont').onclick = () => resumeAfterSafety();
+  }
+  if (sc === 'crisis') {
+    $('#kStay').onclick = () => { K.skill = skill('paced'); K.ret = 'crisis'; goK('play'); };
+    $('#kConnected').onclick = () => { logEvent({ who: K.who, kind: 'safety', tier: 'connected', via: 'Client confirmed contact' }); K.asq = null; K.talk = null; goK('home'); };
+  }
+  if (sc === 'abuse') $('#abCont').onclick = () => resumeAfterSafety();
+  if (sc === 'choose') {
+    $('#chSkill').onclick = () => goK('suggest');
+    $('#chTalk').onclick = () => { K.talk = null; goK('talk'); };
+  }
+  if (sc === 'talk') startTalk(host, P);
+  if (sc === 'heard') {
+    host.querySelectorAll('[data-h]').forEach(b => b.onclick = () => { K.heard = +b.dataset.h; host.querySelectorAll('[data-h]').forEach(x => x.setAttribute('aria-pressed', x === b)); $('#hSave').disabled = false; });
+    $('#hSave').onclick = () => {
+      const T = K.talk || {};
+      logEvent({ who: K.who, kind: 'talk', heard: K.heard, topics: T.topics || [], shared: !!T.share, turns: (T.msgs || []).length, live: !!T.live });
+      goK('talkDone');
+    };
+  }
+  if (sc === 'talkDone') {
+    $('#kShare').onclick = () => { K.talk.share = !K.talk.share; const e = EVENTS.find(x => x.who === K.who && x.kind === 'talk'); if (e) e.shared = K.talk.share; renderKScreen(); };
+    $('#kHome').onclick = () => { K.talk = null; K.heard = null; K.asq = null; goK('home'); };
+    $('#kSkill').onclick = () => goK('suggest');
+  }
   if (sc === 'suggest') $('#kLib').onclick = () => goK('library');
   if (sc === 'library') {
     const q = $('#kq');
@@ -1914,13 +2437,119 @@ function renderKScreen() {
   if (sc === 'after') {
     K.after = K.after ?? Math.max(0, K.before - 4);
     wireSuds(host, 'suds2', v => K.after = v);
-    $('#kSave').onclick = () => { logEvent({ who: K.who, skill: K.skill.id, before: K.before, after: K.after, scale: 'suds', shared: K.share }); goK('done'); };
+    $('#kSave').onclick = () => { logEvent({ who: K.who, kind: 'skill', skill: K.skill.id, before: K.before, after: K.after, scale: 'suds', shared: K.share }); goK('done'); };
   }
   if (sc === 'done') {
-    $('#kShare').onclick = () => { K.share = !K.share; const e = EVENTS.find(x => x.who === K.who && !x.safety); if (e) e.shared = K.share; renderKScreen(); };
+    $('#kShare').onclick = () => { K.share = !K.share; const e = EVENTS.find(x => x.who === K.who && x.kind === 'skill'); if (e) e.shared = K.share; renderKScreen(); };
     $('#kHome').onclick = () => { K.before = K.after = null; K.skill = null; goK('home'); };
-    $('#kMore').onclick = () => { K.before = K.after; K.after = null; goK('suggest'); };
+    $('#kMore').onclick = () => { K.talk = null; goK('talk'); };
   }
+}
+
+function finishASQ() {
+  const A = K.asq;
+  const tier = asqTier(A.ans, A.acuity);
+  K.screened = true;
+  logEvent({ who: K.who, kind: 'safety', tier, via: 'ASQ', why: A.why, answers: A.ans.slice(), acuity: A.acuity });
+  goK(tier === 'negative' ? 'asqNeg' : tier === 'nonacute' ? 'asqPos' : 'crisis');
+}
+function resumeAfterSafety() {
+  const A = K.asq || {};
+  if (A.ret === 'talk' && K.talk) { K.talk.node = A.resumeNode || 'afterSafety'; K.talk.resume = true; goK('talk'); }
+  else goK('choose');
+}
+
+/* ---------------- Talk it through ---------------- */
+function startTalk(host, P) {
+  const live = LIVE.ready && LIVE.on;
+  const script = TALK_SCRIPTS[K.who];
+  if (!script.afterSafety) script.afterSafety = { k: 'Thank you for answering those. I’m still right here with you. What’s been the hardest part of tonight?', c: [[K.who === 'jordan' ? 'Mostly my dad' : 'The waiting', K.who === 'jordan' ? 'counts' : 'hold'], ['I think I’m ready to wind down', 'close']] };
+  if (!K.talk) K.talk = { msgs: [], node: 'start', topics: [], share: false, live, started: Date.now() };
+  const T = K.talk;
+  const msgs = host.querySelector('#msgs'), comp = host.querySelector('#composer');
+  host.querySelector('#tEnd').onclick = () => endTalk();
+
+  const bubble = (m) => `<div class="msg ${m.who}">${m.who === 'k' ? `<span class="mav">${kindred({ variant: kvar(), state: 'calm', size: 26 })}</span>` : ''}<p>${esc(m.text)}</p></div>`;
+  const paint = () => { msgs.innerHTML = T.msgs.map(bubble).join(''); msgs.scrollTop = msgs.scrollHeight; };
+  const typing = () => { msgs.insertAdjacentHTML('beforeend', `<div class="msg k typing" id="typing"><span class="mav">${kindred({ variant: kvar(), state: 'listen', size: 26 })}</span><p><i></i><i></i><i></i></p></div>`); msgs.scrollTop = msgs.scrollHeight; };
+  const say = (text, then) => { typing(); later(() => { T.msgs.push({ who: 'k', text }); paint(); speak(text); then && then(); }, Math.min(1600, 500 + text.length * 9)); };
+
+  function riskRoute(r, resumeNode) {
+    T.node = resumeNode;
+    if (r === 'others' || r === 'abuse') {
+      say('Thank you for telling me. That’s really important, and I want to make sure everyone is safe.', () => later(() => { logEvent({ who: K.who, kind: 'safety', tier: r, via: 'talk' }); K.asq = { ret: 'talk', resumeNode }; goK('abuse'); }, 900));
+      return;
+    }
+    say('Thank you for telling me. That matters, and I want to make sure you’re safe. I’m going to ask a few questions I ask everyone.', () => later(() => startASQ('talk', 'talk', resumeNode), 1100));
+  }
+  const needsScreen = r => r === 'self' || r === 'others' || r === 'abuse' || (r === 'hopeless' && !K.screened);
+
+  if (!live) {
+    const showChips = () => {
+      const node = script[T.node];
+      comp.innerHTML = `<div class="chips">${node.c.map((c, i) => `<button class="tchip" data-i="${i}">${esc(c[0])}</button>`).join('')}</div><p class="comp-note">Guided demo: tap a reply. The claude.ai version supports free typing with live AI.</p>`;
+      comp.querySelectorAll('.tchip').forEach(b => b.onclick = () => {
+        const [label, next, topic] = node.c[+b.dataset.i];
+        T.msgs.push({ who: 'u', text: label }); paint(); comp.innerHTML = '';
+        if (topic && !topic.startsWith('#')) T.topics.push(topic);
+        if (topic === '#note' || next === '#note') T.share = true;
+        const r = detectRisk(label);
+        if (needsScreen(r)) return riskRoute(r, next || 'afterSafety');
+        if (next === '#skill') return later(() => goK('suggest'), 300);
+        if (next === '#breathe') { K.skill = skill('paced'); K.ret = 'heard'; K.before = K.before ?? K.suds; return later(() => goK('play'), 300); }
+        if (next === '#end') return later(endTalk, 300);
+        T.node = next;
+        say(script[next].k, showChips);
+      });
+      msgs.scrollTop = msgs.scrollHeight;
+    };
+    if (!T.msgs.length) { paint(); say(script.start.k, showChips); }
+    else if (T.resume) { T.resume = false; paint(); say(script[T.node].k, showChips); }
+    else { paint(); showChips(); }
+    return;
+  }
+
+  /* live mode */
+  const sendLive = async (text) => {
+    if (!text.trim() || T.busy) return;
+    T.msgs.push({ who: 'u', text: text.trim() }); paint();
+    if (T.msgs.filter(m => m.who === 'u').length === 1) T.topics.push(text.trim().slice(0, 60));
+    const r = detectRisk(text);
+    if (needsScreen(r)) return riskRoute(r, 'afterSafety');
+    T.busy = true; renderComposer();
+    typing();
+    try {
+      const reply = await liveReply(P, T.msgs, (partial) => {
+        const tp = msgs.querySelector('#typing p'); if (tp && partial) tp.textContent = partial; msgs.scrollTop = msgs.scrollHeight;
+      }, (cat) => { msgs.querySelector('#typing')?.remove(); T.busy = false; riskRoute(cat, 'afterSafety'); });
+      msgs.querySelector('#typing')?.remove();
+      if (reply) { T.msgs.push({ who: 'k', text: reply }); paint(); speak(reply); }
+    } catch (e) {
+      msgs.querySelector('#typing')?.remove();
+      T.msgs.push({ who: 'k', text: e && e.code === 'rate_limited' ? 'I need a moment. Can you try again in a little bit?' : 'I lost my connection for a second. I’m still here. Can you say that again?' }); paint();
+    }
+    T.busy = false; renderComposer();
+  };
+  function renderComposer() {
+    const starters = T.msgs.filter(m => m.who === 'u').length === 0 ? script.start.c.map(c => c[0]) : [];
+    comp.innerHTML = `${starters.length ? `<div class="chips">${starters.map(s => `<button class="tchip" data-s="${esc(s)}">${esc(s)}</button>`).join('')}</div>` : ''}
+      <form class="kin-input" id="kForm"><textarea id="kMsg" rows="1" placeholder="${T.busy ? 'Kindred is listening…' : 'Type what’s on your mind…'}" aria-label="Message to Kindred" ${T.busy ? 'disabled' : ''}></textarea><button class="kbtn2" style="width:auto;padding:12px 14px" ${T.busy ? 'disabled' : ''} aria-label="Send">${ico('send', 18)}</button></form>
+      <p class="comp-note">Live AI · person-centered · risk words are checked before the AI sees them</p>`;
+    comp.querySelectorAll('[data-s]').forEach(b => b.onclick = () => sendLive(b.dataset.s));
+    const f = comp.querySelector('#kForm'), ta = comp.querySelector('#kMsg');
+    f.onsubmit = e => { e.preventDefault(); sendLive(ta.value); };
+    ta.onkeydown = e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendLive(ta.value); } };
+    if (!T.busy) ta.focus();
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  if (!T.msgs.length) { T.msgs.push({ who: 'k', text: script.start.k }); }
+  if (T.resume) { T.resume = false; T.msgs.push({ who: 'k', text: script.afterSafety.k }); }
+  paint(); renderComposer();
+}
+function endTalk() {
+  stopPlayers();
+  if (!K.talk || !K.talk.msgs.some(m => m.who === 'u')) { K.talk = null; return goK('choose'); }
+  goK('heard');
 }
 
 /* =====================================================================
@@ -1944,6 +2573,8 @@ const CL = {
       heat: [[0,0,0,1,1,3],[0,0,1,0,2,4],[0,0,0,1,1,5],[0,1,0,0,2,3],[0,0,0,1,3,2],[0,1,1,1,1,1],[0,0,1,0,2,3]],
       heatNote: 'Most help is needed <b>9 PM to midnight on school nights</b>. Consider an evening check-in and a bedtime routine skill.',
       hive: { cohort: 'Teens 13–17 · anxiety · 2,140 NOVA clients', big: 'Grounding first <span>doubles</span> Thought check completion', body: 'When 5-4-3-2-1 comes right before a Thought check, teens finish the thought check 64% of the time instead of 31%, and the intensity drop grows from −1.9 to −3.4.', action: 'Pair 5-4-3-2-1 before Thought check', done: 'Paired in Jordan’s plan. Kindred will offer them together from tonight.' },
+      talk: { label: 'Talk it through', sessions: 9, heard: '4.6', heardNote: 'average “felt heard” (1–5)', shared: '6 of 9', notes: [['Sat 11:05 PM', 'Group chat drama · felt left out', '4/5', 'Shared'], ['Thu 9:30 PM', 'Test anxiety · “I’m going to fail”', '5/5', 'Shared'], ['Mon 10:15 PM', 'Couldn’t sleep · replaying the day', '5/5', 'Private']] },
+      safety: [['Oct 28 · 11:12 PM', 'ASQ · <b>non-acute positive</b>', 'Dr. Moreno alerted 11:12 PM · acknowledged 8:05 AM · call Oct 29 · safety plan updated', 'warn'], ['Oct 21 · 9:40 PM', 'ASQ · negative (intensity 8)', 'Logged', 'ok'], ['Oct 14 · 8:02 PM', 'ASQ · negative (weekly)', 'Logged', 'ok']],
       feed: [['Tue 10:42 PM', 'paced', '8 → 4', 'Shared: “fight with dad”'], ['Mon 9:58 PM', 'ground54321', '7 → 5', 'Shared'], ['Sun 11:20 PM', 'jar', '6 → 4', 'Worry time 6:30 PM'], ['Sat 3:10 PM', 'thought', '6 → 5', 'Private'], ['Thu 10:05 PM', 'paced', '7 → 3', 'Shared']]
     },
     mateo: {
@@ -1959,6 +2590,8 @@ const CL = {
       heat: [[0,0,1,4,1,0],[0,0,0,5,2,0],[0,1,0,4,1,0],[0,0,1,5,2,1],[0,0,0,3,1,0],[1,1,2,1,1,0],[0,2,1,1,1,0]],
       heatNote: 'Peaks at <b>3–6 PM on school days</b>, the transition home. Suggest a first-then routine right at pickup.',
       hive: { cohort: 'Autistic children 5–8 · sensory-seeking profile · 860 NOVA clients', big: 'Heavy work before breathing reaches calm <span>2.1× faster</span>', body: 'For sensory-seeking children, a wall push before balloon breath brings a “Too big” moment to calm in a median 3.4 minutes, compared with 7.1 for breathing alone.', action: 'Add Wall push before Balloon breath', done: 'Added to Mateo’s first-then board. Pip will offer Wall push first when the meter reads Big or Too big.' },
+      talk: { label: 'Tell Pip', sessions: 11, heard: 'Mad', heardNote: 'most-named feeling (6 of 11)', shared: 'Plans changed', sharedNote: 'top trigger (5 of 11)', notes: [['Wed 3:44 PM', 'Felt WORRIED · plans changed', '→ Squeeze', 'with Lucia'], ['Mon 4:02 PM', 'Felt MAD · too loud', '→ Hug grown-up', 'with Lucia'], ['Sat 10:20 AM', 'Felt SAD · friend trouble', '→ Balloon breath', 'with Lucia']] },
+      safety: [['Nov 2 · 7:30 PM', 'Grown-up check-in · no warning signs', 'Logged', 'ok'], ['Oct 26 · 7:12 PM', 'Grown-up check-in · no warning signs', 'Logged', 'ok']],
       feed: [['Today 3:52 PM', 'heavy', 'Too big → Wiggly', 'with Lucia'], ['Yesterday 4:15 PM', 'balloon', 'Big → Calm', 'with Lucia'], ['Wed 3:40 PM', 'squeeze', 'Wiggly → Calm', 'with Lucia'], ['Tue 7:55 PM', 'butterfly', 'Big → Wiggly', 'bedtime'], ['Mon 3:31 PM', 'balloon', 'Too big → Calm', 'with Lucia']]
     }
   }
@@ -1966,6 +2599,7 @@ const CL = {
 CL.plan = { jordan: PEOPLE.jordan.plan.slice(), mateo: PEOPLE.mateo.plan.slice() };
 
 const NOTES_C = { t: 'One panel, both clinical portals', b: [
+  'New: <b>Safety screening &amp; alerts</b> shows every ASQ result, trigger and response target, with an Acknowledge button. <b>Talk</b> shows “felt heard” scores and only the summaries the client chose to share.',
   'The same Coping Skills panel sits inside the <b>BCBA workspace</b> and the <b>behavioral-health clinician view</b>. Switch clients above.',
   '<b>Before → after by skill</b> shows what actually works for this person, between sessions, where clinicians have never had data.',
   'Anything done in Acts 2 and 3 appears in <b>Recent moments</b> as <b>New</b>.',
@@ -1996,6 +2630,10 @@ function renderClin() {
             <p class="fine">Illustrative figures for the demo. In production, insights need a minimum cohort size and clinician review before they’re shown.</p></div>
           <div class="panel chart" id="heatP"><div class="ph"><div><h3>When help is needed</h3><p>Skill uses by day and time · darker = more</p></div><div class="legend" id="heatLeg"></div></div><div id="heatSvg"></div><p style="font-size:13px;color:var(--ink-2);margin-top:8px">${D.heatNote}</p><div class="tip" id="tip2"></div></div>
           <div class="panel"><div class="ph"><div><h3>Recent moments</h3><p>From ${isA ? 'NOVA Home (Pip)' : 'Kindred'} · ${isA ? 'logged automatically' : 'shared by the client'}</p></div></div><div class="feed" id="feed"></div></div>
+          <div class="panel"><div class="ph"><div><h3>${ico('shield', 18)} Safety screening &amp; alerts</h3><p>${isA ? 'Children aren’t screened in the app. Grown-up check-ins and Pip disclosures appear here.' : 'ASQ (NIMH) when triggered or weekly · response targets: imminent ≤15 min, positive same day, follow-up ≤72 h'}</p></div></div><div class="feed" id="safetyFeed"></div></div>
+          <div class="panel"><div class="ph"><div><h3>${ico('chat', 18)} ${D.talk.label}</h3><p>${isA ? 'Picture-based talks with Pip · feeling, trigger, what helped' : 'Person-centered talks with Kindred · summaries only when the client chooses to share'}</p></div></div>
+            <div class="tstats"><div><b>${D.talk.sessions}</b><span>${isA ? 'talks' : 'sessions'} · 28 days</span></div><div><b>${D.talk.heard}</b><span>${D.talk.heardNote}</span></div><div><b>${D.talk.shared}</b><span>${D.talk.sharedNote || 'summaries shared'}</span></div></div>
+            <div class="feed" id="talkFeed"></div></div>
           <div class="panel" style="grid-column:1/-1"><div class="ph"><div><h3>Assigned skills</h3><p>Toggle a skill to add it to ${isA ? 'Mateo’s toolbox and first-then board' : 'Jordan’s plan in Kindred'}. Showing skills approved for this vertical and age band.</p></div><span class="crumbs">${CL.plan[CL.who].length} assigned</span></div>
             <div class="assign" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));max-height:330px">${assignable().sort((a, b) => CL.plan[CL.who].includes(b.id) - CL.plan[CL.who].includes(a.id)).map(s => { const g = group(s.g); const on = CL.plan[CL.who].includes(s.id); return `<button class="arow ${on ? 'on' : ''}" data-s="${s.id}"><span class="ai" style="background:${g.soft};color:${g.hue}">${ico(s.icon, 18)}</span><span class="at"><b>${esc(s.name)}</b><span>${esc(g.name)} · ${esc(s.ev)}</span></span><span class="mini-tog"></span></button>`; }).join('')}</div></div>
         </div>
@@ -2008,6 +2646,8 @@ function renderClin() {
   drawDumbbell(D, isA);
   drawHeat(D, isA);
   drawFeed(D, isA);
+  drawSafety(D, isA);
+  drawTalk(D, isA);
   renderNotes('clinician', NOTES_C);
 }
 function assignable() {
@@ -2073,10 +2713,9 @@ function drawHeat(D, isA) {
 }
 
 function drawFeed(D, isA) {
-  const mine = EVENTS.filter(e => e.who === CL.who || (!isA && e.who === 'sam' && false));
+  const mine = EVENTS.filter(e => e.who === CL.who && (!e.kind || e.kind === 'skill'));
   const live = mine.map(e => {
     const t = e.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-    if (e.safety) return `<div class="fitem new"><span><time>Just now · ${t}</time><b>Safety check</b> · 988 and safety plan shown · team alerted<span class="badge-new">NEW</span></span><span class="delta safety">Alert</span></div>`;
     const s = skill(e.skill);
     const d = e.scale === 'meter' ? `${LEVELS[e.before - 1].name} → ${LEVELS[e.after - 1].name}` : `${e.before} → ${e.after}`;
     const flat = e.after >= e.before;
@@ -2086,12 +2725,51 @@ function drawFeed(D, isA) {
   document.getElementById('feed').innerHTML = live.concat(hist).slice(0, 7).join('');
 }
 
+const TIER_TXT = {
+  negative: ['ASQ · negative', 'Logged', 'ok'],
+  nonacute: ['ASQ · <b>non-acute positive</b>', 'Clinician alerted · respond same day · follow-up ≤72 h', 'warn'],
+  imminent: ['ASQ · <b>acute positive (thoughts right now)</b>', 'On-call paged · 988/911 shown · guardian alerted', 'crit'],
+  help: ['<b>Get help now</b> tapped', '988/911 and safety plan shown · on-call paged', 'crit'],
+  connected: ['Client confirmed contact with a person', 'Logged', 'ok'],
+  abuse: ['<b>Possible abuse disclosed</b>', 'Clinician alerted now · mandated-reporting review', 'crit'],
+  others: ['<b>Possible risk to others</b>', 'Clinician alerted now · duty-to-warn review', 'crit'],
+  'child-disclosure': ['<b>Pip: child disclosure</b>', 'Lucia guided · clinician alerted · call today', 'crit'],
+  'caregiver-flag': ['<b>Grown-up check-in: warning signs</b>', 'Clinician alerted · call Lucia today', 'warn']
+};
+function drawSafety(D, isA) {
+  const live = EVENTS.filter(e => e.who === CL.who && e.kind === 'safety').map((e, i) => {
+    const [t, act, lvl] = TIER_TXT[e.tier] || ['Safety event', '', 'warn'];
+    const tm = e.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    const why = e.why ? ` · trigger: ${({ intensity: 'intensity 7+', hopeless: '“hopeless”', 'what you wrote': 'risk words', scheduled: 'weekly', talk: 'said in talk' })[e.why] || e.why}` : (e.via ? ` · ${e.via}` : '');
+    const needsAck = lvl !== 'ok';
+    return `<div class="fitem new sfi ${lvl}"><span><time>Just now · ${tm}${why}</time>${t}<span class="badge-new">NEW</span><small>${act}</small></span>${needsAck ? `<button class="ackbtn" data-ack="${i}" ${e.ack ? 'disabled' : ''}>${e.ack ? 'Acknowledged ' + e.ack : 'Acknowledge'}</button>` : `<span class="delta flat">Logged</span>`}</div>`;
+  });
+  const hist = D.safety.map(r => `<div class="fitem sfi ${r[3]}"><span><time>${r[0]}</time>${r[1]}<small>${r[2]}</small></span><span class="delta ${r[3] === 'ok' ? 'flat' : 'warnd'}">${r[3] === 'ok' ? 'Logged' : 'Closed'}</span></div>`);
+  const box = document.getElementById('safetyFeed');
+  box.innerHTML = live.concat(hist).join('');
+  const liveEv = EVENTS.filter(e => e.who === CL.who && e.kind === 'safety');
+  box.querySelectorAll('[data-ack]').forEach(b => b.onclick = () => { liveEv[+b.dataset.ack].ack = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); drawSafety(D, isA); });
+}
+function drawTalk(D, isA) {
+  const live = EVENTS.filter(e => e.who === CL.who && (e.kind === 'talk' || e.kind === 'tell')).map(e => {
+    const tm = e.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    if (e.kind === 'tell') {
+      const F = TELL_FEEL.find(x => x.id === e.feel), W = TELL_WHAT.find(x => x.id === e.what);
+      const ch = { squeeze: '→ Squeeze', breathe: '→ Balloon breath', hug: '→ Hug grown-up' }[e.choice] || '';
+      return `<div class="fitem new"><span><time>Just now · ${tm}</time><b>Felt ${F ? F.name : ''}</b> · ${esc(W ? W.label.toLowerCase() : '')}<span class="badge-new">NEW</span></span><span class="delta">${ch}</span></div>`;
+    }
+    return `<div class="fitem new"><span><time>Just now · ${tm}${e.live ? ' · live AI' : ''}</time><b>${e.shared ? esc((e.topics || []).join(' · ') || 'Talk session') : 'Private session'}</b> · ${e.shared ? 'summary shared' : 'not shared'}<span class="badge-new">NEW</span></span><span class="delta">Felt heard ${e.heard}/5</span></div>`;
+  });
+  const hist = D.talk.notes.map(n => `<div class="fitem"><span><time>${n[0]}</time><b>${n[3] === 'Private' ? 'Private session' : esc(n[1])}</b> · ${n[3]}</span><span class="delta ${isA ? '' : ''}">${isA ? n[2] : 'Felt heard ' + n[2]}</span></div>`);
+  document.getElementById('talkFeed').innerHTML = live.concat(hist).slice(0, 6).join('');
+}
+
 /* =====================================================================
    APP · presenter notes, routing, keyboard
    ===================================================================== */
 function renderNotes(act, n, flow, cur) {
   const el = document.getElementById('notes-' + act); if (!el || !n) return;
-  const labels = { home: 'Check-in', pick: 'First-then', play: 'Skill', after: 'Re-check', done: 'Result', suggest: 'Plan skills' };
+  const labels = { home: 'Check-in', choose: 'Choice', tell: 'Tell Pip', pick: 'First-then', play: 'Skill', after: 'Re-check', done: 'Result', asq: 'Safety check', talk: 'Talk', skill: 'Skill' };
   el.innerHTML = `<h4>Presenter notes</h4><div class="n-title">${n.t}</div><ul>${n.b.map(x => `<li><span>${x}</span></li>`).join('')}</ul>
     ${flow ? `<div class="n-flow">${flow.map(f => `<span class="${f === cur ? 'on' : ''}">${labels[f] || f}</span>`).join('')}</div>` : ''}
     <div class="n-foot">${n.foot || 'Press <b>N</b> to hide notes · <b>1–4</b> to jump between acts.'}</div>`;
