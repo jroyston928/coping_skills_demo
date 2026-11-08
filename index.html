@@ -1716,8 +1716,8 @@ async function liveReply(P, history, onText, onSafety) {
     const j = await r.json().catch(() => ({}));
     if (j.safety) { onSafety(j.safety); return null; }
     if (!r.ok || !j.reply) throw { code: r.status === 429 ? 'rate_limited' : 'upstream_error' };
-    onText(j.reply);
-    let text = j.reply.trim();
+    let text = j.reply.trim().replace(/\*{1,2}([^*]+)\*{1,2}/g, '$1').replace(/_([^_]+)_/g, '$1');
+    onText(text);
     if (BANNED_OUT.test(text)) text = 'I’m here with you. Tell me more about what’s going on.';
     return text;
   }
@@ -1734,7 +1734,7 @@ async function liveReply(P, history, onText, onSafety) {
   if (LIVE.tools) opts.tools = tools;
   const res = await LIVE.sample(turns, opts);
   if (flagged) { onSafety(flagged); return null; }
-  let text = (res && res.text || '').trim();
+  let text = (res && res.text || '').trim().replace(/\*{1,2}([^*]+)\*{1,2}/g, '$1');
   if (BANNED_OUT.test(text)) text = 'I’m here with you. Tell me more about what’s going on.';
   return text;
 }
