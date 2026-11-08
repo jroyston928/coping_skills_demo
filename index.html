@@ -546,6 +546,7 @@ a.big988{text-decoration:none}
 .tchip:hover{background:rgba(139,233,223,.16)}
 .comp-note{font-size:10.5px;color:var(--moon-2);text-align:center;opacity:.8}
 .kin-input{display:flex;gap:8px;align-items:flex-end}
+.kin-input.is-off{opacity:.5}
 .kin-input textarea{flex:1;resize:none;min-height:46px;max-height:110px;padding:12px 14px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff;font:15px/1.4 var(--body);outline:none}
 /* ---- Pip: choice, tell, grown-up check-in ---- */
 .choice2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
@@ -1650,10 +1651,16 @@ const TALK_SCRIPTS = {
 
 /* ---------- live engine (Claude via the page's "ask Claude" capability) ---------- */
 const LIVE = { sample: null, ready: false, on: false, checked: false };
+/* window.claude can appear after this script's first run, so wait for it (up to 12 s) */
 (async () => {
   try {
+    let t = 0;
+    while (!(window.claude && window.claude.use) && t < 12000) { await new Promise(r => setTimeout(r, 250)); t += 250; }
     const s = window.claude && window.claude.use ? await window.claude.use('sample') : null;
-    if (s) { LIVE.sample = s; LIVE.ready = true; LIVE.on = true; if (typeof renderBH === 'function' && current === 'bh') renderBH(); }
+    if (s) {
+      LIVE.sample = s; LIVE.ready = true; LIVE.on = true;
+      if (typeof renderBH === 'function' && current === 'bh') { if (K.screen === 'talk' && K.talk && !K.talk.msgs.some(m => m.who === 'u')) K.talk = null; renderBH(); }
+    }
   } catch (e) { /* stays scripted */ }
   LIVE.checked = true;
 })();
@@ -2487,7 +2494,8 @@ function startTalk(host, P) {
   if (!live) {
     const showChips = () => {
       const node = script[T.node];
-      comp.innerHTML = `<div class="chips">${node.c.map((c, i) => `<button class="tchip" data-i="${i}">${esc(c[0])}</button>`).join('')}</div><p class="comp-note">Guided demo: tap a reply. The claude.ai version supports free typing with live AI.</p>`;
+      comp.innerHTML = `<div class="chips">${node.c.map((c, i) => `<button class="tchip" data-i="${i}">${esc(c[0])}</button>`).join('')}</div>
+        <div class="kin-input is-off" title="Free typing needs the live AI connection"><textarea rows="1" disabled placeholder="Tap a reply above. Free typing needs the live AI connection."></textarea><button class="kbtn2" style="width:auto;padding:12px 14px" disabled aria-label="Send">${ico('send', 18)}</button></div>`;
       comp.querySelectorAll('.tchip').forEach(b => b.onclick = () => {
         const [label, next, topic] = node.c[+b.dataset.i];
         T.msgs.push({ who: 'u', text: label }); paint(); comp.innerHTML = '';
