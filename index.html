@@ -570,6 +570,20 @@ a.big988{text-decoration:none}
 .ackbtn{padding:7px 10px;border-radius:9px;background:var(--ink);color:#fff;font:700 12px/1 var(--display);white-space:nowrap}
 .ackbtn[disabled]{background:#dcf6e8;color:#11643e}
 .delta.warnd{background:#fff0d1;color:#8a5a00}
+.big988{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:20px;text-align:left;text-decoration:none}
+.big988 b{display:block;font:800 22px/1.1 var(--display)}
+.big988 > span:last-child > span{display:block;font-size:13.5px;line-height:1.35;margin-top:3px}
+.big988.sos{background:linear-gradient(135deg,#ff6b5e,#e5384a);color:#fff}
+.big988.sos .ico{color:#e5384a}
+.big988.sos span span{color:#ffe7e4}
+.em-q{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.em-q p{font:400 23px/1.25 var(--serif);color:#fff}
+.em-opts{display:flex;flex-direction:column;gap:7px}
+.em-opts .kbtn2{justify-content:flex-start;padding:12px 14px;font-size:14.5px;text-align:left}
+.em-opts .kbtn2[aria-pressed="true"]{background:rgba(255,143,143,.18);border-color:#ff9f9f;color:#fff}
+.em-nav{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+.em-sum p{color:#fff;font-size:15px;line-height:1.45;margin-top:6px}
+.emd{color:#8a1d12 !important;font-weight:700}
 /* access gate */
 .gate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:radial-gradient(80% 70% at 30% 20%,#e3fbf4,#f2f6f4 50%),var(--paper)}
 .gate[hidden]{display:none}
@@ -2177,12 +2191,15 @@ const NOTES_B = {
   after:   { t: 'Before → after, every time', b: ['A second rating turns each use into a <b>measured outcome</b> for the clinician.'] },
   done:    { t: 'The client decides what is shared', b: ['Sharing to the therapist is a <b>visible choice</b>.', 'See it arrive in Act 4.'] }
 };
+NOTES_B.safeNow = { t: '“Are you safe right now?”', b: ['Added at Arielle’s direction: after <b>every</b> screen, whatever the answers, Kindred asks directly whether they are safe right now.', '“Yes” continues on the screening result. “Not sure” or “No” moves to an <b>immediate-risk check</b>.'] };
+NOTES_B.attemptQ = { t: 'Immediate risk: has an attempt started?', b: ['Kindred asks plainly whether they have <b>already done something</b> to hurt themselves, or started to.', '“No, not yet” goes to the crisis path (988/911, stay connected, means distance). “Yes” or “Not sure” starts the <b>emergency</b> path.'] };
+NOTES_B.emergency = { t: 'Emergency: 911 first, then what responders need', b: ['<b>Call 911</b> stays pinned at the top the whole time. Nothing blocks it.', 'Four quick tap questions collect what emergency services need: <b>what was done or taken (and how much), when, where, and who is nearby</b>. Every answer is optional.', 'Kindred builds a <b>summary to read to the 911 operator</b> and sends it to the on-call clinician (and the parent, for a minor).', 'Production: device location with consent, and a dispatch partner (for example Text-to-911 or an emergency-data service) after legal and clinical review.'] };
 NOTES_B.asqNeg = NOTES_B.asq; NOTES_B.talkDone = NOTES_B.heard;
 
 function goK(screen) {
   if (screen !== 'play') stopPlayers();
   K.screen = screen; renderKScreen();
-  const flowKey = { asq: 'asq', asqNeg: 'asq', asqPos: 'asq', crisis: 'asq', abuse: 'asq', talk: 'talk', heard: 'talk', talkDone: 'talk', play: 'skill', after: 'skill', done: 'skill', suggest: 'skill', library: 'skill', plan: 'skill' }[screen] || screen;
+  const flowKey = { safeNow: 'asq', attemptQ: 'asq', emergency: 'asq', asq: 'asq', asqNeg: 'asq', asqPos: 'asq', crisis: 'asq', abuse: 'asq', talk: 'talk', heard: 'talk', talkDone: 'talk', play: 'skill', after: 'skill', done: 'skill', suggest: 'skill', library: 'skill', plan: 'skill' }[screen] || screen;
   renderNotes('bh', NOTES_B[screen], ['home', 'asq', 'choose', 'talk', 'skill'], flowKey);
 }
 
@@ -2233,7 +2250,7 @@ function safetyPlanHTML(P) {
 function renderKScreen() {
   const host = document.getElementById('kScreen'); if (!host) return;
   const P = kp(), V = kvar(), sc = K.screen, first = P.name;
-  const backable = !['home', 'crisis'].includes(sc);
+  const backable = !['home', 'crisis', 'safeNow', 'attemptQ', 'emergency'].includes(sc);
   const top = `<div class="kw-top">${backable ? `<button class="kw-ib" id="kBack" aria-label="${sc === 'talk' || sc === 'play' ? 'Close' : 'Back'}">${ico(sc === 'talk' || sc === 'play' ? 'x' : 'back', 20)}</button>` : `<div class="who"><b>Kindred</b>with ${first}</div>`}<span class="sp"></span><button class="kw-help" id="kHelp">${ico('shield', 16)} Get help now</button></div>`;
   let body = '';
 
@@ -2304,7 +2321,44 @@ function renderKScreen() {
         <details class="kcard kdet"><summary><span class="klabel">${first}’s safety plan · people to reach</span></summary>${safetyPlanHTML(P)}</details>
         <span class="sent">${ico('send', 16)} ${minor ? 'Mom and Dr. Moreno’s on-call clinician have been alerted' : 'Your care team’s on-call clinician has been alerted'}</span>
       </div>
-      <div class="kstack"><button class="kbtn2" id="kConnected">${ico('check', 18)} I’ve connected with someone</button><button class="kbtn2 ghost" id="kStay">Breathe with me while I connect</button></div>`;
+      <div class="kstack"><button class="kbtn2" id="kConnected">${ico('check', 18)} I’ve connected with someone</button><button class="kbtn2 ghost" id="kStay">Breathe with me while I connect</button><button class="kbtn2 warn" id="kAlready">I’ve already hurt myself</button></div>`;
+  }
+
+  else if (sc === 'safeNow') {
+    body = `<div style="display:flex;justify-content:center;margin:8px 0 10px">${kindred({ variant: V, state: 'steady', size: 100 })}</div>
+      <h3>Thank you. One more: <em>are you safe right now?</em></h3>
+      <p class="ksub">However you answer, I’ll help you with what comes next.</p>
+      <div class="kstack" style="margin-top:18px">
+        <button class="krow2" data-sn="yes"><span class="kpic" style="background:#8be9df">${ico('check', 22)}</span><span class="kt"><b>Yes, I’m safe right now</b></span></button>
+        <button class="krow2" data-sn="unsure"><span class="kpic" style="background:#c9b8ff">${ico('chat', 22)}</span><span class="kt"><b>I’m not sure</b></span></button>
+        <button class="krow2" data-sn="no"><span class="kpic" style="background:#ff9f9f">${ico('shield', 22)}</span><span class="kt"><b>No, I’m not safe</b></span></button>
+      </div>`;
+  }
+
+  else if (sc === 'attemptQ') {
+    body = `<div style="display:flex;justify-content:center;margin:8px 0 10px">${kindred({ variant: V, state: 'steady', size: 96 })}</div>
+      <h3>I’m right here. <em>Have you already done something to hurt yourself, or started to?</em></h3>
+      <p class="ksub">Please tell me honestly. It helps me get you the right help, fast.</p>
+      <div class="kstack" style="margin-top:16px">
+        <button class="kbtn2 warn" data-at="yes">Yes</button>
+        <button class="kbtn2 ghost" data-at="unsure">I’m not sure</button>
+        <button class="kbtn2 ghost" data-at="no">No, not yet</button>
+      </div>`;
+  }
+
+  else if (sc === 'emergency') {
+    const E = K.em, q = EM_Q[E.step], minor = K.who === 'jordan';
+    const done = E.step >= EM_Q.length;
+    body = `<a class="big988 sos" href="tel:911"><span style="width:48px;height:48px;border-radius:14px;background:#fff;display:grid;place-items:center;flex:none">${ico('phone', 26)}</span><span><b>Call 911 now</b><span>Or text 911 where available. Keep this screen open.</span></span></a>
+      <div class="kcard" style="margin-top:10px;font-size:13.5px;line-height:1.45;display:flex;gap:10px;align-items:flex-start">${kindred({ variant: V, state: 'steady', size: 40 })}<span>You matter, and you deserve help right now. I’m alerting ${minor ? 'Mom and Dr. Moreno’s on-call clinician' : 'your care team’s on-call clinician'}. Answer what you can so I can pass it to emergency services.</span></div>
+      ${done ? `<div class="kcard em-sum" style="margin-top:10px"><span class="klabel">For 911 and the on-call clinician</span><p>${esc(emSummary(E, P))}</p></div>
+        <span class="sent" style="margin-top:10px">${ico('send', 16)} Sent to ${minor ? 'Mom and the on-call clinician' : 'the on-call clinician'}</span>
+        <p class="ksub" style="font-size:13.5px">Read this to the 911 operator. If you can, unlock your door and turn on a light. Stay with me until help arrives.</p>
+        <div class="kstack"><button class="kbtn2" id="em911">${ico('check', 18)} I’ve called 911 / help is coming</button><button class="kbtn2 ghost" id="emStay">Breathe with me while I wait</button></div>`
+      : `<div class="em-q"><span class="klabel">Question ${E.step + 1} of ${EM_Q.length}</span><p>${q.q}</p>
+        <div class="em-opts">${q.opts.map(o => `<button class="kbtn2 ghost em-o" data-o="${esc(o)}" aria-pressed="${E[q.key] === o}">${esc(o)}</button>`).join('')}</div>
+        ${q.text ? `<label class="ksearch" style="margin:8px 0 0">${ico('note', 18)}<input id="emText" placeholder="${q.text}" value="${esc(q.key === 'what' ? E.detail : E.whereText)}" aria-label="${q.text}"></label>` : ''}
+        <div class="em-nav"><button class="asq-skip" id="emSkip">Skip</button><button class="kbtn2" id="emNext" style="width:auto;padding:12px 20px" ${E[q.key] ? '' : 'disabled'}>Next ${ico('arrow', 16)}</button></div></div>`}`;
   }
 
   else if (sc === 'abuse') {
@@ -2452,7 +2506,27 @@ function wireK(host, sc, P) {
   }
   if (sc === 'crisis') {
     $('#kStay').onclick = () => { K.skill = skill('paced'); K.ret = 'crisis'; goK('play'); };
+    $('#kAlready').onclick = () => startEmergency('Get help now · said already hurt self');
     $('#kConnected').onclick = () => { logEvent({ who: K.who, kind: 'safety', tier: 'connected', via: 'Client confirmed contact' }); K.asq = null; K.talk = null; goK('home'); };
+  }
+  if (sc === 'safeNow') host.querySelectorAll('[data-sn]').forEach(b => b.onclick = () => afterSafeNow(b.dataset.sn));
+  if (sc === 'attemptQ') host.querySelectorAll('[data-at]').forEach(b => b.onclick = () => {
+    const a = b.dataset.at;
+    if (K.asq && K.asq.ev) K.asq.ev.attempt = a;
+    if (a === 'no') { logEvent({ who: K.who, kind: 'safety', tier: 'unsafe', via: 'Not safe right now · no attempt yet' }); return goK('crisis'); }
+    startEmergency(a === 'yes' ? 'Said attempt has started' : 'Unsure if attempt has started');
+  });
+  if (sc === 'emergency') {
+    const E = K.em, q = EM_Q[E.step];
+    if (q) {
+      host.querySelectorAll('.em-o').forEach(b => b.onclick = () => { E[q.key] = b.dataset.o; host.querySelectorAll('.em-o').forEach(x => x.setAttribute('aria-pressed', x === b)); $('#emNext').disabled = false; });
+      const t = $('#emText'); if (t) t.oninput = () => { if (q.key === 'what') E.detail = t.value.slice(0, 160); else E.whereText = t.value.slice(0, 160); };
+      $('#emNext').onclick = () => { E.step++; renderKScreen(); };
+      $('#emSkip').onclick = () => { E.step++; renderKScreen(); };
+    } else {
+      $('#em911').onclick = () => { logEvent({ who: K.who, kind: 'safety', tier: 'connected', via: 'Client confirmed 911 called' }); K.em = null; K.asq = null; K.talk = null; goK('home'); };
+      $('#emStay').onclick = () => { K.skill = skill('paced'); K.ret = 'emergency'; goK('play'); };
+    }
   }
   if (sc === 'abuse') $('#abCont').onclick = () => resumeAfterSafety();
   if (sc === 'choose') {
@@ -2496,8 +2570,38 @@ function finishASQ() {
   const A = K.asq;
   const tier = asqTier(A.ans, A.acuity);
   K.screened = true;
-  logEvent({ who: K.who, kind: 'safety', tier, via: 'ASQ', why: A.why, answers: A.ans.slice(), acuity: A.acuity });
-  goK(tier === 'negative' ? 'asqNeg' : tier === 'nonacute' ? 'asqPos' : 'crisis');
+  A.tier = tier;
+  A.ev = { who: K.who, kind: 'safety', tier, via: 'ASQ', why: A.why, answers: A.ans.slice(), acuity: A.acuity };
+  logEvent(A.ev);
+  goK('safeNow');
+}
+/* Arielle (2026-11-08): after every screen, ask whether they are safe right now;
+   if not, assess for an attempt in progress and collect what emergency services need. */
+function afterSafeNow(ans) {
+  const A = K.asq;
+  A.safeNow = ans; if (A.ev) A.ev.safeNow = ans;
+  if (ans === 'yes') return goK(A.tier === 'negative' ? 'asqNeg' : A.tier === 'nonacute' ? 'asqPos' : 'crisis');
+  goK('attemptQ');
+}
+function startEmergency(source) {
+  K.em = { step: 0, what: null, detail: '', when: null, where: null, whereText: '', withSomeone: null, source, at: new Date() };
+  K.em.ev = { who: K.who, kind: 'safety', tier: 'attempt', via: source, em: K.em };
+  logEvent(K.em.ev);
+  goK('emergency');
+}
+const EM_Q = [
+  { key: 'what', q: 'What did you do, or what did you take?', opts: ['I took pills or medicine', 'I took something else (alcohol, drugs, a chemical)', 'I hurt myself (cut or injured)', 'Something else'], text: 'What exactly, and how much? (this helps the ER)' },
+  { key: 'when', q: 'When did it happen?', opts: ['Just now', 'In the last hour', 'Earlier today', 'I’m not sure'] },
+  { key: 'where', q: 'Where are you right now?', opts: ['At home', 'At school', 'In a car', 'Somewhere else'], text: 'Address or nearest place, if you can' },
+  { key: 'withSomeone', q: 'Is anyone with you or nearby?', opts: ['Someone is with me or nearby', 'I’m alone'] }
+];
+function emSummary(E, P) {
+  const parts = [`${P.name}, ${P.age}. Possible suicide attempt in progress.`];
+  if (E.what) parts.push(`What: ${E.what}${E.detail ? ' — ' + E.detail : ''}.`);
+  if (E.when) parts.push(`When: ${E.when}.`);
+  if (E.where) parts.push(`Where: ${E.where}${E.whereText ? ' — ' + E.whereText : ''}.`);
+  if (E.withSomeone) parts.push(`${E.withSomeone}.`);
+  return parts.join(' ');
 }
 function resumeAfterSafety() {
   const A = K.asq || {};
@@ -2778,6 +2882,8 @@ const TIER_TXT = {
   imminent: ['ASQ · <b>acute positive (thoughts right now)</b>', 'On-call paged · 988/911 shown · guardian alerted', 'crit'],
   help: ['<b>Get help now</b> tapped', '988/911 and safety plan shown · on-call paged', 'crit'],
   connected: ['Client confirmed contact with a person', 'Logged', 'ok'],
+  unsafe: ['<b>Not safe right now</b> · no attempt yet', 'Crisis path shown · on-call paged · guardian alerted', 'crit'],
+  attempt: ['<b>POSSIBLE ATTEMPT IN PROGRESS</b>', '911 prompted · emergency details captured · on-call paged · guardian alerted', 'crit'],
   abuse: ['<b>Possible abuse disclosed</b>', 'Clinician alerted now · mandated-reporting review', 'crit'],
   others: ['<b>Possible risk to others</b>', 'Clinician alerted now · duty-to-warn review', 'crit'],
   'child-disclosure': ['<b>Pip: child disclosure</b>', 'Lucia guided · clinician alerted · call today', 'crit'],
@@ -2789,7 +2895,8 @@ function drawSafety(D, isA) {
     const tm = e.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
     const why = e.why ? ` · trigger: ${({ intensity: 'intensity 7+', hopeless: '“hopeless”', 'what you wrote': 'risk words', scheduled: 'weekly', talk: 'said in talk' })[e.why] || e.why}` : (e.via ? ` · ${e.via}` : '');
     const needsAck = lvl !== 'ok';
-    return `<div class="fitem new sfi ${lvl}"><span><time>Just now · ${tm}${why}</time>${t}<span class="badge-new">NEW</span><small>${act}</small></span>${needsAck ? `<button class="ackbtn" data-ack="${i}" ${e.ack ? 'disabled' : ''}>${e.ack ? 'Acknowledged ' + e.ack : 'Acknowledge'}</button>` : `<span class="delta flat">Logged</span>`}</div>`;
+    const extra = e.tier === 'attempt' && e.em ? `<small class="emd">${esc(emSummary(e.em, PEOPLE[e.who]))}</small>` : (e.safeNow ? `<small>Safe right now: ${({ yes: 'yes', unsure: 'not sure', no: 'no' })[e.safeNow]}${e.attempt ? ` · attempt started: ${({ yes: 'yes', unsure: 'not sure', no: 'no' })[e.attempt]}` : ''}</small>` : '');
+    return `<div class="fitem new sfi ${lvl}"><span><time>Just now · ${tm}${why}</time>${t}<span class="badge-new">NEW</span><small>${act}</small>${extra}</span>${needsAck ? `<button class="ackbtn" data-ack="${i}" ${e.ack ? 'disabled' : ''}>${e.ack ? 'Acknowledged ' + e.ack : 'Acknowledge'}</button>` : `<span class="delta flat">Logged</span>`}</div>`;
   });
   const hist = D.safety.map(r => `<div class="fitem sfi ${r[3]}"><span><time>${r[0]}</time>${r[1]}<small>${r[2]}</small></span><span class="delta ${r[3] === 'ok' ? 'flat' : 'warnd'}">${r[3] === 'ok' ? 'Logged' : 'Closed'}</span></div>`);
   const box = document.getElementById('safetyFeed');
