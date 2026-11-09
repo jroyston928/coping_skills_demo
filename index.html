@@ -602,6 +602,12 @@ a.big988{text-decoration:none}
 .cdisp{display:flex;flex-direction:column;gap:3px;margin-top:6px;padding:8px 10px;border-radius:10px;background:#fff7f5;border:1px solid #f6d3cd;font-size:12px;color:#5b2018}
 .cdisp span{display:flex;align-items:center;gap:6px}
 .cdisp em{font-style:normal;font:700 10px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#a1720d;margin-top:3px}
+.democall{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:300;animation:cardIn .3s both}
+.democall-card{display:flex;align-items:flex-start;gap:12px;max-width:460px;background:#14182e;color:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 20px 50px -10px rgba(0,0,0,.5);border:1px solid #ffd27a}
+.democall-ic{width:38px;height:38px;border-radius:12px;background:#ffd27a;color:#14182e;display:grid;place-items:center;flex:none}
+.democall-card b{display:block;font:700 15px/1.2 var(--display)}
+.democall-card p{font-size:13.5px;line-height:1.4;color:#d7daf0;margin-top:4px}
+.democall-card button{color:#a9b1dc;padding:2px}
 /* access gate */
 .gate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:radial-gradient(80% 70% at 30% 20%,#e3fbf4,#f2f6f4 50%),var(--paper)}
 .gate[hidden]{display:none}
@@ -3038,6 +3044,27 @@ document.getElementById('notesBtn').onclick = function () {
   this.setAttribute('aria-pressed', on);
   document.body.classList.toggle('notes-off', !on);
 };
+
+/* ---------- DEMO SAFETY: no phone link in this demo ever dials ----------
+   Every tel: link (911, 988) is intercepted and shows a notice instead. */
+const DEMO_NO_DIAL = true;
+document.addEventListener('click', e => {
+  const a = e.target.closest && e.target.closest('a[href^="tel:"]');
+  if (!a || !DEMO_NO_DIAL) return;
+  e.preventDefault(); e.stopPropagation();
+  const num = a.getAttribute('href').replace('tel:', '');
+  showDemoCallNotice(num);
+}, true);
+function showDemoCallNotice(num) {
+  document.getElementById('demoCall')?.remove();
+  const d = document.createElement('div');
+  d.id = 'demoCall'; d.className = 'democall'; d.setAttribute('role', 'alertdialog'); d.setAttribute('aria-live', 'assertive');
+  d.innerHTML = `<div class="democall-card"><span class="democall-ic">${ico('phone', 22)}</span><div><b>Demo: no call was placed</b><p>In the real app this opens the phone’s dialer with <b>${num}</b> ready, and the person taps to call. Nothing is ever dialed from this demo.</p></div><button aria-label="Close">${ico('x', 18)}</button></div>`;
+  document.body.appendChild(d);
+  d.querySelector('button').onclick = () => d.remove();
+  setTimeout(() => d.remove(), 6000);
+}
+
 /* ---------- access gate (client-side only: keeps casual visitors out, not a security control) ---------- */
 (function gate() {
   const H = '4ribo';                       // hash of the access code
