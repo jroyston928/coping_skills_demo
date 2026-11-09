@@ -584,6 +584,24 @@ a.big988{text-decoration:none}
 .em-nav{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
 .em-sum p{color:#fff;font-size:15px;line-height:1.45;margin-top:6px}
 .emd{color:#8a1d12 !important;font-weight:700}
+.disp{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+.dhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.dsim{font:700 10px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#ffd27a;background:rgba(255,210,122,.12);padding:5px 7px;border-radius:6px}
+.dstep{display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:start;font-size:13.5px;line-height:1.35;transition:opacity .3s}
+.dstep i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;border:2px solid rgba(255,255,255,.25);margin-top:1px;color:#0d1130}
+.dstep.done i{background:#8be9df;border-color:#8be9df}
+.dstep.now i{border-color:#ffd27a;animation:pulse 1.2s ease-in-out infinite}
+.dstep.todo{opacity:.35}
+.dstep b{color:#fff;font-weight:700;display:block}
+.dstep small{color:var(--moon-2);font-size:12px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,210,122,.5)}50%{box-shadow:0 0 0 6px rgba(255,210,122,0)}}
+.dsms{background:#f2f3f7;color:#14182e;border-radius:16px 16px 16px 4px;padding:10px 12px;margin-left:30px}
+.dsms small{display:block;font:700 10.5px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#6a6f8a;margin-bottom:5px}
+.dsms p{font-size:14px;line-height:1.4}
+.dsms-b{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:12px;color:#a33}
+.cdisp{display:flex;flex-direction:column;gap:3px;margin-top:6px;padding:8px 10px;border-radius:10px;background:#fff7f5;border:1px solid #f6d3cd;font-size:12px;color:#5b2018}
+.cdisp span{display:flex;align-items:center;gap:6px}
+.cdisp em{font-style:normal;font:700 10px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#a1720d;margin-top:3px}
 /* access gate */
 .gate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:radial-gradient(80% 70% at 30% 20%,#e3fbf4,#f2f6f4 50%),var(--paper)}
 .gate[hidden]{display:none}
@@ -2193,7 +2211,7 @@ const NOTES_B = {
 };
 NOTES_B.safeNow = { t: '“Are you safe right now?”', b: ['Added at Arielle’s direction: after <b>every</b> screen, whatever the answers, Kindred asks directly whether they are safe right now.', '“Yes” continues on the screening result. “Not sure” or “No” moves to an <b>immediate-risk check</b>.'] };
 NOTES_B.attemptQ = { t: 'Immediate risk: has an attempt started?', b: ['Kindred asks plainly whether they have <b>already done something</b> to hurt themselves, or started to.', '“No, not yet” goes to the crisis path (988/911, stay connected, means distance). “Yes” or “Not sure” starts the <b>emergency</b> path.'] };
-NOTES_B.emergency = { t: 'Emergency: 911 first, then what responders need', b: ['<b>Call 911</b> stays pinned at the top the whole time. Nothing blocks it.', 'Four quick tap questions collect what emergency services need: <b>what was done or taken (and how much), when, where, and who is nearby</b>. Every answer is optional.', 'Kindred builds a <b>summary to read to the 911 operator</b> and sends it to the on-call clinician (and the parent, for a minor).', 'Production: device location with consent, and a dispatch partner (for example Text-to-911 or an emergency-data service) after legal and clinical review.'] };
+NOTES_B.emergency = { t: 'Emergency: 911 first, then what responders need', b: ['<b>Call 911</b> stays pinned at the top the whole time. Nothing blocks it.', 'Four quick tap questions collect what emergency services need: <b>what was done or taken (and how much), when, where, and who is nearby</b>. Every answer is optional.', 'Kindred builds a <b>summary to read to the 911 operator</b> and sends it to the on-call clinician (and the parent, for a minor).', '<b>Emergency response partner (simulated):</b> the alert goes to a 24/7 dispatch service by API. An agent texts the client; if there is no reply within 20 seconds, or the client confirms, the agent contacts 911 with the summary and location.', 'Help is never sent on keywords alone: only after the structured answers or a human agent’s check. Clients (and parents of minors) consent at enrollment.'] };
 NOTES_B.asqNeg = NOTES_B.asq; NOTES_B.talkDone = NOTES_B.heard;
 
 function goK(screen) {
@@ -2353,6 +2371,7 @@ function renderKScreen() {
       <div class="kcard" style="margin-top:10px;font-size:13.5px;line-height:1.45;display:flex;gap:10px;align-items:flex-start">${kindred({ variant: V, state: 'steady', size: 40 })}<span>You matter, and you deserve help right now. I’m alerting ${minor ? 'Mom and Dr. Moreno’s on-call clinician' : 'your care team’s on-call clinician'}. Answer what you can so I can pass it to emergency services.</span></div>
       ${done ? `<div class="kcard em-sum" style="margin-top:10px"><span class="klabel">For 911 and the on-call clinician</span><p>${esc(emSummary(E, P))}</p></div>
         <span class="sent" style="margin-top:10px">${ico('send', 16)} Sent to ${minor ? 'Mom and the on-call clinician' : 'the on-call clinician'}</span>
+        <div class="kcard disp" id="disp">${dispatchHTML(E, P)}</div>
         <p class="ksub" style="font-size:13.5px">Read this to the 911 operator. If you can, unlock your door and turn on a light. Stay with me until help arrives.</p>
         <div class="kstack"><button class="kbtn2" id="em911">${ico('check', 18)} I’ve called 911 / help is coming</button><button class="kbtn2 ghost" id="emStay">Breathe with me while I wait</button></div>`
       : `<div class="em-q"><span class="klabel">Question ${E.step + 1} of ${EM_Q.length}</span><p>${q.q}</p>
@@ -2524,6 +2543,7 @@ function wireK(host, sc, P) {
       $('#emNext').onclick = () => { E.step++; renderKScreen(); };
       $('#emSkip').onclick = () => { E.step++; renderKScreen(); };
     } else {
+      startDispatch(host, P);
       $('#em911').onclick = () => { logEvent({ who: K.who, kind: 'safety', tier: 'connected', via: 'Client confirmed 911 called' }); K.em = null; K.asq = null; K.talk = null; goK('home'); };
       $('#emStay').onclick = () => { K.skill = skill('paced'); K.ret = 'emergency'; goK('play'); };
     }
@@ -2702,6 +2722,66 @@ function endTalk() {
   if (!K.talk || !K.talk.msgs.some(m => m.who === 'u')) { K.talk = null; return goK('choose'); }
   goK('heard');
 }
+
+/* ---------- Emergency response partner (DEMO SIMULATION — nothing real is contacted) ----------
+   Production model: a 24/7 dispatch partner receives the alert by API, an agent reaches the
+   client within ~30 s (filters false alarms), and contacts 911 with location + summary if needed. */
+function dispatchSteps(E, P) {
+  const who = P.name;
+  return [
+    { t: 'Alert sent to the 24/7 emergency response partner', d: 'Emergency summary attached' },
+    { t: 'Location shared (consented at enrollment)', d: E.where ? `${E.where}${E.whereText ? ' — ' + E.whereText : ''} · plus device location` : 'Device location' },
+    { t: `Response agent texting ${who}`, d: 'Checking in by text and phone', ask: true },
+    { t: E.disp && E.disp.replied ? `Agent connected with ${who}` : `No reply from ${who} · agent calling 911 now`, d: E.disp && E.disp.replied ? 'Agent stays on the line and calls 911 with ' + who : 'Escalated automatically after 20 seconds' },
+    { t: '911 notified with the summary and location', d: 'Medical response requested' },
+    { t: 'Help is on the way', d: `EMS dispatched · ${K.who === 'jordan' ? 'Mom and Dr. Moreno’s on-call clinician' : 'the on-call clinician'} kept updated` }
+  ];
+}
+function dispatchHTML(E, P) {
+  const D = E.disp || { i: 0, times: [] };
+  const steps = dispatchSteps(E, P);
+  const rows = steps.map((st, k) => {
+    const state = (k < D.i || (k === D.i && k === steps.length - 1)) ? 'done' : k === D.i ? 'now' : 'todo';
+    const tm = D.times[k] ? D.times[k].toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', second: '2-digit' }) : '';
+    return `<div class="dstep ${state}"><i>${state === 'done' ? ico('check', 13) : ''}</i><span><b>${st.t}</b><small>${state === 'todo' ? '' : st.d}${tm ? ' · ' + tm : ''}</small></span></div>`;
+  }).join('');
+  const askOpen = D.i === 2 && D.replied == null;
+  return `<div class="dhead"><span class="klabel">Emergency response</span><span class="dsim">Demo simulation · no real call is made</span></div>
+    ${rows}
+    ${askOpen ? `<div class="dsms"><small>Text from the emergency response team</small><p>This is the NOVA emergency response team. We got an alert that you may be hurt. Are you able to talk right now?</p>
+      <div class="dsms-b"><button class="kbtn2" id="dReply" style="width:auto;padding:10px 14px;font-size:14px">I’m here</button><span id="dCount">Escalating to 911 in 20s</span></div></div>` : ''}`;
+}
+function startDispatch(host, P) {
+  const E = K.em;
+  if (!E || (E.disp && E.disp.started)) { wireDispatch(host, P); return; }
+  E.disp = { i: 0, times: [new Date()], replied: null, started: true };
+  if (E.ev) E.ev.disp = E.disp;
+  const paint = () => { const el = document.getElementById('disp'); if (el && K.screen === 'emergency') { el.innerHTML = dispatchHTML(E, P); wireDispatch(document.getElementById('kScreen'), P); } };
+  const advance = () => { E.disp.i++; E.disp.times[E.disp.i] = new Date(); paint(); renderClinIfOpen(); };
+  E.disp.advance = advance; E.disp.paint = paint;
+  setTimeout(advance, 1500);                     // location shared
+  setTimeout(() => {                             // agent texting
+    advance();
+    let n = 20;
+    E.disp.timer = setInterval(() => {
+      n--; const c = document.getElementById('dCount'); if (c) c.textContent = `Escalating to 911 in ${n}s`;
+      if (n <= 0 || E.disp.replied != null) { clearInterval(E.disp.timer); if (E.disp.replied == null) { E.disp.replied = false; afterReply(); } }
+    }, 1000);
+  }, 3200);
+  function afterReply() {
+    advance();                                   // connected / no reply
+    setTimeout(advance, 2200);                   // 911 notified
+    setTimeout(advance, 4600);                   // help on the way
+  }
+  E.disp.afterReply = afterReply;
+  paint();
+}
+function wireDispatch(host, P) {
+  const E = K.em; if (!E || !E.disp) return;
+  const b = host && host.querySelector('#dReply');
+  if (b) b.onclick = () => { if (E.disp.replied != null) return; E.disp.replied = true; clearInterval(E.disp.timer); E.disp.afterReply(); };
+}
+function renderClinIfOpen() { if (typeof current !== 'undefined' && current === 'clinician') renderClin(); }
 
 /* =====================================================================
    ACT 4 · CLINICIAN & HIVE — the same panel inside both clinical portals
@@ -2883,7 +2963,7 @@ const TIER_TXT = {
   help: ['<b>Get help now</b> tapped', '988/911 and safety plan shown · on-call paged', 'crit'],
   connected: ['Client confirmed contact with a person', 'Logged', 'ok'],
   unsafe: ['<b>Not safe right now</b> · no attempt yet', 'Crisis path shown · on-call paged · guardian alerted', 'crit'],
-  attempt: ['<b>POSSIBLE ATTEMPT IN PROGRESS</b>', '911 prompted · emergency details captured · on-call paged · guardian alerted', 'crit'],
+  attempt: ['<b>POSSIBLE ATTEMPT IN PROGRESS</b>', '911 prompted · emergency details captured · response partner alerted · on-call paged · guardian alerted', 'crit'],
   abuse: ['<b>Possible abuse disclosed</b>', 'Clinician alerted now · mandated-reporting review', 'crit'],
   others: ['<b>Possible risk to others</b>', 'Clinician alerted now · duty-to-warn review', 'crit'],
   'child-disclosure': ['<b>Pip: child disclosure</b>', 'Lucia guided · clinician alerted · call today', 'crit'],
@@ -2895,7 +2975,8 @@ function drawSafety(D, isA) {
     const tm = e.at.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
     const why = e.why ? ` · trigger: ${({ intensity: 'intensity 7+', hopeless: '“hopeless”', 'what you wrote': 'risk words', scheduled: 'weekly', talk: 'said in talk' })[e.why] || e.why}` : (e.via ? ` · ${e.via}` : '');
     const needsAck = lvl !== 'ok';
-    const extra = e.tier === 'attempt' && e.em ? `<small class="emd">${esc(emSummary(e.em, PEOPLE[e.who]))}</small>` : (e.safeNow ? `<small>Safe right now: ${({ yes: 'yes', unsure: 'not sure', no: 'no' })[e.safeNow]}${e.attempt ? ` · attempt started: ${({ yes: 'yes', unsure: 'not sure', no: 'no' })[e.attempt]}` : ''}</small>` : '');
+    const disp = e.tier === 'attempt' && e.em && e.em.disp ? `<div class="cdisp">${dispatchSteps(e.em, PEOPLE[e.who]).slice(0, e.em.disp.i + 1).map((st, k) => `<span>${ico('check', 12)} ${st.t}${e.em.disp.times[k] ? ' · ' + e.em.disp.times[k].toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', second: '2-digit' }) : ''}</span>`).join('')}<em>Demo simulation</em></div>` : '';
+    const extra = e.tier === 'attempt' && e.em ? `<small class="emd">${esc(emSummary(e.em, PEOPLE[e.who]))}</small>${disp}` : (e.safeNow ? `<small>Safe right now: ${({ yes: 'yes', unsure: 'not sure', no: 'no' })[e.safeNow]}${e.attempt ? ` · attempt started: ${({ yes: 'yes', unsure: 'not sure', no: 'no' })[e.attempt]}` : ''}</small>` : '');
     return `<div class="fitem new sfi ${lvl}"><span><time>Just now · ${tm}${why}</time>${t}<span class="badge-new">NEW</span><small>${act}</small>${extra}</span>${needsAck ? `<button class="ackbtn" data-ack="${i}" ${e.ack ? 'disabled' : ''}>${e.ack ? 'Acknowledged ' + e.ack : 'Acknowledge'}</button>` : `<span class="delta flat">Logged</span>`}</div>`;
   });
   const hist = D.safety.map(r => `<div class="fitem sfi ${r[3]}"><span><time>${r[0]}</time>${r[1]}<small>${r[2]}</small></span><span class="delta ${r[3] === 'ok' ? 'flat' : 'warnd'}">${r[3] === 'ok' ? 'Logged' : 'Closed'}</span></div>`);
